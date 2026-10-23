@@ -1,0 +1,1339 @@
+[
+  {
+    "id": "entity:AddCodeApply",
+    "kind": "entity",
+    "title": "物料主数据",
+    "text": "物料主数据的业务口径：即加码申请表，业务上是物料主数据表，一行对应一个物料，记录物料编码、L1至L4分类、物料描述和申请状态。物料主数据（AddCodeApply）对应数据表ac_add_code_apply。物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。物料主数据共有42个持久化字段。物料主数据的是否汽车电子使用yn字典。物料主数据的是否临时码使用yn字典。",
+    "source": "AddCodeApply.java",
+    "meta": {
+      "entity_class": "AddCodeApply"
+    }
+  },
+  {
+    "id": "entity:AcAddCodeApplyAttr",
+    "kind": "entity",
+    "title": "物料基础属性",
+    "text": "物料基础属性的业务口径：即加码申请基础属性，业务上是物料基础属性，也叫公有属性，是同一分类下物料共有的属性取值。物料基础属性（AcAddCodeApplyAttr）对应数据表ac_add_code_apply_attr。物料基础属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。物料基础属性共有14个持久化字段。",
+    "source": "AcAddCodeApplyAttr.java",
+    "meta": {
+      "entity_class": "AcAddCodeApplyAttr"
+    }
+  },
+  {
+    "id": "entity:AcAddCodeApplyAttrp",
+    "kind": "entity",
+    "title": "物料私有属性",
+    "text": "物料私有属性的业务口径：即加码申请私有属性，业务上是物料私有属性，也叫物料技术属性，是各分类自己特有的技术参数取值。物料私有属性（AcAddCodeApplyAttrp）对应数据表ac_add_code_apply_attrp。物料私有属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。物料私有属性共有14个持久化字段。",
+    "source": "AcAddCodeApplyAttrp.java",
+    "meta": {
+      "entity_class": "AcAddCodeApplyAttrp"
+    }
+  },
+  {
+    "id": "entity:ClassificationManagement",
+    "kind": "entity",
+    "title": "物料分类",
+    "text": "物料分类的业务口径：即分类维护，业务上是物料分类体系，分为L1至L4四级，L4是最末级分类。物料分类（ClassificationManagement）对应数据表ac_classification_management。物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。物料分类共有21个持久化字段。",
+    "source": "ClassificationManagement.java",
+    "meta": {
+      "entity_class": "ClassificationManagement"
+    }
+  },
+  {
+    "id": "entity:AttributeManagement",
+    "kind": "entity",
+    "title": "物料属性定义",
+    "text": "物料属性定义的业务口径：即属性维护，业务上是物料属性的定义清单，每个属性有属性代码和属性名称。物料属性定义（AttributeManagement）对应数据表ac_attribute_management。物料属性定义的关键字段包括属性代码、属性名称。物料属性定义共有8个持久化字段。",
+    "source": "AttributeManagement.java",
+    "meta": {
+      "entity_class": "AttributeManagement"
+    }
+  },
+  {
+    "id": "entity:ClassificationAttributeRef",
+    "kind": "entity",
+    "title": "物料分类属性模板",
+    "text": "物料分类属性模板的业务口径：即分类属性维护，业务上是物料分类属性模板，规定某个分类下有哪些属性、公有还是私有、必填与否、描述拼接顺序。物料分类属性模板（ClassificationAttributeRef）对应数据表ac_classification_attribute_ref。物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。物料分类属性模板共有33个持久化字段。物料分类属性模板的公有属性/私有属性使用pubOrPri字典。物料分类属性模板的属性类型使用attrType字典。物料分类属性模板的单选/多选使用smc字典。",
+    "source": "ClassificationAttributeRef.java",
+    "meta": {
+      "entity_class": "ClassificationAttributeRef"
+    }
+  },
+  {
+    "id": "entity:AttributeValue",
+    "kind": "entity",
+    "title": "物料属性值库",
+    "text": "物料属性值库的业务口径：即属性值库维护，业务上是物料属性值库，保存单选、多选类属性的可选值及其描述。物料属性值库（AttributeValue）对应数据表ac_attribute_value。物料属性值库的关键字段包括L4分类代码、属性代码、项次代码、参数值、属性值描述。物料属性值库共有13个持久化字段。",
+    "source": "AttributeValue.java",
+    "meta": {
+      "entity_class": "AttributeValue"
+    }
+  },
+  {
+    "id": "entity:CodeRange",
+    "kind": "entity",
+    "title": "物料编码号段",
+    "text": "物料编码号段的业务口径：即编码范围，业务上是物料编码号段，按L4分类划分起止号段并记录当前最大编码，用于顺序分配物料编码。物料编码号段（CodeRange）对应数据表ac_code_range。物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。物料编码号段共有18个持久化字段。",
+    "source": "CodeRange.java",
+    "meta": {
+      "entity_class": "CodeRange"
+    }
+  },
+  {
+    "id": "relation:AcAddCodeApplyAttr-partOf-AddCodeApply",
+    "kind": "relation",
+    "title": "物料基础属性→物料主数据",
+    "text": "物料基础属性属于物料主数据，关联字段为加码id。",
+    "source": "AcAddCodeApplyAttrMapper.xml#selectByMainId (add_code_id = #{mainId})",
+    "meta": {
+      "predicate": "partOf",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:AcAddCodeApplyAttrp-partOf-AddCodeApply",
+    "kind": "relation",
+    "title": "物料私有属性→物料主数据",
+    "text": "物料私有属性属于物料主数据，关联字段为加码id。",
+    "source": "AcAddCodeApplyAttrpMapper.xml#selectByMainId (add_code_id = #{mainId})",
+    "meta": {
+      "predicate": "partOf",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:AddCodeApply-refersTo-ClassificationManagement",
+    "kind": "relation",
+    "title": "物料主数据→物料分类",
+    "text": "物料主数据引用物料分类，关联字段为L1分类、L2分类、L3分类、L4分类。",
+    "source": "AddCodeApply.java @Dict(dictTable=ac_classification_management)",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:AddCodeApply-refersTo-CodeRange",
+    "kind": "relation",
+    "title": "物料主数据→物料编码号段",
+    "text": "物料主数据引用物料编码号段，关联字段为L4分类。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit (four_code = classifyL4 或 classifyL1+010101)",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:ClassificationAttributeRef-refersTo-ClassificationManagement",
+    "kind": "relation",
+    "title": "物料分类属性模板→物料分类",
+    "text": "物料分类属性模板引用物料分类，关联字段为L4分类代码。",
+    "source": "ClassificationAttributeRefController#queryById (classificationManagementService.queryByFourCode)",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:ClassificationAttributeRef-refersTo-AttributeManagement",
+    "kind": "relation",
+    "title": "物料分类属性模板→物料属性定义",
+    "text": "物料分类属性模板引用物料属性定义，关联字段为属性代码。",
+    "source": "ClassificationAttributeRef.attributeCode 与 AttributeManagement.attributeCode 同名同义（未见显式 JOIN）",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "inferred"
+    }
+  },
+  {
+    "id": "relation:AttributeValue-refersTo-ClassificationAttributeRef",
+    "kind": "relation",
+    "title": "物料属性值库→物料分类属性模板",
+    "text": "物料属性值库引用物料分类属性模板，关联字段为L4分类代码、属性代码。",
+    "source": "ClassificationAttributeRefServiceImpl#getParsedValue (queryRangeByFourCode(ref.fourCode, ref.attributeCode))",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:AttributeValue-refersTo-AttributeManagement",
+    "kind": "relation",
+    "title": "物料属性值库→物料属性定义",
+    "text": "物料属性值库引用物料属性定义，关联字段为属性代码。",
+    "source": "AttributeValueServiceImpl#getSubdivisionDesc (attribute_code 过滤)",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:CodeRange-refersTo-ClassificationManagement",
+    "kind": "relation",
+    "title": "物料编码号段→物料分类",
+    "text": "物料编码号段引用物料分类，关联字段为L4分类代码。",
+    "source": "ClassificationManagementController#page (codeRangeService.getByFourcode(record.fourCode))",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:AcAddCodeApplyAttr-refersTo-ClassificationAttributeRef",
+    "kind": "relation",
+    "title": "物料基础属性→物料分类属性模板",
+    "text": "物料基础属性引用物料分类属性模板，关联字段为属性代码。",
+    "source": "AddCodeApplyServiceImpl#buildAttrList (attr.setAttrCode(ref.getAttributeCode()))",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef",
+    "kind": "relation",
+    "title": "物料私有属性→物料分类属性模板",
+    "text": "物料私有属性引用物料分类属性模板，关联字段为属性代码。",
+    "source": "AddCodeApplyServiceImpl#buildAttrpList (attrp.setAttrCode(ref.getAttributeCode()))",
+    "meta": {
+      "predicate": "refersTo",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:materialName",
+    "kind": "attribute",
+    "title": "物料名称属性",
+    "text": "物料基础属性包含常用属性物料名称属性。物料名称属性（materialName）：物料的名称，创建时默认就是物料子类L4的名称。物料名称属性取自物料子类L4。",
+    "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
+    "meta": {
+      "attr_code": "materialName",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:materialAbbreviation",
+    "kind": "attribute",
+    "title": "物料简称属性",
+    "text": "物料基础属性包含常用属性物料简称属性。物料简称属性（materialAbbreviation）：物料的简称，创建时默认来自分类上的元器件物料简称。物料简称属性取自元器件物料简称。",
+    "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+    "meta": {
+      "attr_code": "materialAbbreviation",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:materialType",
+    "kind": "attribute",
+    "title": "物料类型属性",
+    "text": "物料基础属性包含常用属性物料类型属性。物料类型属性（materialType）：物料类型，创建时默认来自所在号段的物料类型。物料类型属性取自物料类型。",
+    "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+    "meta": {
+      "attr_code": "materialType",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:lifeCyclePhase",
+    "kind": "attribute",
+    "title": "生命周期阶段属性",
+    "text": "物料基础属性包含常用属性生命周期阶段属性。生命周期阶段属性（lifeCyclePhase）：物料在业务上的物料状态，分为研发、测试、试产、批量、EOL、部分失效、采购失效、完全失效、完全停产。",
+    "source": "业务方说明; AddCodeApplyController#checkLifeCyclePhase",
+    "meta": {
+      "attr_code": "lifeCyclePhase",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "attr:preferredIdentification",
+    "kind": "attribute",
+    "title": "优选标识属性",
+    "text": "物料基础属性包含常用属性优选标识属性。优选标识属性（preferredIdentification）：由采购维护，标记物料是否为某个BG的优选物料；被标记为优选的物料，研发设计BOM时会优先考虑。",
+    "source": "业务方说明; AcAddCodeApplyAttrServiceImpl#batchUpdateMaterialAttributes",
+    "meta": {
+      "attr_code": "preferredIdentification",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "attr:manufacturerAvlRating",
+    "kind": "attribute",
+    "title": "制造商AVL等级属性",
+    "text": "物料基础属性包含常用属性制造商AVL等级属性。制造商AVL等级属性（manufacturerAvlRating）：物料对应制造商的AVL等级，每天晚上定时根据采购维护的制造商等级更新；研发设计BOM时优先考虑主力、合格、试用的物料。",
+    "source": "业务方说明; AddCodeApplyController#checkParam",
+    "meta": {
+      "attr_code": "manufacturerAvlRating",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "attr:notes",
+    "kind": "attribute",
+    "title": "专用客户属性",
+    "text": "物料基础属性包含常用属性专用客户属性。专用客户属性（notes）：该属性有值表示物料是某个客户的专用料，属性值就是指定的专用客户；属性值与客户名称、客户编码并不相等，但从字面上能看出是同一个客户。",
+    "source": "业务方说明",
+    "meta": {
+      "attr_code": "notes",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "attr:manufacturersName",
+    "kind": "attribute",
+    "title": "制造商名称属性",
+    "text": "物料基础属性包含常用属性制造商名称属性。制造商名称属性（manufacturersName）：物料对应的制造商名称。",
+    "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+    "meta": {
+      "attr_code": "manufacturersName",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:projectType",
+    "kind": "attribute",
+    "title": "项目类型属性",
+    "text": "物料基础属性包含常用属性项目类型属性。项目类型属性（projectType）：物料所属项目的类型。",
+    "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+    "meta": {
+      "attr_code": "projectType",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:brandExceptionType",
+    "kind": "attribute",
+    "title": "品牌异常类型属性",
+    "text": "物料基础属性包含常用属性品牌异常类型属性。品牌异常类型属性（brandExceptionType）：品牌异常的类型；制造商AVL等级为考察、限制时必填，为主力、合格、试用时不能填写。",
+    "source": "AddCodeApplyController#checkParam",
+    "meta": {
+      "attr_code": "brandExceptionType",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:subdivision",
+    "kind": "attribute",
+    "title": "细分类属性",
+    "text": "物料基础属性包含常用属性细分类属性。细分类属性（subdivision）：物料的细分类，取值的描述存放在物料属性值库里。",
+    "source": "AttributeValueServiceImpl#getSubdivisionDesc",
+    "meta": {
+      "attr_code": "subdivision",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "attr:documentNumber",
+    "kind": "attribute",
+    "title": "文档编号属性",
+    "text": "物料基础属性包含常用属性文档编号属性。文档编号属性（documentNumber）：物料关联的文档编号。",
+    "source": "AddCodeApplyServiceImpl#handleNeed",
+    "meta": {
+      "attr_code": "documentNumber",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "enum:申请状态",
+    "kind": "enum",
+    "title": "申请状态的枚举值",
+    "text": "申请状态的枚举值包括申请状态-草稿、申请状态-标准化审批中、申请状态-审批完成、申请状态-SCM采购审批中、申请状态-退回、申请状态-历史版本。",
+    "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "enumval:申请状态-草稿",
+    "kind": "enum",
+    "title": "申请状态-草稿",
+    "text": "申请状态-草稿（0）：申请还没有提交。",
+    "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+    "meta": {
+      "basis": "confirmed",
+      "code": "0"
+    }
+  },
+  {
+    "id": "enumval:申请状态-标准化审批中",
+    "kind": "enum",
+    "title": "申请状态-标准化审批中",
+    "text": "申请状态-标准化审批中（1）：申请已提交，正在标准化审批。",
+    "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+    "meta": {
+      "basis": "confirmed",
+      "code": "1"
+    }
+  },
+  {
+    "id": "enumval:申请状态-审批完成",
+    "kind": "enum",
+    "title": "申请状态-审批完成",
+    "text": "申请状态-审批完成（2）：审批通过的有效数据，同一物料编码只有一条。",
+    "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+    "meta": {
+      "basis": "confirmed",
+      "code": "2"
+    }
+  },
+  {
+    "id": "enumval:申请状态-SCM采购审批中",
+    "kind": "enum",
+    "title": "申请状态-SCM采购审批中",
+    "text": "申请状态-SCM采购审批中（3）：申请正在SCM采购审批。",
+    "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+    "meta": {
+      "basis": "confirmed",
+      "code": "3"
+    }
+  },
+  {
+    "id": "enumval:申请状态-退回",
+    "kind": "enum",
+    "title": "申请状态-退回",
+    "text": "申请状态-退回（4）：申请被退回。",
+    "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+    "meta": {
+      "basis": "confirmed",
+      "code": "4"
+    }
+  },
+  {
+    "id": "enumval:申请状态-历史版本",
+    "kind": "enum",
+    "title": "申请状态-历史版本",
+    "text": "申请状态-历史版本（5）：物料升级后被新版本取代的旧记录。",
+    "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+    "meta": {
+      "basis": "confirmed",
+      "code": "5"
+    }
+  },
+  {
+    "id": "enum:生命周期阶段",
+    "kind": "enum",
+    "title": "生命周期阶段属性的枚举值",
+    "text": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-研发",
+    "kind": "enum",
+    "title": "生命周期阶段-研发",
+    "text": "生命周期阶段-研发（YF）：物料处于研发阶段。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "YF"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-测试",
+    "kind": "enum",
+    "title": "生命周期阶段-测试",
+    "text": "生命周期阶段-测试（NA）：物料处于测试阶段。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "NA"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-试产",
+    "kind": "enum",
+    "title": "生命周期阶段-试产",
+    "text": "生命周期阶段-试产（CA）：物料处于试产阶段。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "CA"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-批量",
+    "kind": "enum",
+    "title": "生命周期阶段-批量",
+    "text": "生命周期阶段-批量（AP）：物料处于批量阶段。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "AP"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-EOL",
+    "kind": "enum",
+    "title": "生命周期阶段-EOL",
+    "text": "生命周期阶段-EOL（00）：物料为EOL状态。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "00"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-部分失效",
+    "kind": "enum",
+    "title": "生命周期阶段-部分失效",
+    "text": "生命周期阶段-部分失效（02）：物料部分失效。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "02"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-采购失效",
+    "kind": "enum",
+    "title": "生命周期阶段-采购失效",
+    "text": "生命周期阶段-采购失效（03）：物料对采购失效。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "03"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-完全失效",
+    "kind": "enum",
+    "title": "生命周期阶段-完全失效",
+    "text": "生命周期阶段-完全失效（04）：物料完全失效。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "04"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-完全停产",
+    "kind": "enum",
+    "title": "生命周期阶段-完全停产",
+    "text": "生命周期阶段-完全停产（99）：物料完全停产。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "99"
+    }
+  },
+  {
+    "id": "enum:优选标识",
+    "kind": "enum",
+    "title": "优选标识属性的枚举值",
+    "text": "优选标识属性的枚举值包括优选标识-优选A、优选标识-优选B、优选标识-优选1(汽电)。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "enumval:优选标识-优选A",
+    "kind": "enum",
+    "title": "优选标识-优选A",
+    "text": "优选标识-优选A：采购标记为优选A的物料，研发设计BOM时会优先考虑。优选标识-优选A标识海外家电BG的优选物料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "优选A"
+    }
+  },
+  {
+    "id": "enumval:优选标识-优选B",
+    "kind": "enum",
+    "title": "优选标识-优选B",
+    "text": "优选标识-优选B：采购标记为优选B的物料，研发设计BOM时会优先考虑。优选标识-优选B标识国内家电BG的优选物料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "优选B"
+    }
+  },
+  {
+    "id": "enumval:优选标识-优选1(汽电)",
+    "kind": "enum",
+    "title": "优选标识-优选1(汽电)",
+    "text": "优选标识-优选1(汽电)：采购标记为优选1(汽电)的物料，研发设计BOM时会优先考虑。优选标识-优选1(汽电)标识汽车电子BG的优选物料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "优选1(汽电)"
+    }
+  },
+  {
+    "id": "enum:制造商AVL等级",
+    "kind": "enum",
+    "title": "制造商AVL等级属性的枚举值",
+    "text": "制造商AVL等级属性的枚举值包括制造商AVL等级-主力、制造商AVL等级-合格、制造商AVL等级-试用、制造商AVL等级-考察、制造商AVL等级-限制。",
+    "source": "业务方说明; AddCodeApplyController#checkParam",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "enumval:制造商AVL等级-主力",
+    "kind": "enum",
+    "title": "制造商AVL等级-主力",
+    "text": "制造商AVL等级-主力：研发设计BOM时优先考虑。",
+    "source": "业务方说明; AddCodeApplyController#checkParam",
+    "meta": {
+      "basis": "confirmed",
+      "code": "主力"
+    }
+  },
+  {
+    "id": "enumval:制造商AVL等级-合格",
+    "kind": "enum",
+    "title": "制造商AVL等级-合格",
+    "text": "制造商AVL等级-合格：研发设计BOM时优先考虑。",
+    "source": "业务方说明; AddCodeApplyController#checkParam",
+    "meta": {
+      "basis": "confirmed",
+      "code": "合格"
+    }
+  },
+  {
+    "id": "enumval:制造商AVL等级-试用",
+    "kind": "enum",
+    "title": "制造商AVL等级-试用",
+    "text": "制造商AVL等级-试用：研发设计BOM时优先考虑。",
+    "source": "业务方说明; AddCodeApplyController#checkParam",
+    "meta": {
+      "basis": "confirmed",
+      "code": "试用"
+    }
+  },
+  {
+    "id": "enumval:制造商AVL等级-考察",
+    "kind": "enum",
+    "title": "制造商AVL等级-考察",
+    "text": "制造商AVL等级-考察：物料对应的制造商不合格或未验证，研发设计BOM时不优先考虑。",
+    "source": "业务方说明; AddCodeApplyController#checkParam",
+    "meta": {
+      "basis": "confirmed",
+      "code": "考察"
+    }
+  },
+  {
+    "id": "enumval:制造商AVL等级-限制",
+    "kind": "enum",
+    "title": "制造商AVL等级-限制",
+    "text": "制造商AVL等级-限制：处理方式和考察一样：物料对应的制造商不合格或未验证，研发设计BOM时不优先考虑。",
+    "source": "业务方说明; AddCodeApplyController#checkParam",
+    "meta": {
+      "basis": "confirmed",
+      "code": "限制"
+    }
+  },
+  {
+    "id": "bg:是否汽车电子:汽车电子BG",
+    "kind": "enum",
+    "title": "是否汽车电子→汽车电子BG",
+    "text": "是否汽车电子标明汽车电子BG的物料。",
+    "source": "业务方说明; CodeRangeServiceImpl#getCodeAndCommit (ecar == 1)",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "rule:有效物料判定规则",
+    "kind": "rule",
+    "title": "有效物料判定规则",
+    "text": "有效物料判定规则：物料主数据的申请状态表示申请审批状态，申请状态为2即审批完成的记录才是有效物料。同一个物料编码，申请状态为2的记录只有一条，进入图数据库的物料主数据只取申请状态为2的记录。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "rule:物料升级规则",
+    "kind": "rule",
+    "title": "物料升级规则",
+    "text": "物料升级规则：物料升级时会新建一条物料主数据，物料编码保持不变；新建的升级记录审批通过后，申请状态改为2，原来申请状态为2的记录改为5即历史版本，因此同一物料编码始终只有一条有效记录。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "rule:物料状态口径规则",
+    "kind": "rule",
+    "title": "物料状态口径规则",
+    "text": "物料状态口径规则：物料在业务上的物料状态以生命周期阶段属性为准。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "rule:物料编码BG前缀规则",
+    "kind": "rule",
+    "title": "物料编码BG前缀规则",
+    "text": "物料编码BG前缀规则：汽车电子BG的物料编码以2开头，其他BG的物料编码以1开头；汽车电子BG的物料，其是否汽车电子为是。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "rule:客户专用料规则",
+    "kind": "rule",
+    "title": "客户专用料规则",
+    "text": "客户专用料规则：专用客户属性有值的物料是客户专用料。属性值与客户名称、客户编码并不相等，但从字面上能看出是哪个客户，目前可选的客户只有两个。研发查找物料时可以过滤掉客户专用料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "rule:分类代码层级规则",
+    "kind": "rule",
+    "title": "分类代码层级规则",
+    "text": "分类代码层级规则：L4分类代码的前两位就是L1分类代码；物料主数据的L1分类、L2分类、L3分类、L4分类，分别对应物料分类里的L1分类代码、L2分类代码、L3分类代码、L4分类代码。",
+    "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "rule:分类属性范围匹配规则",
+    "kind": "rule",
+    "title": "分类属性范围匹配规则",
+    "text": "分类属性范围匹配规则：物料分类属性模板与物料属性值库的L4分类代码有三种写法：具体的L4分类代码、L1分类代码，以及形如起始-终止的L1分类范围。按L4分类代码查询时，命中任意一种写法的记录都会返回，并按排序和物料短描述顺序排列。",
+    "source": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "rule:属性值解析规则",
+    "kind": "rule",
+    "title": "属性值解析规则",
+    "text": "属性值解析规则：解析分类属性时，属性类型为single、multiple、list或multList的属性，要到物料属性值库里查询可选值；其他类型的属性可选值为空。",
+    "source": "ClassificationAttributeRefServiceImpl#getParsedValue",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "rule:物料描述拼接规则",
+    "kind": "rule",
+    "title": "物料描述拼接规则",
+    "text": "物料描述拼接规则：物料短描述和英文描述取是否进ERP物料短描述标识为X或XY的属性，物料长描述取标识为Y或XY的属性，均按物料短描述顺序升序拼接；顺序小于1000的作为前缀，大于1000的作为后缀，私有属性夹在前缀和后缀之间；同一成组属性之间用成组属性拼接符连接，其余用空格连接。",
+    "source": "AddCodeApplyServiceImpl#generateDescriptions",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "rule:物料基础属性取值规则",
+    "kind": "rule",
+    "title": "物料基础属性取值规则",
+    "text": "物料基础属性取值规则：创建物料基础属性时，物料名称属性取自物料分类的物料子类L4，物料简称属性取自物料分类的元器件物料简称，物料类型属性取自物料编码号段的物料类型，其余属性按申请信息填充。",
+    "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "rule:编码号段选取规则",
+    "kind": "rule",
+    "title": "编码号段选取规则",
+    "text": "编码号段选取规则：L1分类为38，或L4分类为40120101时，取该L4分类自己的号段；其他情况取L1分类加010101对应的号段。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "rule:汽车电子号段规则",
+    "kind": "rule",
+    "title": "汽车电子号段规则",
+    "text": "汽车电子号段规则：汽车电子物料（即汽车电子BG的物料）使用汽车电子编码起始、汽车电子编码终止和汽车电子当前最大编码三个号段字段，其他物料使用普通的编码起始、编码终止和当前最大编码。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit (addCodeApply.getEcar() == 1)",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "rule:旧物料编码校验规则",
+    "kind": "rule",
+    "title": "旧物料编码校验规则",
+    "text": "旧物料编码校验规则：物料沿用旧物料编码时，旧物料编码必须是11位数字，不能与已有物料编码重复，且前4位必须与新生成编码的前4位一致。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit",
+    "meta": {
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:AddCodeApply:有效物料判定规则",
+    "kind": "rule",
+    "title": "物料主数据→有效物料判定规则",
+    "text": "物料主数据受有效物料判定规则约束。",
+    "source": "业务方说明",
+    "meta": {
+      "entity_class": "AddCodeApply",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "governed:AddCodeApply:物料升级规则",
+    "kind": "rule",
+    "title": "物料主数据→物料升级规则",
+    "text": "物料主数据受物料升级规则约束。",
+    "source": "业务方说明",
+    "meta": {
+      "entity_class": "AddCodeApply",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "governed:AddCodeApply:物料状态口径规则",
+    "kind": "rule",
+    "title": "物料主数据→物料状态口径规则",
+    "text": "物料主数据受物料状态口径规则约束。",
+    "source": "业务方说明",
+    "meta": {
+      "entity_class": "AddCodeApply",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "governed:AddCodeApply:物料编码BG前缀规则",
+    "kind": "rule",
+    "title": "物料主数据→物料编码BG前缀规则",
+    "text": "物料主数据受物料编码BG前缀规则约束。",
+    "source": "业务方说明",
+    "meta": {
+      "entity_class": "AddCodeApply",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "governed:AddCodeApply:物料描述拼接规则",
+    "kind": "rule",
+    "title": "物料主数据→物料描述拼接规则",
+    "text": "物料主数据受物料描述拼接规则约束。",
+    "source": "AddCodeApplyServiceImpl#generateDescriptions",
+    "meta": {
+      "entity_class": "AddCodeApply",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:AddCodeApply:旧物料编码校验规则",
+    "kind": "rule",
+    "title": "物料主数据→旧物料编码校验规则",
+    "text": "物料主数据受旧物料编码校验规则约束。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit",
+    "meta": {
+      "entity_class": "AddCodeApply",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:AddCodeApply:分类代码层级规则",
+    "kind": "rule",
+    "title": "物料主数据→分类代码层级规则",
+    "text": "物料主数据受分类代码层级规则约束。",
+    "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict",
+    "meta": {
+      "entity_class": "AddCodeApply",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:AcAddCodeApplyAttr:物料基础属性取值规则",
+    "kind": "rule",
+    "title": "物料基础属性→物料基础属性取值规则",
+    "text": "物料基础属性受物料基础属性取值规则约束。",
+    "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+    "meta": {
+      "entity_class": "AcAddCodeApplyAttr",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:AcAddCodeApplyAttr:客户专用料规则",
+    "kind": "rule",
+    "title": "物料基础属性→客户专用料规则",
+    "text": "物料基础属性受客户专用料规则约束。",
+    "source": "业务方说明",
+    "meta": {
+      "entity_class": "AcAddCodeApplyAttr",
+      "basis": "confirmed"
+    }
+  },
+  {
+    "id": "governed:ClassificationManagement:分类代码层级规则",
+    "kind": "rule",
+    "title": "物料分类→分类代码层级规则",
+    "text": "物料分类受分类代码层级规则约束。",
+    "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict",
+    "meta": {
+      "entity_class": "ClassificationManagement",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:ClassificationAttributeRef:分类属性范围匹配规则",
+    "kind": "rule",
+    "title": "物料分类属性模板→分类属性范围匹配规则",
+    "text": "物料分类属性模板受分类属性范围匹配规则约束。",
+    "source": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode",
+    "meta": {
+      "entity_class": "ClassificationAttributeRef",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:ClassificationAttributeRef:属性值解析规则",
+    "kind": "rule",
+    "title": "物料分类属性模板→属性值解析规则",
+    "text": "物料分类属性模板受属性值解析规则约束。",
+    "source": "ClassificationAttributeRefServiceImpl#getParsedValue",
+    "meta": {
+      "entity_class": "ClassificationAttributeRef",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:ClassificationAttributeRef:物料描述拼接规则",
+    "kind": "rule",
+    "title": "物料分类属性模板→物料描述拼接规则",
+    "text": "物料分类属性模板受物料描述拼接规则约束。",
+    "source": "AddCodeApplyServiceImpl#generateDescriptions",
+    "meta": {
+      "entity_class": "ClassificationAttributeRef",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:AttributeValue:分类属性范围匹配规则",
+    "kind": "rule",
+    "title": "物料属性值库→分类属性范围匹配规则",
+    "text": "物料属性值库受分类属性范围匹配规则约束。",
+    "source": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode",
+    "meta": {
+      "entity_class": "AttributeValue",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:AttributeValue:属性值解析规则",
+    "kind": "rule",
+    "title": "物料属性值库→属性值解析规则",
+    "text": "物料属性值库受属性值解析规则约束。",
+    "source": "ClassificationAttributeRefServiceImpl#getParsedValue",
+    "meta": {
+      "entity_class": "AttributeValue",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:CodeRange:编码号段选取规则",
+    "kind": "rule",
+    "title": "物料编码号段→编码号段选取规则",
+    "text": "物料编码号段受编码号段选取规则约束。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit",
+    "meta": {
+      "entity_class": "CodeRange",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "governed:CodeRange:汽车电子号段规则",
+    "kind": "rule",
+    "title": "物料编码号段→汽车电子号段规则",
+    "text": "物料编码号段受汽车电子号段规则约束。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit (addCodeApply.getEcar() == 1)",
+    "meta": {
+      "entity_class": "CodeRange",
+      "basis": "code"
+    }
+  },
+  {
+    "id": "scenario:物料精确查找",
+    "kind": "scenario",
+    "title": "物料精确查找",
+    "text": "物料精确查找：根据物料编码、描述关键字、分类或属性值，定位到具体的物料。",
+    "source": "lexicon.SCENARIOS",
+    "meta": {}
+  },
+  {
+    "id": "scenario:物料相似查找",
+    "kind": "scenario",
+    "title": "物料相似查找",
+    "text": "物料相似查找：在同分类下找出属性相近的物料。",
+    "source": "lexicon.SCENARIOS",
+    "meta": {}
+  },
+  {
+    "id": "scenario:替代料推荐",
+    "kind": "scenario",
+    "title": "替代料推荐",
+    "text": "替代料推荐：为某个物料推荐可以替换的其他物料。",
+    "source": "lexicon.SCENARIOS",
+    "meta": {}
+  },
+  {
+    "id": "support:AddCodeApply:物料精确查找",
+    "kind": "support",
+    "title": "物料主数据→物料精确查找",
+    "text": "物料主数据支持物料精确查找。物料主数据一行对应一个物料，物料编码、分类、描述和状态都在这张表里。",
+    "source": "AddCodeApply.java",
+    "meta": {
+      "basis": "code",
+      "subject": "物料主数据",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:物料编码:物料精确查找",
+    "kind": "support",
+    "title": "物料编码→物料精确查找",
+    "text": "物料编码支持物料精确查找。物料编码首位数字区分BG：汽车电子BG以2开头，其他BG以1开头；同一物料编码只有一条申请状态为2的有效记录。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "物料编码",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:旧物料编码:物料精确查找",
+    "kind": "support",
+    "title": "旧物料编码→物料精确查找",
+    "text": "旧物料编码支持物料精确查找。新物料可以沿用旧物料编码，可用来从老编码反查物料。",
+    "source": "CodeRangeServiceImpl#getCodeAndCommit",
+    "meta": {
+      "basis": "code",
+      "subject": "旧物料编码",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:申请状态:物料精确查找",
+    "kind": "support",
+    "title": "申请状态→物料精确查找",
+    "text": "申请状态支持物料精确查找。只有申请状态为2的记录才是有效物料，其他状态的记录不进入图谱。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "申请状态",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:L4分类:物料精确查找",
+    "kind": "support",
+    "title": "L4分类→物料精确查找",
+    "text": "L4分类支持物料精确查找。物料主数据按L4分类归类，可先按分类缩小范围。",
+    "source": "AddCodeApply.java @Dict",
+    "meta": {
+      "basis": "code",
+      "subject": "L4分类",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:AcAddCodeApplyAttr:物料精确查找",
+    "kind": "support",
+    "title": "物料基础属性→物料精确查找",
+    "text": "物料基础属性支持物料精确查找。物料名称等基础属性通过加码id挂在物料主数据上。",
+    "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo",
+    "meta": {
+      "basis": "code",
+      "subject": "物料基础属性",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:物料名称属性:物料精确查找",
+    "kind": "support",
+    "title": "物料名称属性→物料精确查找",
+    "text": "物料名称属性支持物料精确查找。按物料编码可以查到物料名称。",
+    "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo",
+    "meta": {
+      "basis": "code",
+      "subject": "物料名称属性",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:物料短描述:物料精确查找",
+    "kind": "support",
+    "title": "物料短描述→物料精确查找",
+    "text": "物料短描述支持物料精确查找。描述由属性值按固定顺序拼接而成，可以用关键字检索。",
+    "source": "AddCodeApplyServiceImpl#generateDescriptions",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "物料短描述",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:物料长描述:物料精确查找",
+    "kind": "support",
+    "title": "物料长描述→物料精确查找",
+    "text": "物料长描述支持物料精确查找。长描述包含更完整的属性值，可以用关键字检索。",
+    "source": "AddCodeApplyServiceImpl#generateDescriptions",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "物料长描述",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:属性值:物料精确查找",
+    "kind": "support",
+    "title": "属性值→物料精确查找",
+    "text": "属性值支持物料精确查找。属性代码加属性值的组合，可以按参数筛选物料。",
+    "source": "AcAddCodeApplyAttr.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "属性值",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:制造商名称属性:物料精确查找",
+    "kind": "support",
+    "title": "制造商名称属性→物料精确查找",
+    "text": "制造商名称属性支持物料精确查找。可以按制造商名称限定物料范围。",
+    "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "制造商名称属性",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:生命周期阶段属性:物料精确查找",
+    "kind": "support",
+    "title": "生命周期阶段属性→物料精确查找",
+    "text": "生命周期阶段属性支持物料精确查找。它是物料在业务上的状态，可以排除失效、停产的物料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "生命周期阶段属性",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:专用客户属性:物料精确查找",
+    "kind": "support",
+    "title": "专用客户属性→物料精确查找",
+    "text": "专用客户属性支持物料精确查找。有值说明是客户专用料，研发查找物料时可以过滤掉这些专用料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "专用客户属性",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:是否汽车电子:物料精确查找",
+    "kind": "support",
+    "title": "是否汽车电子→物料精确查找",
+    "text": "是否汽车电子支持物料精确查找。可据此区分汽车电子BG的物料和其他BG的物料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "是否汽车电子",
+      "scenario": "物料精确查找"
+    }
+  },
+  {
+    "id": "support:L4分类:物料相似查找",
+    "kind": "support",
+    "title": "L4分类→物料相似查找",
+    "text": "L4分类支持物料相似查找。同一L4分类下的物料适用同一套属性模板，才有可比性。",
+    "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "L4分类",
+      "scenario": "物料相似查找"
+    }
+  },
+  {
+    "id": "support:ClassificationAttributeRef:物料相似查找",
+    "kind": "support",
+    "title": "物料分类属性模板→物料相似查找",
+    "text": "物料分类属性模板支持物料相似查找。模板规定了每类物料有哪些属性，是比较的依据。",
+    "source": "ClassificationAttributeRef.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "物料分类属性模板",
+      "scenario": "物料相似查找"
+    }
+  },
+  {
+    "id": "support:是否属于可比性属性:物料相似查找",
+    "kind": "support",
+    "title": "是否属于可比性属性→物料相似查找",
+    "text": "是否属于可比性属性支持物料相似查找。该标识表明哪些属性可以用来比较，源码里没有直接使用。",
+    "source": "ClassificationAttributeRef.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "是否属于可比性属性",
+      "scenario": "物料相似查找"
+    }
+  },
+  {
+    "id": "support:属性值:物料相似查找",
+    "kind": "support",
+    "title": "属性值→物料相似查找",
+    "text": "属性值支持物料相似查找。属性值越接近，物料越相似。",
+    "source": "AcAddCodeApplyAttr.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "属性值",
+      "scenario": "物料相似查找"
+    }
+  },
+  {
+    "id": "support:物料短描述:物料相似查找",
+    "kind": "support",
+    "title": "物料短描述→物料相似查找",
+    "text": "物料短描述支持物料相似查找。描述的拼接顺序相同，描述文本可以用来比较相近程度。",
+    "source": "AddCodeApplyServiceImpl#generateDescriptions",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "物料短描述",
+      "scenario": "物料相似查找"
+    }
+  },
+  {
+    "id": "support:AcAddCodeApplyAttrp:物料相似查找",
+    "kind": "support",
+    "title": "物料私有属性→物料相似查找",
+    "text": "物料私有属性支持物料相似查找。私有属性是各分类特有的技术参数，决定物料是否相似。",
+    "source": "AcAddCodeApplyAttrp.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "物料私有属性",
+      "scenario": "物料相似查找"
+    }
+  },
+  {
+    "id": "support:细分类属性:物料相似查找",
+    "kind": "support",
+    "title": "细分类属性→物料相似查找",
+    "text": "细分类属性支持物料相似查找。细分类相同说明物料更接近。",
+    "source": "AttributeValueServiceImpl#getSubdivisionDesc",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "细分类属性",
+      "scenario": "物料相似查找"
+    }
+  },
+  {
+    "id": "support:AcAddCodeApplyAttrp:替代料推荐",
+    "kind": "support",
+    "title": "物料私有属性→替代料推荐",
+    "text": "物料私有属性支持替代料推荐。技术参数一致是替代的前提。",
+    "source": "AcAddCodeApplyAttrp.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "物料私有属性",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:是否属于可比性属性:替代料推荐",
+    "kind": "support",
+    "title": "是否属于可比性属性→替代料推荐",
+    "text": "是否属于可比性属性支持替代料推荐。只比较可比性属性，才能判断能否替代。",
+    "source": "ClassificationAttributeRef.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "是否属于可比性属性",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:是否涉及优选:替代料推荐",
+    "kind": "support",
+    "title": "是否涉及优选→替代料推荐",
+    "text": "是否涉及优选支持替代料推荐。替代时应优先推荐优选物料。",
+    "source": "AddCodeApplyServiceImpl#pushMainData",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "是否涉及优选",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:优选标识属性:替代料推荐",
+    "kind": "support",
+    "title": "优选标识属性→替代料推荐",
+    "text": "优选标识属性支持替代料推荐。被标记为优选的物料研发设计BOM时优先考虑，推荐替代料时应优先给出，并注意优选所属的BG。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "优选标识属性",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:制造商AVL等级属性:替代料推荐",
+    "kind": "support",
+    "title": "制造商AVL等级属性→替代料推荐",
+    "text": "制造商AVL等级属性支持替代料推荐。优先推荐主力、合格、试用的物料；考察、限制表示制造商不合格或未验证，不宜优先推荐。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "制造商AVL等级属性",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:标准件/非标准件:替代料推荐",
+    "kind": "support",
+    "title": "标准件/非标准件→替代料推荐",
+    "text": "标准件/非标准件支持替代料推荐。标准件之间更容易互相替换。",
+    "source": "ClassificationManagement.java",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "标准件/非标准件",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:制造商名称属性:替代料推荐",
+    "kind": "support",
+    "title": "制造商名称属性→替代料推荐",
+    "text": "制造商名称属性支持替代料推荐。替代料常常是同规格、不同制造商的物料。",
+    "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "制造商名称属性",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:生命周期阶段属性:替代料推荐",
+    "kind": "support",
+    "title": "生命周期阶段属性→替代料推荐",
+    "text": "生命周期阶段属性支持替代料推荐。物料进入EOL或失效、停产后，需要为它找替代；推荐的替代料自身也不应是失效或停产的。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "生命周期阶段属性",
+      "scenario": "替代料推荐"
+    }
+  },
+  {
+    "id": "support:专用客户属性:替代料推荐",
+    "kind": "support",
+    "title": "专用客户属性→替代料推荐",
+    "text": "专用客户属性支持替代料推荐。推荐替代料时同样应该过滤掉客户专用料。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "subject": "专用客户属性",
+      "scenario": "替代料推荐"
+    }
+  }
+]

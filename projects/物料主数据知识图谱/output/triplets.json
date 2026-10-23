@@ -1,0 +1,2933 @@
+[
+  {
+    "subject": "物料主数据",
+    "predicate": "mapsToTable",
+    "object": "ac_add_code_apply",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据（AddCodeApply）对应数据表ac_add_code_apply。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "mapsToTable",
+    "object": "ac_classification_management",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类（ClassificationManagement）对应数据表ac_classification_management。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "mapsToTable",
+    "object": "ac_classification_attribute_ref",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板（ClassificationAttributeRef）对应数据表ac_classification_attribute_ref。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "mapsToTable",
+    "object": "ac_add_code_apply_attr",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttr",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "物料基础属性（AcAddCodeApplyAttr）对应数据表ac_add_code_apply_attr。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "mapsToTable",
+    "object": "ac_attribute_value",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeValue",
+        "source": "AttributeValue.java",
+        "sentence": "物料属性值库（AttributeValue）对应数据表ac_attribute_value。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性定义",
+    "predicate": "mapsToTable",
+    "object": "ac_attribute_management",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeManagement",
+        "source": "AttributeManagement.java",
+        "sentence": "物料属性定义（AttributeManagement）对应数据表ac_attribute_management。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "mapsToTable",
+    "object": "ac_add_code_apply_attrp",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttrp",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性（AcAddCodeApplyAttrp）对应数据表ac_add_code_apply_attrp。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "mapsToTable",
+    "object": "ac_code_range",
+    "subject_type": "Entity",
+    "object_type": "DataTable",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段（CodeRange）对应数据表ac_code_range。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "L1分类",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "L2分类",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "L3分类",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "L4分类",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "旧物料编码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "是否临时码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "是否汽车电子",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "物料短描述",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "物料编码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "物料长描述",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "申请状态",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "hasKeyField",
+    "object": "英文描述",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的关键字段包括L1分类、L2分类、L3分类、L4分类、物料编码、旧物料编码、物料短描述、物料长描述、英文描述、申请状态、是否临时码、是否汽车电子。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "L1分类代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "L2分类代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "L3分类代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "L4分类代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "元器件物料简称",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "是否涉及优选",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "标准件/非标准件",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "hasKeyField",
+    "object": "物料子类L4",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationManagement",
+        "source": "ClassificationManagement.java",
+        "sentence": "物料分类的关键字段包括L1分类代码、L2分类代码、L3分类代码、L4分类代码、物料子类L4、元器件物料简称、是否涉及优选、标准件/非标准件。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "L4分类代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "公有属性/私有属性",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "唯一性",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "属性代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "属性类型",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "成组属性",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "成组属性拼接符",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "是否属于可比性属性",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "是否必填",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "是否进ERP物料短描述",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "物料短描述顺序",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "hasKeyField",
+    "object": "默认值",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "hasKeyField",
+    "object": "加码id",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttr",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "物料基础属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "hasKeyField",
+    "object": "属性代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttr",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "物料基础属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "hasKeyField",
+    "object": "属性值",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttr",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "物料基础属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "hasKeyField",
+    "object": "属性描述",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttr",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "物料基础属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "hasKeyField",
+    "object": "属性类型",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttr",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "物料基础属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "hasKeyField",
+    "object": "L4分类代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeValue",
+        "source": "AttributeValue.java",
+        "sentence": "物料属性值库的关键字段包括L4分类代码、属性代码、项次代码、参数值、属性值描述。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "hasKeyField",
+    "object": "参数值",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeValue",
+        "source": "AttributeValue.java",
+        "sentence": "物料属性值库的关键字段包括L4分类代码、属性代码、项次代码、参数值、属性值描述。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "hasKeyField",
+    "object": "属性代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeValue",
+        "source": "AttributeValue.java",
+        "sentence": "物料属性值库的关键字段包括L4分类代码、属性代码、项次代码、参数值、属性值描述。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "hasKeyField",
+    "object": "属性值描述",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeValue",
+        "source": "AttributeValue.java",
+        "sentence": "物料属性值库的关键字段包括L4分类代码、属性代码、项次代码、参数值、属性值描述。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "hasKeyField",
+    "object": "项次代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeValue",
+        "source": "AttributeValue.java",
+        "sentence": "物料属性值库的关键字段包括L4分类代码、属性代码、项次代码、参数值、属性值描述。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性定义",
+    "predicate": "hasKeyField",
+    "object": "属性代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeManagement",
+        "source": "AttributeManagement.java",
+        "sentence": "物料属性定义的关键字段包括属性代码、属性名称。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性定义",
+    "predicate": "hasKeyField",
+    "object": "属性名称",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AttributeManagement",
+        "source": "AttributeManagement.java",
+        "sentence": "物料属性定义的关键字段包括属性代码、属性名称。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "hasKeyField",
+    "object": "加码id",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttrp",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "hasKeyField",
+    "object": "属性代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttrp",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "hasKeyField",
+    "object": "属性值",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttrp",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "hasKeyField",
+    "object": "属性描述",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttrp",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "hasKeyField",
+    "object": "属性类型",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AcAddCodeApplyAttrp",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性的关键字段包括加码id、属性代码、属性值、属性描述、属性类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "L4分类代码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "当前最大编码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "汽车电子当前最大编码",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "汽车电子编码终止",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "汽车电子编码起始",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "物料类型",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "编码终止",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "hasKeyField",
+    "object": "编码起始",
+    "subject_type": "Entity",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:CodeRange",
+        "source": "CodeRange.java",
+        "sentence": "物料编码号段的关键字段包括L4分类代码、编码起始、编码终止、当前最大编码、汽车电子编码起始、汽车电子编码终止、汽车电子当前最大编码、物料类型。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "refersTo",
+    "object": "物料分类",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "L1分类",
+      "L2分类",
+      "L3分类",
+      "L4分类"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "source": "AddCodeApply.java @Dict(dictTable=ac_classification_management)",
+        "sentence": "物料主数据引用物料分类，关联字段为L1分类、L2分类、L3分类、L4分类。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "refersTo",
+    "object": "物料编码号段",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "L4分类"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AddCodeApply-refersTo-CodeRange",
+        "source": "CodeRangeServiceImpl#getCodeAndCommit (four_code = classifyL4 或 classifyL1+010101)",
+        "sentence": "物料主数据引用物料编码号段，关联字段为L4分类。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "refersTo",
+    "object": "物料分类",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "L4分类代码"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:ClassificationAttributeRef-refersTo-ClassificationManagement",
+        "source": "ClassificationAttributeRefController#queryById (classificationManagementService.queryByFourCode)",
+        "sentence": "物料分类属性模板引用物料分类，关联字段为L4分类代码。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "refersTo",
+    "object": "物料属性定义",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "属性代码"
+    ],
+    "basis": "inferred",
+    "evidence": [
+      {
+        "doc": "relation:ClassificationAttributeRef-refersTo-AttributeManagement",
+        "source": "ClassificationAttributeRef.attributeCode 与 AttributeManagement.attributeCode 同名同义（未见显式 JOIN）",
+        "sentence": "物料分类属性模板引用物料属性定义，关联字段为属性代码。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "refersTo",
+    "object": "物料分类属性模板",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "属性代码"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AcAddCodeApplyAttr-refersTo-ClassificationAttributeRef",
+        "source": "AddCodeApplyServiceImpl#buildAttrList (attr.setAttrCode(ref.getAttributeCode()))",
+        "sentence": "物料基础属性引用物料分类属性模板，关联字段为属性代码。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "refersTo",
+    "object": "物料分类属性模板",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "L4分类代码",
+      "属性代码"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AttributeValue-refersTo-ClassificationAttributeRef",
+        "source": "ClassificationAttributeRefServiceImpl#getParsedValue (queryRangeByFourCode(ref.fourCode, ref.attributeCode))",
+        "sentence": "物料属性值库引用物料分类属性模板，关联字段为L4分类代码、属性代码。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "refersTo",
+    "object": "物料属性定义",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "属性代码"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AttributeValue-refersTo-AttributeManagement",
+        "source": "AttributeValueServiceImpl#getSubdivisionDesc (attribute_code 过滤)",
+        "sentence": "物料属性值库引用物料属性定义，关联字段为属性代码。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "refersTo",
+    "object": "物料分类属性模板",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "属性代码"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef",
+        "source": "AddCodeApplyServiceImpl#buildAttrpList (attrp.setAttrCode(ref.getAttributeCode()))",
+        "sentence": "物料私有属性引用物料分类属性模板，关联字段为属性代码。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "refersTo",
+    "object": "物料分类",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "L4分类代码"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:CodeRange-refersTo-ClassificationManagement",
+        "source": "ClassificationManagementController#page (codeRangeService.getByFourcode(record.fourCode))",
+        "sentence": "物料编码号段引用物料分类，关联字段为L4分类代码。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "partOf",
+    "object": "物料主数据",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "加码id"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AcAddCodeApplyAttr-partOf-AddCodeApply",
+        "source": "AcAddCodeApplyAttrMapper.xml#selectByMainId (add_code_id = #{mainId})",
+        "sentence": "物料基础属性属于物料主数据，关联字段为加码id。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "partOf",
+    "object": "物料主数据",
+    "subject_type": "Entity",
+    "object_type": "Entity",
+    "confidence": 0.9,
+    "via": [
+      "加码id"
+    ],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "relation:AcAddCodeApplyAttrp-partOf-AddCodeApply",
+        "source": "AcAddCodeApplyAttrpMapper.xml#selectByMainId (add_code_id = #{mainId})",
+        "sentence": "物料私有属性属于物料主数据，关联字段为加码id。"
+      }
+    ]
+  },
+  {
+    "subject": "公有属性/私有属性",
+    "predicate": "usesDictionary",
+    "object": "pubOrPri字典",
+    "subject_type": "Field",
+    "object_type": "Dictionary",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的公有属性/私有属性使用pubOrPri字典。"
+      }
+    ]
+  },
+  {
+    "subject": "单选/多选",
+    "predicate": "usesDictionary",
+    "object": "smc字典",
+    "subject_type": "Field",
+    "object_type": "Dictionary",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的单选/多选使用smc字典。"
+      }
+    ]
+  },
+  {
+    "subject": "属性类型",
+    "predicate": "usesDictionary",
+    "object": "attrType字典",
+    "subject_type": "Field",
+    "object_type": "Dictionary",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:ClassificationAttributeRef",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板的属性类型使用attrType字典。"
+      }
+    ]
+  },
+  {
+    "subject": "是否临时码",
+    "predicate": "usesDictionary",
+    "object": "yn字典",
+    "subject_type": "Field",
+    "object_type": "Dictionary",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的是否临时码使用yn字典。"
+      }
+    ]
+  },
+  {
+    "subject": "是否汽车电子",
+    "predicate": "usesDictionary",
+    "object": "yn字典",
+    "subject_type": "Field",
+    "object_type": "Dictionary",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "entity:AddCodeApply",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据的是否汽车电子使用yn字典。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "专用客户属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attr:notes",
+        "source": "业务方说明",
+        "sentence": "物料基础属性包含常用属性专用客户属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "优选标识属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attr:preferredIdentification",
+        "source": "业务方说明; AcAddCodeApplyAttrServiceImpl#batchUpdateMaterialAttributes",
+        "sentence": "物料基础属性包含常用属性优选标识属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "制造商AVL等级属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attr:manufacturerAvlRating",
+        "source": "业务方说明; AddCodeApplyController#checkParam",
+        "sentence": "物料基础属性包含常用属性制造商AVL等级属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "制造商名称属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:manufacturersName",
+        "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+        "sentence": "物料基础属性包含常用属性制造商名称属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "品牌异常类型属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:brandExceptionType",
+        "source": "AddCodeApplyController#checkParam",
+        "sentence": "物料基础属性包含常用属性品牌异常类型属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "文档编号属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:documentNumber",
+        "source": "AddCodeApplyServiceImpl#handleNeed",
+        "sentence": "物料基础属性包含常用属性文档编号属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "物料名称属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:materialName",
+        "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料基础属性包含常用属性物料名称属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "物料简称属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:materialAbbreviation",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料基础属性包含常用属性物料简称属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "物料类型属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:materialType",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料基础属性包含常用属性物料类型属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "生命周期阶段属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attr:lifeCyclePhase",
+        "source": "业务方说明; AddCodeApplyController#checkLifeCyclePhase",
+        "sentence": "物料基础属性包含常用属性生命周期阶段属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "细分类属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:subdivision",
+        "source": "AttributeValueServiceImpl#getSubdivisionDesc",
+        "sentence": "物料基础属性包含常用属性细分类属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "项目类型属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:projectType",
+        "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+        "sentence": "物料基础属性包含常用属性项目类型属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料名称属性",
+    "predicate": "derivesFrom",
+    "object": "物料子类L4",
+    "subject_type": "CommonAttribute",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:materialName",
+        "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料名称属性取自物料子类L4。"
+      },
+      {
+        "doc": "rule:物料基础属性取值规则",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料基础属性取值规则：创建物料基础属性时，物料名称属性取自物料分类的物料子类L4，物料简称属性取自物料分类的元器件物料简称，物料类型属性取自物料编码号段的物料类型，其余属性按申请信息填充。"
+      }
+    ]
+  },
+  {
+    "subject": "物料简称属性",
+    "predicate": "derivesFrom",
+    "object": "元器件物料简称",
+    "subject_type": "CommonAttribute",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:materialAbbreviation",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料简称属性取自元器件物料简称。"
+      },
+      {
+        "doc": "rule:物料基础属性取值规则",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料基础属性取值规则：创建物料基础属性时，物料名称属性取自物料分类的物料子类L4，物料简称属性取自物料分类的元器件物料简称，物料类型属性取自物料编码号段的物料类型，其余属性按申请信息填充。"
+      }
+    ]
+  },
+  {
+    "subject": "物料类型属性",
+    "predicate": "derivesFrom",
+    "object": "物料类型",
+    "subject_type": "CommonAttribute",
+    "object_type": "Field",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:materialType",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料类型属性取自物料类型。"
+      },
+      {
+        "doc": "rule:物料基础属性取值规则",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料基础属性取值规则：创建物料基础属性时，物料名称属性取自物料分类的物料子类L4，物料简称属性取自物料分类的元器件物料简称，物料类型属性取自物料编码号段的物料类型，其余属性按申请信息填充。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
+    "object": "分类代码层级规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:分类代码层级规则",
+        "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict",
+        "sentence": "物料主数据受分类代码层级规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
+    "object": "旧物料编码校验规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:旧物料编码校验规则",
+        "source": "CodeRangeServiceImpl#getCodeAndCommit",
+        "sentence": "物料主数据受旧物料编码校验规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
+    "object": "有效物料判定规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:有效物料判定规则",
+        "source": "业务方说明",
+        "sentence": "物料主数据受有效物料判定规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
+    "object": "物料升级规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:物料升级规则",
+        "source": "业务方说明",
+        "sentence": "物料主数据受物料升级规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
+    "object": "物料描述拼接规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:物料描述拼接规则",
+        "source": "AddCodeApplyServiceImpl#generateDescriptions",
+        "sentence": "物料主数据受物料描述拼接规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
+    "object": "物料状态口径规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:物料状态口径规则",
+        "source": "业务方说明",
+        "sentence": "物料主数据受物料状态口径规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
+    "object": "物料编码BG前缀规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:物料编码BG前缀规则",
+        "source": "业务方说明",
+        "sentence": "物料主数据受物料编码BG前缀规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类",
+    "predicate": "governedBy",
+    "object": "分类代码层级规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:ClassificationManagement:分类代码层级规则",
+        "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict",
+        "sentence": "物料分类受分类代码层级规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "governedBy",
+    "object": "分类属性范围匹配规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:ClassificationAttributeRef:分类属性范围匹配规则",
+        "source": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode",
+        "sentence": "物料分类属性模板受分类属性范围匹配规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "governedBy",
+    "object": "属性值解析规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:ClassificationAttributeRef:属性值解析规则",
+        "source": "ClassificationAttributeRefServiceImpl#getParsedValue",
+        "sentence": "物料分类属性模板受属性值解析规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "governedBy",
+    "object": "物料描述拼接规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:ClassificationAttributeRef:物料描述拼接规则",
+        "source": "AddCodeApplyServiceImpl#generateDescriptions",
+        "sentence": "物料分类属性模板受物料描述拼接规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "governedBy",
+    "object": "客户专用料规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AcAddCodeApplyAttr:客户专用料规则",
+        "source": "业务方说明",
+        "sentence": "物料基础属性受客户专用料规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "governedBy",
+    "object": "物料基础属性取值规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AcAddCodeApplyAttr:物料基础属性取值规则",
+        "source": "AddCodeApplyServiceImpl#createPublicAttributes",
+        "sentence": "物料基础属性受物料基础属性取值规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "governedBy",
+    "object": "分类属性范围匹配规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AttributeValue:分类属性范围匹配规则",
+        "source": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode",
+        "sentence": "物料属性值库受分类属性范围匹配规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料属性值库",
+    "predicate": "governedBy",
+    "object": "属性值解析规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AttributeValue:属性值解析规则",
+        "source": "ClassificationAttributeRefServiceImpl#getParsedValue",
+        "sentence": "物料属性值库受属性值解析规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "governedBy",
+    "object": "汽车电子号段规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:CodeRange:汽车电子号段规则",
+        "source": "CodeRangeServiceImpl#getCodeAndCommit (addCodeApply.getEcar() == 1)",
+        "sentence": "物料编码号段受汽车电子号段规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码号段",
+    "predicate": "governedBy",
+    "object": "编码号段选取规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:CodeRange:编码号段选取规则",
+        "source": "CodeRangeServiceImpl#getCodeAndCommit",
+        "sentence": "物料编码号段受编码号段选取规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "L4分类",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:L4分类:物料相似查找",
+        "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode",
+        "sentence": "L4分类支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "L4分类",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "support:L4分类:物料精确查找",
+        "source": "AddCodeApply.java @Dict",
+        "sentence": "L4分类支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "专用客户属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:专用客户属性:替代料推荐",
+        "source": "业务方说明",
+        "sentence": "专用客户属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "专用客户属性",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:专用客户属性:物料精确查找",
+        "source": "业务方说明",
+        "sentence": "专用客户属性支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "优选标识属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:优选标识属性:替代料推荐",
+        "source": "业务方说明",
+        "sentence": "优选标识属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商AVL等级属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:制造商AVL等级属性:替代料推荐",
+        "source": "业务方说明",
+        "sentence": "制造商AVL等级属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商名称属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:制造商名称属性:替代料推荐",
+        "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+        "sentence": "制造商名称属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商名称属性",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:制造商名称属性:物料精确查找",
+        "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+        "sentence": "制造商名称属性支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "属性值",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:属性值:物料相似查找",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "属性值支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "属性值",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:属性值:物料精确查找",
+        "source": "AcAddCodeApplyAttr.java",
+        "sentence": "属性值支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "旧物料编码",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "support:旧物料编码:物料精确查找",
+        "source": "CodeRangeServiceImpl#getCodeAndCommit",
+        "sentence": "旧物料编码支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "是否属于可比性属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:是否属于可比性属性:替代料推荐",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "是否属于可比性属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "是否属于可比性属性",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:是否属于可比性属性:物料相似查找",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "是否属于可比性属性支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "是否汽车电子",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:是否汽车电子:物料精确查找",
+        "source": "业务方说明",
+        "sentence": "是否汽车电子支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "是否涉及优选",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:是否涉及优选:替代料推荐",
+        "source": "AddCodeApplyServiceImpl#pushMainData",
+        "sentence": "是否涉及优选支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "标准件/非标准件",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:标准件/非标准件:替代料推荐",
+        "source": "ClassificationManagement.java",
+        "sentence": "标准件/非标准件支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Entity",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "support:AddCodeApply:物料精确查找",
+        "source": "AddCodeApply.java",
+        "sentence": "物料主数据支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "Entity",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:ClassificationAttributeRef:物料相似查找",
+        "source": "ClassificationAttributeRef.java",
+        "sentence": "物料分类属性模板支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料名称属性",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "support:物料名称属性:物料精确查找",
+        "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo",
+        "sentence": "物料名称属性支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Entity",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "support:AcAddCodeApplyAttr:物料精确查找",
+        "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo",
+        "sentence": "物料基础属性支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料短描述",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:物料短描述:物料相似查找",
+        "source": "AddCodeApplyServiceImpl#generateDescriptions",
+        "sentence": "物料短描述支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料短描述",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:物料短描述:物料精确查找",
+        "source": "AddCodeApplyServiceImpl#generateDescriptions",
+        "sentence": "物料短描述支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "Entity",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:AcAddCodeApplyAttrp:替代料推荐",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "Entity",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:AcAddCodeApplyAttrp:物料相似查找",
+        "source": "AcAddCodeApplyAttrp.java",
+        "sentence": "物料私有属性支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料编码",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:物料编码:物料精确查找",
+        "source": "业务方说明",
+        "sentence": "物料编码支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "物料长描述",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:物料长描述:物料精确查找",
+        "source": "AddCodeApplyServiceImpl#generateDescriptions",
+        "sentence": "物料长描述支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:生命周期阶段属性:替代料推荐",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:生命周期阶段属性:物料精确查找",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "申请状态",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "Field",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:申请状态:物料精确查找",
+        "source": "业务方说明",
+        "sentence": "申请状态支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "细分类属性",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:细分类属性:物料相似查找",
+        "source": "AttributeValueServiceImpl#getSubdivisionDesc",
+        "sentence": "细分类属性支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "优选标识属性",
+    "predicate": "hasValue",
+    "object": "优选标识-优选1(汽电)",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:优选标识",
+        "source": "业务方说明",
+        "sentence": "优选标识属性的枚举值包括优选标识-优选A、优选标识-优选B、优选标识-优选1(汽电)。"
+      }
+    ]
+  },
+  {
+    "subject": "优选标识属性",
+    "predicate": "hasValue",
+    "object": "优选标识-优选A",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:优选标识",
+        "source": "业务方说明",
+        "sentence": "优选标识属性的枚举值包括优选标识-优选A、优选标识-优选B、优选标识-优选1(汽电)。"
+      }
+    ]
+  },
+  {
+    "subject": "优选标识属性",
+    "predicate": "hasValue",
+    "object": "优选标识-优选B",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:优选标识",
+        "source": "业务方说明",
+        "sentence": "优选标识属性的枚举值包括优选标识-优选A、优选标识-优选B、优选标识-优选1(汽电)。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商AVL等级属性",
+    "predicate": "hasValue",
+    "object": "制造商AVL等级-主力",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:制造商AVL等级",
+        "source": "业务方说明; AddCodeApplyController#checkParam",
+        "sentence": "制造商AVL等级属性的枚举值包括制造商AVL等级-主力、制造商AVL等级-合格、制造商AVL等级-试用、制造商AVL等级-考察、制造商AVL等级-限制。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商AVL等级属性",
+    "predicate": "hasValue",
+    "object": "制造商AVL等级-合格",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:制造商AVL等级",
+        "source": "业务方说明; AddCodeApplyController#checkParam",
+        "sentence": "制造商AVL等级属性的枚举值包括制造商AVL等级-主力、制造商AVL等级-合格、制造商AVL等级-试用、制造商AVL等级-考察、制造商AVL等级-限制。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商AVL等级属性",
+    "predicate": "hasValue",
+    "object": "制造商AVL等级-考察",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:制造商AVL等级",
+        "source": "业务方说明; AddCodeApplyController#checkParam",
+        "sentence": "制造商AVL等级属性的枚举值包括制造商AVL等级-主力、制造商AVL等级-合格、制造商AVL等级-试用、制造商AVL等级-考察、制造商AVL等级-限制。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商AVL等级属性",
+    "predicate": "hasValue",
+    "object": "制造商AVL等级-试用",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:制造商AVL等级",
+        "source": "业务方说明; AddCodeApplyController#checkParam",
+        "sentence": "制造商AVL等级属性的枚举值包括制造商AVL等级-主力、制造商AVL等级-合格、制造商AVL等级-试用、制造商AVL等级-考察、制造商AVL等级-限制。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商AVL等级属性",
+    "predicate": "hasValue",
+    "object": "制造商AVL等级-限制",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:制造商AVL等级",
+        "source": "业务方说明; AddCodeApplyController#checkParam",
+        "sentence": "制造商AVL等级属性的枚举值包括制造商AVL等级-主力、制造商AVL等级-合格、制造商AVL等级-试用、制造商AVL等级-考察、制造商AVL等级-限制。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-EOL",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-完全停产",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-完全失效",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-批量",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-测试",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-研发",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-试产",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-部分失效",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "生命周期阶段属性",
+    "predicate": "hasValue",
+    "object": "生命周期阶段-采购失效",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:生命周期阶段",
+        "source": "业务方说明",
+        "sentence": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。"
+      }
+    ]
+  },
+  {
+    "subject": "申请状态",
+    "predicate": "hasValue",
+    "object": "申请状态-SCM采购审批中",
+    "subject_type": "Field",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:申请状态",
+        "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+        "sentence": "申请状态的枚举值包括申请状态-草稿、申请状态-标准化审批中、申请状态-审批完成、申请状态-SCM采购审批中、申请状态-退回、申请状态-历史版本。"
+      }
+    ]
+  },
+  {
+    "subject": "申请状态",
+    "predicate": "hasValue",
+    "object": "申请状态-历史版本",
+    "subject_type": "Field",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:申请状态",
+        "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+        "sentence": "申请状态的枚举值包括申请状态-草稿、申请状态-标准化审批中、申请状态-审批完成、申请状态-SCM采购审批中、申请状态-退回、申请状态-历史版本。"
+      }
+    ]
+  },
+  {
+    "subject": "申请状态",
+    "predicate": "hasValue",
+    "object": "申请状态-审批完成",
+    "subject_type": "Field",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:申请状态",
+        "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+        "sentence": "申请状态的枚举值包括申请状态-草稿、申请状态-标准化审批中、申请状态-审批完成、申请状态-SCM采购审批中、申请状态-退回、申请状态-历史版本。"
+      }
+    ]
+  },
+  {
+    "subject": "申请状态",
+    "predicate": "hasValue",
+    "object": "申请状态-标准化审批中",
+    "subject_type": "Field",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:申请状态",
+        "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+        "sentence": "申请状态的枚举值包括申请状态-草稿、申请状态-标准化审批中、申请状态-审批完成、申请状态-SCM采购审批中、申请状态-退回、申请状态-历史版本。"
+      }
+    ]
+  },
+  {
+    "subject": "申请状态",
+    "predicate": "hasValue",
+    "object": "申请状态-草稿",
+    "subject_type": "Field",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:申请状态",
+        "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+        "sentence": "申请状态的枚举值包括申请状态-草稿、申请状态-标准化审批中、申请状态-审批完成、申请状态-SCM采购审批中、申请状态-退回、申请状态-历史版本。"
+      }
+    ]
+  },
+  {
+    "subject": "申请状态",
+    "predicate": "hasValue",
+    "object": "申请状态-退回",
+    "subject_type": "Field",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:申请状态",
+        "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)",
+        "sentence": "申请状态的枚举值包括申请状态-草稿、申请状态-标准化审批中、申请状态-审批完成、申请状态-SCM采购审批中、申请状态-退回、申请状态-历史版本。"
+      }
+    ]
+  },
+  {
+    "subject": "优选标识-优选1(汽电)",
+    "predicate": "preferredFor",
+    "object": "汽车电子BG",
+    "subject_type": "EnumValue",
+    "object_type": "BusinessGroup",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enumval:优选标识-优选1(汽电)",
+        "source": "业务方说明",
+        "sentence": "优选标识-优选1(汽电)标识汽车电子BG的优选物料。"
+      }
+    ]
+  },
+  {
+    "subject": "优选标识-优选A",
+    "predicate": "preferredFor",
+    "object": "海外家电BG",
+    "subject_type": "EnumValue",
+    "object_type": "BusinessGroup",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enumval:优选标识-优选A",
+        "source": "业务方说明",
+        "sentence": "优选标识-优选A标识海外家电BG的优选物料。"
+      }
+    ]
+  },
+  {
+    "subject": "优选标识-优选B",
+    "predicate": "preferredFor",
+    "object": "国内家电BG",
+    "subject_type": "EnumValue",
+    "object_type": "BusinessGroup",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enumval:优选标识-优选B",
+        "source": "业务方说明",
+        "sentence": "优选标识-优选B标识国内家电BG的优选物料。"
+      }
+    ]
+  },
+  {
+    "subject": "是否汽车电子",
+    "predicate": "indicatesBG",
+    "object": "汽车电子BG",
+    "subject_type": "Field",
+    "object_type": "BusinessGroup",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "bg:是否汽车电子:汽车电子BG",
+        "source": "业务方说明; CodeRangeServiceImpl#getCodeAndCommit (ecar == 1)",
+        "sentence": "是否汽车电子标明汽车电子BG的物料。"
+      }
+    ]
+  }
+]

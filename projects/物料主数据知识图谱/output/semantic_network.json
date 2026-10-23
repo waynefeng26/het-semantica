@@ -1,0 +1,3587 @@
+{
+  "stats": {
+    "node_count": 120,
+    "edge_count": 171,
+    "node_types": {
+      "Entity": 8,
+      "Field": 46,
+      "DataTable": 8,
+      "Dictionary": 4,
+      "CommonAttribute": 12,
+      "EnumValue": 23,
+      "BusinessGroup": 3,
+      "BusinessRule": 13,
+      "Scenario": 3
+    },
+    "relation_types": {
+      "mapsToTable": 8,
+      "hasKeyField": 57,
+      "usesDictionary": 5,
+      "partOf": 2,
+      "refersTo": 9,
+      "includesAttribute": 12,
+      "derivesFrom": 3,
+      "hasValue": 23,
+      "preferredFor": 3,
+      "indicatesBG": 1,
+      "governedBy": 17,
+      "supports": 30,
+      "similarTo": 1
+    },
+    "average_degree": 2.85,
+    "connectivity": "moderate"
+  },
+  "nodes": [
+    {
+      "id": "Entity:物料主数据",
+      "label": "物料主数据",
+      "type": "Entity",
+      "docs": [
+        "entity:AddCodeApply",
+        "relation:AcAddCodeApplyAttr-partOf-AddCodeApply",
+        "relation:AcAddCodeApplyAttrp-partOf-AddCodeApply",
+        "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "relation:AddCodeApply-refersTo-CodeRange",
+        "rule:有效物料判定规则",
+        "rule:物料升级规则",
+        "rule:分类代码层级规则",
+        "governed:AddCodeApply:有效物料判定规则",
+        "governed:AddCodeApply:物料升级规则",
+        "governed:AddCodeApply:物料状态口径规则",
+        "governed:AddCodeApply:物料编码BG前缀规则",
+        "governed:AddCodeApply:物料描述拼接规则",
+        "governed:AddCodeApply:旧物料编码校验规则",
+        "governed:AddCodeApply:分类代码层级规则",
+        "support:AddCodeApply:物料精确查找",
+        "support:L4分类:物料精确查找",
+        "support:AcAddCodeApplyAttr:物料精确查找"
+      ],
+      "out_degree": 23,
+      "in_degree": 2
+    },
+    {
+      "id": "Field:物料编码",
+      "label": "物料编码",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "entity:CodeRange",
+        "enumval:申请状态-审批完成",
+        "rule:有效物料判定规则",
+        "rule:物料升级规则",
+        "rule:物料编码BG前缀规则",
+        "rule:旧物料编码校验规则",
+        "scenario:物料精确查找",
+        "support:AddCodeApply:物料精确查找",
+        "support:物料编码:物料精确查找",
+        "support:物料名称属性:物料精确查找"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L4分类",
+      "label": "L4分类",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "entity:CodeRange",
+        "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "relation:AddCodeApply-refersTo-CodeRange",
+        "rule:分类代码层级规则",
+        "rule:编码号段选取规则",
+        "support:L4分类:物料精确查找",
+        "support:L4分类:物料相似查找"
+      ],
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:申请状态",
+      "label": "申请状态",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "enum:申请状态",
+        "rule:有效物料判定规则",
+        "rule:物料升级规则",
+        "support:物料编码:物料精确查找",
+        "support:申请状态:物料精确查找"
+      ],
+      "out_degree": 7,
+      "in_degree": 1
+    },
+    {
+      "id": "DataTable:ac_add_code_apply",
+      "label": "ac_add_code_apply",
+      "type": "DataTable",
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L1分类",
+      "label": "L1分类",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "rule:分类代码层级规则",
+        "rule:分类属性范围匹配规则",
+        "rule:编码号段选取规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L2分类",
+      "label": "L2分类",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "rule:分类代码层级规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L3分类",
+      "label": "L3分类",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "rule:分类代码层级规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:旧物料编码",
+      "label": "旧物料编码",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "rule:旧物料编码校验规则",
+        "support:旧物料编码:物料精确查找"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:物料短描述",
+      "label": "物料短描述",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "rule:物料描述拼接规则",
+        "support:物料短描述:物料精确查找",
+        "support:物料短描述:物料相似查找"
+      ],
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:物料长描述",
+      "label": "物料长描述",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "rule:物料描述拼接规则",
+        "support:物料长描述:物料精确查找"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:英文描述",
+      "label": "英文描述",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "rule:物料描述拼接规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:是否临时码",
+      "label": "是否临时码",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:是否汽车电子",
+      "label": "是否汽车电子",
+      "type": "Field",
+      "docs": [
+        "entity:AddCodeApply",
+        "bg:是否汽车电子:汽车电子BG",
+        "rule:物料编码BG前缀规则",
+        "support:是否汽车电子:物料精确查找"
+      ],
+      "out_degree": 3,
+      "in_degree": 1
+    },
+    {
+      "id": "Dictionary:yn字典",
+      "label": "yn字典",
+      "type": "Dictionary",
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "Entity:物料基础属性",
+      "label": "物料基础属性",
+      "type": "Entity",
+      "docs": [
+        "entity:AcAddCodeApplyAttr",
+        "relation:AcAddCodeApplyAttr-partOf-AddCodeApply",
+        "relation:AcAddCodeApplyAttr-refersTo-ClassificationAttributeRef",
+        "attr:materialName",
+        "attr:materialAbbreviation",
+        "attr:materialType",
+        "attr:lifeCyclePhase",
+        "attr:preferredIdentification",
+        "attr:manufacturerAvlRating",
+        "attr:notes",
+        "attr:manufacturersName",
+        "attr:projectType",
+        "attr:brandExceptionType",
+        "attr:subdivision",
+        "attr:documentNumber",
+        "rule:物料基础属性取值规则",
+        "governed:AcAddCodeApplyAttr:物料基础属性取值规则",
+        "governed:AcAddCodeApplyAttr:客户专用料规则",
+        "support:AcAddCodeApplyAttr:物料精确查找"
+      ],
+      "out_degree": 24,
+      "in_degree": 0
+    },
+    {
+      "id": "DataTable:ac_add_code_apply_attr",
+      "label": "ac_add_code_apply_attr",
+      "type": "DataTable",
+      "docs": [
+        "entity:AcAddCodeApplyAttr"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:加码id",
+      "label": "加码id",
+      "type": "Field",
+      "docs": [
+        "entity:AcAddCodeApplyAttr",
+        "entity:AcAddCodeApplyAttrp",
+        "relation:AcAddCodeApplyAttr-partOf-AddCodeApply",
+        "relation:AcAddCodeApplyAttrp-partOf-AddCodeApply",
+        "support:AcAddCodeApplyAttr:物料精确查找"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "Field:属性代码",
+      "label": "属性代码",
+      "type": "Field",
+      "docs": [
+        "entity:AcAddCodeApplyAttr",
+        "entity:AcAddCodeApplyAttrp",
+        "entity:AttributeManagement",
+        "entity:ClassificationAttributeRef",
+        "entity:AttributeValue",
+        "relation:ClassificationAttributeRef-refersTo-AttributeManagement",
+        "relation:AttributeValue-refersTo-ClassificationAttributeRef",
+        "relation:AttributeValue-refersTo-AttributeManagement",
+        "relation:AcAddCodeApplyAttr-refersTo-ClassificationAttributeRef",
+        "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef",
+        "support:属性值:物料精确查找"
+      ],
+      "out_degree": 0,
+      "in_degree": 5
+    },
+    {
+      "id": "Field:属性值",
+      "label": "属性值",
+      "type": "Field",
+      "docs": [
+        "entity:AcAddCodeApplyAttr",
+        "entity:AcAddCodeApplyAttrp",
+        "attr:notes",
+        "rule:客户专用料规则",
+        "scenario:物料精确查找",
+        "support:物料短描述:物料精确查找",
+        "support:物料长描述:物料精确查找",
+        "support:属性值:物料精确查找",
+        "support:属性值:物料相似查找"
+      ],
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "id": "Field:属性描述",
+      "label": "属性描述",
+      "type": "Field",
+      "docs": [
+        "entity:AcAddCodeApplyAttr",
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "Field:属性类型",
+      "label": "属性类型",
+      "type": "Field",
+      "docs": [
+        "entity:AcAddCodeApplyAttr",
+        "entity:AcAddCodeApplyAttrp",
+        "entity:ClassificationAttributeRef",
+        "rule:属性值解析规则"
+      ],
+      "out_degree": 1,
+      "in_degree": 3
+    },
+    {
+      "id": "Entity:物料私有属性",
+      "label": "物料私有属性",
+      "type": "Entity",
+      "docs": [
+        "entity:AcAddCodeApplyAttrp",
+        "relation:AcAddCodeApplyAttrp-partOf-AddCodeApply",
+        "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef",
+        "rule:物料描述拼接规则",
+        "support:AcAddCodeApplyAttrp:物料相似查找",
+        "support:AcAddCodeApplyAttrp:替代料推荐"
+      ],
+      "out_degree": 10,
+      "in_degree": 1
+    },
+    {
+      "id": "DataTable:ac_add_code_apply_attrp",
+      "label": "ac_add_code_apply_attrp",
+      "type": "DataTable",
+      "docs": [
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Entity:物料分类",
+      "label": "物料分类",
+      "type": "Entity",
+      "docs": [
+        "entity:ClassificationManagement",
+        "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "relation:ClassificationAttributeRef-refersTo-ClassificationManagement",
+        "relation:CodeRange-refersTo-ClassificationManagement",
+        "rule:分类代码层级规则",
+        "rule:物料基础属性取值规则",
+        "governed:ClassificationManagement:分类代码层级规则"
+      ],
+      "out_degree": 10,
+      "in_degree": 3
+    },
+    {
+      "id": "DataTable:ac_classification_management",
+      "label": "ac_classification_management",
+      "type": "DataTable",
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L1分类代码",
+      "label": "L1分类代码",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "rule:分类代码层级规则",
+        "rule:分类属性范围匹配规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L2分类代码",
+      "label": "L2分类代码",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "rule:分类代码层级规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L3分类代码",
+      "label": "L3分类代码",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "rule:分类代码层级规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:L4分类代码",
+      "label": "L4分类代码",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "entity:ClassificationAttributeRef",
+        "entity:AttributeValue",
+        "entity:CodeRange",
+        "relation:ClassificationAttributeRef-refersTo-ClassificationManagement",
+        "relation:AttributeValue-refersTo-ClassificationAttributeRef",
+        "relation:CodeRange-refersTo-ClassificationManagement",
+        "rule:分类代码层级规则",
+        "rule:分类属性范围匹配规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 4
+    },
+    {
+      "id": "Field:物料子类L4",
+      "label": "物料子类L4",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "attr:materialName",
+        "rule:物料基础属性取值规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "Field:元器件物料简称",
+      "label": "元器件物料简称",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "attr:materialAbbreviation",
+        "rule:物料基础属性取值规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "Field:是否涉及优选",
+      "label": "是否涉及优选",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "support:是否涉及优选:替代料推荐"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:标准件/非标准件",
+      "label": "标准件/非标准件",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationManagement",
+        "support:标准件/非标准件:替代料推荐"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "Entity:物料属性定义",
+      "label": "物料属性定义",
+      "type": "Entity",
+      "docs": [
+        "entity:AttributeManagement",
+        "relation:ClassificationAttributeRef-refersTo-AttributeManagement",
+        "relation:AttributeValue-refersTo-AttributeManagement"
+      ],
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "id": "Field:属性名称",
+      "label": "属性名称",
+      "type": "Field",
+      "docs": [
+        "entity:AttributeManagement"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "DataTable:ac_attribute_management",
+      "label": "ac_attribute_management",
+      "type": "DataTable",
+      "docs": [
+        "entity:AttributeManagement"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Entity:物料分类属性模板",
+      "label": "物料分类属性模板",
+      "type": "Entity",
+      "docs": [
+        "entity:ClassificationAttributeRef",
+        "relation:ClassificationAttributeRef-refersTo-ClassificationManagement",
+        "relation:ClassificationAttributeRef-refersTo-AttributeManagement",
+        "relation:AttributeValue-refersTo-ClassificationAttributeRef",
+        "relation:AcAddCodeApplyAttr-refersTo-ClassificationAttributeRef",
+        "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef",
+        "rule:分类属性范围匹配规则",
+        "governed:ClassificationAttributeRef:分类属性范围匹配规则",
+        "governed:ClassificationAttributeRef:属性值解析规则",
+        "governed:ClassificationAttributeRef:物料描述拼接规则",
+        "support:L4分类:物料相似查找",
+        "support:ClassificationAttributeRef:物料相似查找"
+      ],
+      "out_degree": 19,
+      "in_degree": 3
+    },
+    {
+      "id": "DataTable:ac_classification_attribute_ref",
+      "label": "ac_classification_attribute_ref",
+      "type": "DataTable",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:公有属性/私有属性",
+      "label": "公有属性/私有属性",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:是否属于可比性属性",
+      "label": "是否属于可比性属性",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef",
+        "support:是否属于可比性属性:物料相似查找",
+        "support:是否属于可比性属性:替代料推荐"
+      ],
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:唯一性",
+      "label": "唯一性",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:物料短描述顺序",
+      "label": "物料短描述顺序",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef",
+        "rule:分类属性范围匹配规则",
+        "rule:物料描述拼接规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:是否进ERP物料短描述",
+      "label": "是否进ERP物料短描述",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef",
+        "rule:物料描述拼接规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:成组属性",
+      "label": "成组属性",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef",
+        "rule:物料描述拼接规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:成组属性拼接符",
+      "label": "成组属性拼接符",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef",
+        "rule:物料描述拼接规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:是否必填",
+      "label": "是否必填",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:默认值",
+      "label": "默认值",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Dictionary:pubOrPri字典",
+      "label": "pubOrPri字典",
+      "type": "Dictionary",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Dictionary:attrType字典",
+      "label": "attrType字典",
+      "type": "Dictionary",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:单选/多选",
+      "label": "单选/多选",
+      "type": "Field",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "id": "Dictionary:smc字典",
+      "label": "smc字典",
+      "type": "Dictionary",
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Entity:物料属性值库",
+      "label": "物料属性值库",
+      "type": "Entity",
+      "docs": [
+        "entity:AttributeValue",
+        "relation:AttributeValue-refersTo-ClassificationAttributeRef",
+        "relation:AttributeValue-refersTo-AttributeManagement",
+        "attr:subdivision",
+        "rule:分类属性范围匹配规则",
+        "rule:属性值解析规则",
+        "governed:AttributeValue:分类属性范围匹配规则",
+        "governed:AttributeValue:属性值解析规则"
+      ],
+      "out_degree": 10,
+      "in_degree": 0
+    },
+    {
+      "id": "DataTable:ac_attribute_value",
+      "label": "ac_attribute_value",
+      "type": "DataTable",
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:项次代码",
+      "label": "项次代码",
+      "type": "Field",
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:参数值",
+      "label": "参数值",
+      "type": "Field",
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:属性值描述",
+      "label": "属性值描述",
+      "type": "Field",
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Entity:物料编码号段",
+      "label": "物料编码号段",
+      "type": "Entity",
+      "docs": [
+        "entity:CodeRange",
+        "relation:AddCodeApply-refersTo-CodeRange",
+        "relation:CodeRange-refersTo-ClassificationManagement",
+        "rule:物料基础属性取值规则",
+        "governed:CodeRange:编码号段选取规则",
+        "governed:CodeRange:汽车电子号段规则"
+      ],
+      "out_degree": 12,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:当前最大编码",
+      "label": "当前最大编码",
+      "type": "Field",
+      "docs": [
+        "entity:CodeRange",
+        "rule:汽车电子号段规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "DataTable:ac_code_range",
+      "label": "ac_code_range",
+      "type": "DataTable",
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:编码起始",
+      "label": "编码起始",
+      "type": "Field",
+      "docs": [
+        "entity:CodeRange",
+        "rule:汽车电子号段规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:编码终止",
+      "label": "编码终止",
+      "type": "Field",
+      "docs": [
+        "entity:CodeRange",
+        "rule:汽车电子号段规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:汽车电子编码起始",
+      "label": "汽车电子编码起始",
+      "type": "Field",
+      "docs": [
+        "entity:CodeRange",
+        "rule:汽车电子号段规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:汽车电子编码终止",
+      "label": "汽车电子编码终止",
+      "type": "Field",
+      "docs": [
+        "entity:CodeRange",
+        "rule:汽车电子号段规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:汽车电子当前最大编码",
+      "label": "汽车电子当前最大编码",
+      "type": "Field",
+      "docs": [
+        "entity:CodeRange",
+        "rule:汽车电子号段规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Field:物料类型",
+      "label": "物料类型",
+      "type": "Field",
+      "docs": [
+        "entity:CodeRange",
+        "attr:materialType",
+        "rule:物料基础属性取值规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "CommonAttribute:物料名称属性",
+      "label": "物料名称属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:materialName",
+        "rule:物料基础属性取值规则",
+        "support:物料名称属性:物料精确查找"
+      ],
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:物料简称属性",
+      "label": "物料简称属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:materialAbbreviation",
+        "rule:物料基础属性取值规则"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:物料类型属性",
+      "label": "物料类型属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:materialType",
+        "rule:物料基础属性取值规则"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:生命周期阶段属性",
+      "label": "生命周期阶段属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:lifeCyclePhase",
+        "enum:生命周期阶段",
+        "rule:物料状态口径规则",
+        "support:生命周期阶段属性:物料精确查找",
+        "support:生命周期阶段属性:替代料推荐"
+      ],
+      "out_degree": 11,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:优选标识属性",
+      "label": "优选标识属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:preferredIdentification",
+        "enum:优选标识",
+        "support:优选标识属性:替代料推荐"
+      ],
+      "out_degree": 4,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:制造商AVL等级属性",
+      "label": "制造商AVL等级属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:manufacturerAvlRating",
+        "enum:制造商AVL等级",
+        "support:制造商AVL等级属性:替代料推荐"
+      ],
+      "out_degree": 6,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:专用客户属性",
+      "label": "专用客户属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:notes",
+        "rule:客户专用料规则",
+        "support:专用客户属性:物料精确查找",
+        "support:专用客户属性:替代料推荐"
+      ],
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:制造商名称属性",
+      "label": "制造商名称属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:manufacturersName",
+        "support:制造商名称属性:物料精确查找",
+        "support:制造商名称属性:替代料推荐"
+      ],
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:项目类型属性",
+      "label": "项目类型属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:projectType"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:品牌异常类型属性",
+      "label": "品牌异常类型属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:brandExceptionType"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:细分类属性",
+      "label": "细分类属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:subdivision",
+        "support:细分类属性:物料相似查找"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:文档编号属性",
+      "label": "文档编号属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:documentNumber"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:申请状态-草稿",
+      "label": "申请状态-草稿",
+      "type": "EnumValue",
+      "docs": [
+        "enum:申请状态",
+        "enumval:申请状态-草稿"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:申请状态-标准化审批中",
+      "label": "申请状态-标准化审批中",
+      "type": "EnumValue",
+      "docs": [
+        "enum:申请状态",
+        "enumval:申请状态-标准化审批中"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:申请状态-审批完成",
+      "label": "申请状态-审批完成",
+      "type": "EnumValue",
+      "docs": [
+        "enum:申请状态",
+        "enumval:申请状态-审批完成"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:申请状态-SCM采购审批中",
+      "label": "申请状态-SCM采购审批中",
+      "type": "EnumValue",
+      "docs": [
+        "enum:申请状态",
+        "enumval:申请状态-SCM采购审批中"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:申请状态-退回",
+      "label": "申请状态-退回",
+      "type": "EnumValue",
+      "docs": [
+        "enum:申请状态",
+        "enumval:申请状态-退回"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:申请状态-历史版本",
+      "label": "申请状态-历史版本",
+      "type": "EnumValue",
+      "docs": [
+        "enum:申请状态",
+        "enumval:申请状态-历史版本"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-研发",
+      "label": "生命周期阶段-研发",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-研发"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-测试",
+      "label": "生命周期阶段-测试",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-测试"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-试产",
+      "label": "生命周期阶段-试产",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-试产"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-批量",
+      "label": "生命周期阶段-批量",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-批量"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-EOL",
+      "label": "生命周期阶段-EOL",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-EOL"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-部分失效",
+      "label": "生命周期阶段-部分失效",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-部分失效"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-采购失效",
+      "label": "生命周期阶段-采购失效",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-采购失效"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-完全失效",
+      "label": "生命周期阶段-完全失效",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-完全失效"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-完全停产",
+      "label": "生命周期阶段-完全停产",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-完全停产"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:优选标识-优选A",
+      "label": "优选标识-优选A",
+      "type": "EnumValue",
+      "docs": [
+        "enum:优选标识",
+        "enumval:优选标识-优选A"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:优选标识-优选B",
+      "label": "优选标识-优选B",
+      "type": "EnumValue",
+      "docs": [
+        "enum:优选标识",
+        "enumval:优选标识-优选B"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:优选标识-优选1(汽电)",
+      "label": "优选标识-优选1(汽电)",
+      "type": "EnumValue",
+      "docs": [
+        "enum:优选标识",
+        "enumval:优选标识-优选1(汽电)"
+      ],
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessGroup:海外家电BG",
+      "label": "海外家电BG",
+      "type": "BusinessGroup",
+      "docs": [
+        "enumval:优选标识-优选A"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessGroup:国内家电BG",
+      "label": "国内家电BG",
+      "type": "BusinessGroup",
+      "docs": [
+        "enumval:优选标识-优选B"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessGroup:汽车电子BG",
+      "label": "汽车电子BG",
+      "type": "BusinessGroup",
+      "docs": [
+        "enumval:优选标识-优选1(汽电)",
+        "bg:是否汽车电子:汽车电子BG",
+        "rule:物料编码BG前缀规则",
+        "rule:汽车电子号段规则",
+        "support:物料编码:物料精确查找",
+        "support:是否汽车电子:物料精确查找"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-主力",
+      "label": "制造商AVL等级-主力",
+      "type": "EnumValue",
+      "docs": [
+        "enum:制造商AVL等级",
+        "enumval:制造商AVL等级-主力"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-合格",
+      "label": "制造商AVL等级-合格",
+      "type": "EnumValue",
+      "docs": [
+        "enum:制造商AVL等级",
+        "enumval:制造商AVL等级-合格"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-试用",
+      "label": "制造商AVL等级-试用",
+      "type": "EnumValue",
+      "docs": [
+        "enum:制造商AVL等级",
+        "enumval:制造商AVL等级-试用"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-考察",
+      "label": "制造商AVL等级-考察",
+      "type": "EnumValue",
+      "docs": [
+        "enum:制造商AVL等级",
+        "enumval:制造商AVL等级-考察"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-限制",
+      "label": "制造商AVL等级-限制",
+      "type": "EnumValue",
+      "docs": [
+        "enum:制造商AVL等级",
+        "enumval:制造商AVL等级-限制"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:有效物料判定规则",
+      "label": "有效物料判定规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:有效物料判定规则",
+        "governed:AddCodeApply:有效物料判定规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:物料升级规则",
+      "label": "物料升级规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:物料升级规则",
+        "governed:AddCodeApply:物料升级规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:物料状态口径规则",
+      "label": "物料状态口径规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:物料状态口径规则",
+        "governed:AddCodeApply:物料状态口径规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:物料编码BG前缀规则",
+      "label": "物料编码BG前缀规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:物料编码BG前缀规则",
+        "governed:AddCodeApply:物料编码BG前缀规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:客户专用料规则",
+      "label": "客户专用料规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:客户专用料规则",
+        "governed:AcAddCodeApplyAttr:客户专用料规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:分类代码层级规则",
+      "label": "分类代码层级规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:分类代码层级规则",
+        "governed:AddCodeApply:分类代码层级规则",
+        "governed:ClassificationManagement:分类代码层级规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "BusinessRule:分类属性范围匹配规则",
+      "label": "分类属性范围匹配规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:分类属性范围匹配规则",
+        "governed:ClassificationAttributeRef:分类属性范围匹配规则",
+        "governed:AttributeValue:分类属性范围匹配规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "BusinessRule:属性值解析规则",
+      "label": "属性值解析规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:属性值解析规则",
+        "governed:ClassificationAttributeRef:属性值解析规则",
+        "governed:AttributeValue:属性值解析规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "BusinessRule:物料描述拼接规则",
+      "label": "物料描述拼接规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:物料描述拼接规则",
+        "governed:AddCodeApply:物料描述拼接规则",
+        "governed:ClassificationAttributeRef:物料描述拼接规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "BusinessRule:物料基础属性取值规则",
+      "label": "物料基础属性取值规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:物料基础属性取值规则",
+        "governed:AcAddCodeApplyAttr:物料基础属性取值规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:编码号段选取规则",
+      "label": "编码号段选取规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:编码号段选取规则",
+        "governed:CodeRange:编码号段选取规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:汽车电子号段规则",
+      "label": "汽车电子号段规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:汽车电子号段规则",
+        "governed:CodeRange:汽车电子号段规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:旧物料编码校验规则",
+      "label": "旧物料编码校验规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:旧物料编码校验规则",
+        "governed:AddCodeApply:旧物料编码校验规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "Scenario:物料精确查找",
+      "label": "物料精确查找",
+      "type": "Scenario",
+      "docs": [
+        "scenario:物料精确查找",
+        "support:AddCodeApply:物料精确查找",
+        "support:物料编码:物料精确查找",
+        "support:旧物料编码:物料精确查找",
+        "support:申请状态:物料精确查找",
+        "support:L4分类:物料精确查找",
+        "support:AcAddCodeApplyAttr:物料精确查找",
+        "support:物料名称属性:物料精确查找",
+        "support:物料短描述:物料精确查找",
+        "support:物料长描述:物料精确查找",
+        "support:属性值:物料精确查找",
+        "support:制造商名称属性:物料精确查找",
+        "support:生命周期阶段属性:物料精确查找",
+        "support:专用客户属性:物料精确查找",
+        "support:是否汽车电子:物料精确查找"
+      ],
+      "out_degree": 0,
+      "in_degree": 14
+    },
+    {
+      "id": "Scenario:物料相似查找",
+      "label": "物料相似查找",
+      "type": "Scenario",
+      "docs": [
+        "scenario:物料相似查找",
+        "support:L4分类:物料相似查找",
+        "support:ClassificationAttributeRef:物料相似查找",
+        "support:是否属于可比性属性:物料相似查找",
+        "support:属性值:物料相似查找",
+        "support:物料短描述:物料相似查找",
+        "support:AcAddCodeApplyAttrp:物料相似查找",
+        "support:细分类属性:物料相似查找"
+      ],
+      "out_degree": 0,
+      "in_degree": 7
+    },
+    {
+      "id": "Scenario:替代料推荐",
+      "label": "替代料推荐",
+      "type": "Scenario",
+      "docs": [
+        "scenario:替代料推荐",
+        "support:AcAddCodeApplyAttrp:替代料推荐",
+        "support:是否属于可比性属性:替代料推荐",
+        "support:是否涉及优选:替代料推荐",
+        "support:优选标识属性:替代料推荐",
+        "support:制造商AVL等级属性:替代料推荐",
+        "support:标准件/非标准件:替代料推荐",
+        "support:制造商名称属性:替代料推荐",
+        "support:生命周期阶段属性:替代料推荐",
+        "support:专用客户属性:替代料推荐"
+      ],
+      "out_degree": 0,
+      "in_degree": 9
+    }
+  ],
+  "edges": [
+    {
+      "source": "Entity:物料主数据",
+      "target": "DataTable:ac_add_code_apply",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:L1分类",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:L2分类",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:L3分类",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:L4分类",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:物料编码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:旧物料编码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:物料短描述",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:物料长描述",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:英文描述",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:申请状态",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:是否临时码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Field:是否汽车电子",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:是否汽车电子",
+      "target": "Dictionary:yn字典",
+      "label": "usesDictionary",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:是否临时码",
+      "target": "Dictionary:yn字典",
+      "label": "usesDictionary",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "DataTable:ac_add_code_apply_attr",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttr"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Field:加码id",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttr"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Field:属性代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttr"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Field:属性值",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttr"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Field:属性描述",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttr"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Field:属性类型",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttr"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "DataTable:ac_add_code_apply_attrp",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Field:加码id",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Field:属性代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Field:属性值",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Field:属性描述",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Field:属性类型",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AcAddCodeApplyAttrp"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "DataTable:ac_classification_management",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:L1分类代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:L2分类代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:L3分类代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:L4分类代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:物料子类L4",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:元器件物料简称",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:是否涉及优选",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "Field:标准件/非标准件",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性定义",
+      "target": "DataTable:ac_attribute_management",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性定义",
+      "target": "Field:属性代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性定义",
+      "target": "Field:属性名称",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "DataTable:ac_classification_attribute_ref",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:L4分类代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:属性代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:公有属性/私有属性",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:属性类型",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:是否属于可比性属性",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:唯一性",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:物料短描述顺序",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:是否进ERP物料短描述",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:成组属性",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:成组属性拼接符",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:是否必填",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Field:默认值",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:公有属性/私有属性",
+      "target": "Dictionary:pubOrPri字典",
+      "label": "usesDictionary",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:属性类型",
+      "target": "Dictionary:attrType字典",
+      "label": "usesDictionary",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:单选/多选",
+      "target": "Dictionary:smc字典",
+      "label": "usesDictionary",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "DataTable:ac_attribute_value",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "Field:L4分类代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "Field:属性代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "Field:项次代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "Field:参数值",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "Field:属性值描述",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:AttributeValue"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "DataTable:ac_code_range",
+      "label": "mapsToTable",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:L4分类代码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:编码起始",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:编码终止",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:当前最大编码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:汽车电子编码起始",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:汽车电子编码终止",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:汽车电子当前最大编码",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Field:物料类型",
+      "label": "hasKeyField",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "entity:CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Entity:物料主数据",
+      "label": "partOf",
+      "confidence": 0.9,
+      "via": [
+        "加码id"
+      ],
+      "docs": [
+        "relation:AcAddCodeApplyAttr-partOf-AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Entity:物料主数据",
+      "label": "partOf",
+      "confidence": 0.9,
+      "via": [
+        "加码id"
+      ],
+      "docs": [
+        "relation:AcAddCodeApplyAttrp-partOf-AddCodeApply"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Entity:物料分类",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "L1分类",
+        "L2分类",
+        "L3分类",
+        "L4分类"
+      ],
+      "docs": [
+        "relation:AddCodeApply-refersTo-ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Entity:物料编码号段",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "L4分类"
+      ],
+      "docs": [
+        "relation:AddCodeApply-refersTo-CodeRange"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Entity:物料分类",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "L4分类代码"
+      ],
+      "docs": [
+        "relation:ClassificationAttributeRef-refersTo-ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Entity:物料属性定义",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "属性代码"
+      ],
+      "docs": [
+        "relation:ClassificationAttributeRef-refersTo-AttributeManagement"
+      ],
+      "inferred": false,
+      "basis": "inferred"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "Entity:物料分类属性模板",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "L4分类代码",
+        "属性代码"
+      ],
+      "docs": [
+        "relation:AttributeValue-refersTo-ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "Entity:物料属性定义",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "属性代码"
+      ],
+      "docs": [
+        "relation:AttributeValue-refersTo-AttributeManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "Entity:物料分类",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "L4分类代码"
+      ],
+      "docs": [
+        "relation:CodeRange-refersTo-ClassificationManagement"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Entity:物料分类属性模板",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "属性代码"
+      ],
+      "docs": [
+        "relation:AcAddCodeApplyAttr-refersTo-ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Entity:物料分类属性模板",
+      "label": "refersTo",
+      "confidence": 0.9,
+      "via": [
+        "属性代码"
+      ],
+      "docs": [
+        "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:物料名称属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:materialName"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "CommonAttribute:物料名称属性",
+      "target": "Field:物料子类L4",
+      "label": "derivesFrom",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:materialName",
+        "rule:物料基础属性取值规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:物料简称属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:materialAbbreviation"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "CommonAttribute:物料简称属性",
+      "target": "Field:元器件物料简称",
+      "label": "derivesFrom",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:materialAbbreviation",
+        "rule:物料基础属性取值规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:物料类型属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:materialType"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "CommonAttribute:物料类型属性",
+      "target": "Field:物料类型",
+      "label": "derivesFrom",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:materialType",
+        "rule:物料基础属性取值规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:生命周期阶段属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:lifeCyclePhase"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:优选标识属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:preferredIdentification"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:制造商AVL等级属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:manufacturerAvlRating"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:专用客户属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:notes"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:制造商名称属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:manufacturersName"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:项目类型属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:projectType"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:品牌异常类型属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:brandExceptionType"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:细分类属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:subdivision"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:文档编号属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:documentNumber"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:申请状态",
+      "target": "EnumValue:申请状态-草稿",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:申请状态"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:申请状态",
+      "target": "EnumValue:申请状态-标准化审批中",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:申请状态"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:申请状态",
+      "target": "EnumValue:申请状态-审批完成",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:申请状态"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:申请状态",
+      "target": "EnumValue:申请状态-SCM采购审批中",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:申请状态"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:申请状态",
+      "target": "EnumValue:申请状态-退回",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:申请状态"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:申请状态",
+      "target": "EnumValue:申请状态-历史版本",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:申请状态"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-研发",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-测试",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-试产",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-批量",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-EOL",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-部分失效",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-采购失效",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-完全失效",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-完全停产",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:优选标识属性",
+      "target": "EnumValue:优选标识-优选A",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:优选标识"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:优选标识属性",
+      "target": "EnumValue:优选标识-优选B",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:优选标识"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:优选标识属性",
+      "target": "EnumValue:优选标识-优选1(汽电)",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:优选标识"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "EnumValue:优选标识-优选A",
+      "target": "BusinessGroup:海外家电BG",
+      "label": "preferredFor",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enumval:优选标识-优选A"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "EnumValue:优选标识-优选B",
+      "target": "BusinessGroup:国内家电BG",
+      "label": "preferredFor",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enumval:优选标识-优选B"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "EnumValue:优选标识-优选1(汽电)",
+      "target": "BusinessGroup:汽车电子BG",
+      "label": "preferredFor",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enumval:优选标识-优选1(汽电)"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商AVL等级属性",
+      "target": "EnumValue:制造商AVL等级-主力",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:制造商AVL等级"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商AVL等级属性",
+      "target": "EnumValue:制造商AVL等级-合格",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:制造商AVL等级"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商AVL等级属性",
+      "target": "EnumValue:制造商AVL等级-试用",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:制造商AVL等级"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商AVL等级属性",
+      "target": "EnumValue:制造商AVL等级-考察",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:制造商AVL等级"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商AVL等级属性",
+      "target": "EnumValue:制造商AVL等级-限制",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:制造商AVL等级"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:是否汽车电子",
+      "target": "BusinessGroup:汽车电子BG",
+      "label": "indicatesBG",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "bg:是否汽车电子:汽车电子BG"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "BusinessRule:有效物料判定规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:有效物料判定规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "BusinessRule:物料升级规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:物料升级规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "BusinessRule:物料状态口径规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:物料状态口径规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "BusinessRule:物料编码BG前缀规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:物料编码BG前缀规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "BusinessRule:物料描述拼接规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:物料描述拼接规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "BusinessRule:旧物料编码校验规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:旧物料编码校验规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "BusinessRule:分类代码层级规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:分类代码层级规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "BusinessRule:物料基础属性取值规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AcAddCodeApplyAttr:物料基础属性取值规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "BusinessRule:客户专用料规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AcAddCodeApplyAttr:客户专用料规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "BusinessRule:分类代码层级规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:ClassificationManagement:分类代码层级规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "BusinessRule:分类属性范围匹配规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:ClassificationAttributeRef:分类属性范围匹配规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "BusinessRule:属性值解析规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:ClassificationAttributeRef:属性值解析规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "BusinessRule:物料描述拼接规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:ClassificationAttributeRef:物料描述拼接规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "BusinessRule:分类属性范围匹配规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AttributeValue:分类属性范围匹配规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料属性值库",
+      "target": "BusinessRule:属性值解析规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AttributeValue:属性值解析规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "BusinessRule:编码号段选取规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:CodeRange:编码号段选取规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料编码号段",
+      "target": "BusinessRule:汽车电子号段规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:CodeRange:汽车电子号段规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:AddCodeApply:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:物料编码",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:物料编码:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:旧物料编码",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:旧物料编码:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:申请状态",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:申请状态:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:L4分类",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:L4分类:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:AcAddCodeApplyAttr:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "CommonAttribute:物料名称属性",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:物料名称属性:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Field:物料短描述",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:物料短描述:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:物料长描述",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:物料长描述:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:属性值",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:属性值:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商名称属性",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:制造商名称属性:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:生命周期阶段属性:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:专用客户属性",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:专用客户属性:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:是否汽车电子",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:是否汽车电子:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:L4分类",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:L4分类:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:ClassificationAttributeRef:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:是否属于可比性属性",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:是否属于可比性属性:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:属性值",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:属性值:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:物料短描述",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:物料短描述:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:AcAddCodeApplyAttrp:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:细分类属性",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:细分类属性:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:AcAddCodeApplyAttrp:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:是否属于可比性属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:是否属于可比性属性:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:是否涉及优选",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:是否涉及优选:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:优选标识属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:优选标识属性:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商AVL等级属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:制造商AVL等级属性:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:标准件/非标准件",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:标准件/非标准件:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商名称属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:制造商名称属性:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:生命周期阶段属性:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:专用客户属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:专用客户属性:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "Entity:物料私有属性",
+      "label": "similarTo",
+      "confidence": 0.0645,
+      "via": [
+        "加码id",
+        "属性代码",
+        "属性值",
+        "属性描述",
+        "属性类型"
+      ],
+      "docs": [],
+      "inferred": true,
+      "basis": "inferred"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "docs": 122,
+  "gazetteer_terms": 160,
+  "triplets": 170,
+  "predicates": {
+    "mapsToTable": 8,
+    "hasKeyField": 57,
+    "refersTo": 9,
+    "partOf": 2,
+    "usesDictionary": 5,
+    "includesAttribute": 12,
+    "derivesFrom": 3,
+    "governedBy": 17,
+    "supports": 30,
+    "hasValue": 23,
+    "preferredFor": 3,
+    "indicatesBG": 1
+  },
+  "network_nodes": 120,
+  "network_edges": 171
+}
