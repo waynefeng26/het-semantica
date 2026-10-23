@@ -259,7 +259,7 @@
     "id": "attr:manufacturerAvlRating",
     "kind": "attribute",
     "title": "制造商AVL等级属性",
-    "text": "物料基础属性包含常用属性制造商AVL等级属性。制造商AVL等级属性（manufacturerAvlRating）：物料对应制造商的AVL等级，每天晚上定时根据采购维护的制造商等级更新；研发设计BOM时优先考虑主力、合格、试用的物料。",
+    "text": "物料基础属性包含常用属性制造商AVL等级属性。制造商AVL等级属性（manufacturerAvlRating）：物料对应制造商的AVL等级，每天晚上定时根据采购维护的制造商等级更新；研发设计BOM时优先考虑主力、合格、试用的物料；使用时只筛选这三个值，其他取值一律认为不及格。",
     "source": "业务方说明; AddCodeApplyController#checkParam",
     "meta": {
       "attr_code": "manufacturerAvlRating",
@@ -444,7 +444,7 @@
     "id": "enum:生命周期阶段",
     "kind": "enum",
     "title": "生命周期阶段属性的枚举值",
-    "text": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产。",
+    "text": "生命周期阶段属性的枚举值包括生命周期阶段-研发、生命周期阶段-测试、生命周期阶段-试产、生命周期阶段-批量、生命周期阶段-EOL、生命周期阶段-部分失效、生命周期阶段-采购失效、生命周期阶段-完全失效、生命周期阶段-完全停产、生命周期阶段-TA、生命周期阶段-GA、生命周期阶段-NG、生命周期阶段-05、生命周期阶段-YJ、生命周期阶段-Preliminary。",
     "source": "业务方说明",
     "meta": {
       "basis": "confirmed"
@@ -547,6 +547,72 @@
     "meta": {
       "basis": "confirmed",
       "code": "99"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-TA",
+    "kind": "enum",
+    "title": "生命周期阶段-TA",
+    "text": "生命周期阶段-TA：数据中实际出现的生命周期取值，业务含义待业务方说明。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "TA"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-GA",
+    "kind": "enum",
+    "title": "生命周期阶段-GA",
+    "text": "生命周期阶段-GA：数据中实际出现的生命周期取值，业务含义待业务方说明。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "GA"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-NG",
+    "kind": "enum",
+    "title": "生命周期阶段-NG",
+    "text": "生命周期阶段-NG：数据中实际出现的生命周期取值，业务含义待业务方说明。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "NG"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-05",
+    "kind": "enum",
+    "title": "生命周期阶段-05",
+    "text": "生命周期阶段-05：数据中实际出现的生命周期取值，业务含义待业务方说明。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "05"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-YJ",
+    "kind": "enum",
+    "title": "生命周期阶段-YJ",
+    "text": "生命周期阶段-YJ：数据中实际出现的生命周期取值，业务含义待业务方说明。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "YJ"
+    }
+  },
+  {
+    "id": "enumval:生命周期阶段-Preliminary",
+    "kind": "enum",
+    "title": "生命周期阶段-Preliminary",
+    "text": "生命周期阶段-Preliminary：数据中实际出现的生命周期取值，业务含义待业务方说明。",
+    "source": "业务方说明",
+    "meta": {
+      "basis": "confirmed",
+      "code": "Preliminary"
     }
   },
   {
@@ -733,7 +799,7 @@
     "id": "rule:物料编码BG前缀规则",
     "kind": "rule",
     "title": "物料编码BG前缀规则",
-    "text": "物料编码BG前缀规则：汽车电子BG的物料编码以2开头，其他BG的物料编码以1开头；汽车电子BG的物料，其是否汽车电子为是。",
+    "text": "物料编码BG前缀规则：物料编码以2开头的是汽车电子BG的物料（汽车电子物料），其他编码开头的一律是非汽车电子物料；汽车电子BG的物料，其是否汽车电子为是。",
     "source": "业务方说明",
     "meta": {
       "basis": "confirmed"
@@ -750,10 +816,10 @@
     }
   },
   {
-    "id": "rule:同MPN替代规则",
+    "id": "rule:制造商AVL等级筛选规则",
     "kind": "rule",
-    "title": "同MPN替代规则",
-    "text": "同MPN替代规则：制造商零件编号属性相同但制造商名称属性不同的物料，算替代料。",
+    "title": "制造商AVL等级筛选规则",
+    "text": "制造商AVL等级筛选规则：使用时一般只筛选制造商AVL等级为主力、合格、试用的物料，其他取值一律认为不及格；数据里出现的其他取值（例如“考察(暂定)”“AVL-C”）属于不规范数据，暂时忽略，不单独建枚举值。",
     "source": "业务方说明",
     "meta": {
       "basis": "confirmed"
@@ -1011,10 +1077,10 @@
     }
   },
   {
-    "id": "governed:AcAddCodeApplyAttr:同MPN替代规则",
+    "id": "governed:AcAddCodeApplyAttr:制造商AVL等级筛选规则",
     "kind": "rule",
-    "title": "物料基础属性→同MPN替代规则",
-    "text": "物料基础属性受同MPN替代规则约束。",
+    "title": "物料基础属性→制造商AVL等级筛选规则",
+    "text": "物料基础属性受制造商AVL等级筛选规则约束。",
     "source": "业务方说明",
     "meta": {
       "entity_class": "AcAddCodeApplyAttr",
@@ -1204,7 +1270,7 @@
     "id": "support:物料编码:物料精确查找",
     "kind": "support",
     "title": "物料编码→物料精确查找",
-    "text": "物料编码支持物料精确查找。物料编码首位数字区分BG：汽车电子BG以2开头，其他BG以1开头；同一物料编码只有一条申请状态为2的有效记录。",
+    "text": "物料编码支持物料精确查找。物料编码首位数字区分汽车电子：以2开头的是汽车电子BG的物料，其他一律是非汽车电子物料；同一物料编码只有一条申请状态为2的有效记录。",
     "source": "业务方说明",
     "meta": {
       "basis": "confirmed",
@@ -1537,22 +1603,10 @@
     }
   },
   {
-    "id": "support:制造商名称属性:替代料推荐",
-    "kind": "support",
-    "title": "制造商名称属性→替代料推荐",
-    "text": "制造商名称属性支持替代料推荐。制造商零件编号相同、制造商不同的物料算替代料，判断时要对照制造商。",
-    "source": "业务方说明",
-    "meta": {
-      "basis": "confirmed",
-      "subject": "制造商名称属性",
-      "scenario": "替代料推荐"
-    }
-  },
-  {
     "id": "support:制造商零件编号属性:替代料推荐",
     "kind": "support",
     "title": "制造商零件编号属性→替代料推荐",
-    "text": "制造商零件编号属性支持替代料推荐。制造商零件编号相同、制造商不同的物料算替代料；前缀或系列号相同还要结合L4分类和物料私有属性判断。",
+    "text": "制造商零件编号属性支持替代料推荐。由制造商零件编号找到物料主数据，是替代料判断的起点；前缀或系列号相同不能单独判断，还要结合L4分类和物料私有属性判断。",
     "source": "业务方说明",
     "meta": {
       "basis": "confirmed",

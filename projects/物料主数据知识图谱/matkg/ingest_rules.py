@@ -6,7 +6,8 @@
 * 物料升级会新建一条记录，物料编码不变；新记录审批通过后改为 2，原来为 2 的改为 5
   → 同一物料编码，申请状态为 2 的记录**有且只有一条**
 * 进入图数据库的物料主数据，申请状态必须始终为 2
-* 汽车电子BG的物料编码以 2 开头，其他BG以 1 开头；是否汽车电子为是 ⇔ 汽车电子BG（行里带 ``ecar`` 时一并校验）
+* 物料编码以 2 开头的是汽车电子物料，其他开头一律是非汽车电子物料（不再要求首位必须是 1 / 2）；
+  是否汽车电子为是 ⇔ 编码以 2 开头（行里带 ``ecar`` 时一并校验，不一致只标记）
 
 这里只做规则本身（纯函数，不连数据库），当前三个阶段的语料来自源码，不涉及物料行数据，
 所以暂不接入流水线；等有真实物料数据时由“校验”阶段调用。
@@ -21,8 +22,12 @@ from . import lexicon as lx
 
 NON_EFFECTIVE = "non_effective_status"  # 申请状态不是 2，不应入图
 DUPLICATE_EFFECTIVE = "duplicate_effective"  # 同一物料编码有多条状态为 2 的记录
-BAD_CODE_PREFIX = "bad_code_prefix"  # 物料编码首位不是 1 / 2
 ECAR_MISMATCH = "ecar_mismatch"  # 是否汽车电子与编码首位不一致（汽电 ⇔ 以 2 开头）
+
+
+def is_automotive(material_no: str) -> bool:
+    """物料编码以 2 开头 = 汽车电子物料，其他一律非汽车电子。"""
+    return str(material_no or "").startswith("2")
 
 
 def _status(row: Mapping[str, Any]) -> Any:
@@ -53,10 +58,7 @@ def validate_material_rows(rows: Iterable[Mapping[str, Any]]) -> List[Dict[str, 
                         "message": f"物料 {no} 的申请状态为 {st}，入图数据必须为 {lx.APPLY_STATUS_EFFECTIVE}"})
             continue
         effective[no].append(r)
-        if not no or no[0] not in "12":
-            out.append({"type": BAD_CODE_PREFIX, "material_no": no,
-                        "message": f"物料编码 {no!r} 首位应为 1（非汽车电子BG）或 2（汽车电子BG）"})
-        elif "ecar" in r and r["ecar"] is not None and (str(r["ecar"]) == "1") != (no[0] == "2"):
+        if no and "ecar" in r and r["ecar"] is not None and (str(r["ecar"]) == "1") != is_automotive(no):
             out.append({"type": ECAR_MISMATCH, "material_no": no, "ecar": r["ecar"],
                         "message": f"物料 {no} 的是否汽车电子为 {r['ecar']}，与编码首位 {no[0]} 不一致"})
 

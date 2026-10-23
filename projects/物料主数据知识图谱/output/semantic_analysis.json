@@ -4,19 +4,19 @@
     "cluster_threshold": 0.35
   },
   "role_distribution": {
-    "predicate": 121,
-    "agent": 121,
+    "predicate": 120,
+    "agent": 120,
     "location": 8,
     "attribute": 73,
     "resource": 5,
     "theme": 11,
     "key": 15,
     "source": 6,
-    "value": 25,
+    "value": 31,
     "beneficiary": 3,
     "indicator": 1,
     "constraint": 25,
-    "purpose": 34
+    "purpose": 33
   },
   "documents": [
     {
@@ -1939,10 +1939,10 @@
           "Entity": 1,
           "CommonAttribute": 3
         },
-        "token_count": 53,
-        "unique_tokens": 47
+        "token_count": 70,
+        "unique_tokens": 64
       },
-      "sentence_count": 3,
+      "sentence_count": 4,
       "roles": [
         {
           "sentence": 0,
@@ -2549,14 +2549,14 @@
       "kind": "enum",
       "title": "生命周期阶段属性的枚举值",
       "features": {
-        "mention_count": 10,
-        "unique_entities": 10,
+        "mention_count": 16,
+        "unique_entities": 16,
         "mentions_by_concept": {
           "CommonAttribute": 1,
-          "EnumValue": 9
+          "EnumValue": 15
         },
-        "token_count": 10,
-        "unique_tokens": 10
+        "token_count": 16,
+        "unique_tokens": 16
       },
       "sentence_count": 1,
       "roles": [
@@ -2645,6 +2645,54 @@
           "role": "value",
           "word": "生命周期阶段-完全停产",
           "canonical": "生命周期阶段-完全停产",
+          "concept": "EnumValue",
+          "predicate": "hasValue"
+        },
+        {
+          "sentence": 0,
+          "role": "value",
+          "word": "生命周期阶段-TA",
+          "canonical": "生命周期阶段-TA",
+          "concept": "EnumValue",
+          "predicate": "hasValue"
+        },
+        {
+          "sentence": 0,
+          "role": "value",
+          "word": "生命周期阶段-GA",
+          "canonical": "生命周期阶段-GA",
+          "concept": "EnumValue",
+          "predicate": "hasValue"
+        },
+        {
+          "sentence": 0,
+          "role": "value",
+          "word": "生命周期阶段-NG",
+          "canonical": "生命周期阶段-NG",
+          "concept": "EnumValue",
+          "predicate": "hasValue"
+        },
+        {
+          "sentence": 0,
+          "role": "value",
+          "word": "生命周期阶段-05",
+          "canonical": "生命周期阶段-05",
+          "concept": "EnumValue",
+          "predicate": "hasValue"
+        },
+        {
+          "sentence": 0,
+          "role": "value",
+          "word": "生命周期阶段-YJ",
+          "canonical": "生命周期阶段-YJ",
+          "concept": "EnumValue",
+          "predicate": "hasValue"
+        },
+        {
+          "sentence": 0,
+          "role": "value",
+          "word": "生命周期阶段-Preliminary",
+          "canonical": "生命周期阶段-Preliminary",
           "concept": "EnumValue",
           "predicate": "hasValue"
         }
@@ -2790,6 +2838,102 @@
         },
         "token_count": 7,
         "unique_tokens": 7
+      },
+      "sentence_count": 1,
+      "roles": []
+    },
+    {
+      "doc": "enumval:生命周期阶段-TA",
+      "kind": "enum",
+      "title": "生命周期阶段-TA",
+      "features": {
+        "mention_count": 1,
+        "unique_entities": 1,
+        "mentions_by_concept": {
+          "EnumValue": 1
+        },
+        "token_count": 23,
+        "unique_tokens": 22
+      },
+      "sentence_count": 1,
+      "roles": []
+    },
+    {
+      "doc": "enumval:生命周期阶段-GA",
+      "kind": "enum",
+      "title": "生命周期阶段-GA",
+      "features": {
+        "mention_count": 1,
+        "unique_entities": 1,
+        "mentions_by_concept": {
+          "EnumValue": 1
+        },
+        "token_count": 23,
+        "unique_tokens": 22
+      },
+      "sentence_count": 1,
+      "roles": []
+    },
+    {
+      "doc": "enumval:生命周期阶段-NG",
+      "kind": "enum",
+      "title": "生命周期阶段-NG",
+      "features": {
+        "mention_count": 1,
+        "unique_entities": 1,
+        "mentions_by_concept": {
+          "EnumValue": 1
+        },
+        "token_count": 23,
+        "unique_tokens": 22
+      },
+      "sentence_count": 1,
+      "roles": []
+    },
+    {
+      "doc": "enumval:生命周期阶段-05",
+      "kind": "enum",
+      "title": "生命周期阶段-05",
+      "features": {
+        "mention_count": 1,
+        "unique_entities": 1,
+        "mentions_by_concept": {
+          "EnumValue": 1
+        },
+        "token_count": 23,
+        "unique_tokens": 22
+      },
+      "sentence_count": 1,
+      "roles": []
+    },
+    {
+      "doc": "enumval:生命周期阶段-YJ",
+      "kind": "enum",
+      "title": "生命周期阶段-YJ",
+      "features": {
+        "mention_count": 1,
+        "unique_entities": 1,
+        "mentions_by_concept": {
+          "EnumValue": 1
+        },
+        "token_count": 23,
+        "unique_tokens": 22
+      },
+      "sentence_count": 1,
+      "roles": []
+    },
+    {
+      "doc": "enumval:生命周期阶段-Preliminary",
+      "kind": "enum",
+      "title": "生命周期阶段-Preliminary",
+      "features": {
+        "mention_count": 1,
+        "unique_entities": 1,
+        "mentions_by_concept": {
+          "EnumValue": 1
+        },
+        "token_count": 23,
+        "unique_tokens": 22
       },
       "sentence_count": 1,
       "roles": []
@@ -3316,15 +3460,15 @@
       "kind": "rule",
       "title": "物料编码BG前缀规则",
       "features": {
-        "mention_count": 6,
+        "mention_count": 5,
         "unique_entities": 4,
         "mentions_by_concept": {
           "BusinessRule": 1,
-          "BusinessGroup": 2,
-          "Field": 3
+          "Field": 2,
+          "BusinessGroup": 2
         },
-        "token_count": 21,
-        "unique_tokens": 18
+        "token_count": 37,
+        "unique_tokens": 26
       },
       "sentence_count": 2,
       "roles": []
@@ -3347,20 +3491,19 @@
       "roles": []
     },
     {
-      "doc": "rule:同MPN替代规则",
+      "doc": "rule:制造商AVL等级筛选规则",
       "kind": "rule",
-      "title": "同MPN替代规则",
+      "title": "制造商AVL等级筛选规则",
       "features": {
-        "mention_count": 3,
-        "unique_entities": 3,
+        "mention_count": 1,
+        "unique_entities": 1,
         "mentions_by_concept": {
-          "BusinessRule": 1,
-          "CommonAttribute": 2
+          "BusinessRule": 1
         },
-        "token_count": 12,
-        "unique_tokens": 12
+        "token_count": 66,
+        "unique_tokens": 60
       },
-      "sentence_count": 1,
+      "sentence_count": 2,
       "roles": []
     },
     {
@@ -4134,9 +4277,9 @@
       ]
     },
     {
-      "doc": "governed:AcAddCodeApplyAttr:同MPN替代规则",
+      "doc": "governed:AcAddCodeApplyAttr:制造商AVL等级筛选规则",
       "kind": "rule",
-      "title": "物料基础属性→同MPN替代规则",
+      "title": "物料基础属性→制造商AVL等级筛选规则",
       "features": {
         "mention_count": 2,
         "unique_entities": 2,
@@ -4168,8 +4311,8 @@
         {
           "sentence": 0,
           "role": "constraint",
-          "word": "同MPN替代规则",
-          "canonical": "同MPN替代规则",
+          "word": "制造商AVL等级筛选规则",
+          "canonical": "制造商AVL等级筛选规则",
           "concept": "BusinessRule",
           "predicate": "governedBy"
         }
@@ -4825,8 +4968,8 @@
           "Scenario": 1,
           "BusinessGroup": 1
         },
-        "token_count": 33,
-        "unique_tokens": 29
+        "token_count": 43,
+        "unique_tokens": 37
       },
       "sentence_count": 3,
       "roles": [
@@ -5999,62 +6142,20 @@
       ]
     },
     {
-      "doc": "support:制造商名称属性:替代料推荐",
-      "kind": "support",
-      "title": "制造商名称属性→替代料推荐",
-      "features": {
-        "mention_count": 3,
-        "unique_entities": 3,
-        "mentions_by_concept": {
-          "CommonAttribute": 2,
-          "Scenario": 1
-        },
-        "token_count": 23,
-        "unique_tokens": 21
-      },
-      "sentence_count": 2,
-      "roles": [
-        {
-          "sentence": 0,
-          "role": "predicate",
-          "word": "支持",
-          "canonical": null,
-          "concept": null,
-          "predicate": "supports"
-        },
-        {
-          "sentence": 0,
-          "role": "agent",
-          "word": "制造商名称属性",
-          "canonical": "制造商名称属性",
-          "concept": "CommonAttribute",
-          "predicate": "supports"
-        },
-        {
-          "sentence": 0,
-          "role": "purpose",
-          "word": "替代料推荐",
-          "canonical": "替代料推荐",
-          "concept": "Scenario",
-          "predicate": "supports"
-        }
-      ]
-    },
-    {
       "doc": "support:制造商零件编号属性:替代料推荐",
       "kind": "support",
       "title": "制造商零件编号属性→替代料推荐",
       "features": {
-        "mention_count": 5,
-        "unique_entities": 4,
+        "mention_count": 6,
+        "unique_entities": 5,
         "mentions_by_concept": {
           "CommonAttribute": 2,
           "Scenario": 1,
-          "Field": 1,
-          "Entity": 1
+          "Entity": 2,
+          "Field": 1
         },
-        "token_count": 30,
-        "unique_tokens": 28
+        "token_count": 34,
+        "unique_tokens": 31
       },
       "sentence_count": 3,
       "roles": [
@@ -6224,7 +6325,7 @@
     {
       "a": "物料私有属性",
       "b": "物料分类属性模板",
-      "text_cosine": 0.4448,
+      "text_cosine": 0.4425,
       "key_field_jaccard": 0.1429,
       "shared_key_fields": [
         "属性代码",
@@ -6234,14 +6335,14 @@
     {
       "a": "物料主数据",
       "b": "物料私有属性",
-      "text_cosine": 0.3245,
+      "text_cosine": 0.328,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
     {
       "a": "物料主数据",
       "b": "物料分类属性模板",
-      "text_cosine": 0.3103,
+      "text_cosine": 0.3107,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
@@ -6258,7 +6359,7 @@
     {
       "a": "物料主数据",
       "b": "物料分类",
-      "text_cosine": 0.27,
+      "text_cosine": 0.2651,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
@@ -6290,16 +6391,16 @@
       ]
     },
     {
-      "a": "物料主数据",
+      "a": "物料基础属性",
       "b": "物料编码号段",
-      "text_cosine": 0.1989,
+      "text_cosine": 0.1955,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
     {
-      "a": "物料基础属性",
+      "a": "物料主数据",
       "b": "物料编码号段",
-      "text_cosine": 0.1955,
+      "text_cosine": 0.1949,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
@@ -6313,7 +6414,7 @@
     {
       "a": "物料主数据",
       "b": "物料基础属性",
-      "text_cosine": 0.1778,
+      "text_cosine": 0.1754,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
@@ -6348,7 +6449,7 @@
     {
       "a": "物料基础属性",
       "b": "物料私有属性",
-      "text_cosine": 0.1107,
+      "text_cosine": 0.1099,
       "key_field_jaccard": 1.0,
       "shared_key_fields": [
         "加码id",
@@ -6370,7 +6471,7 @@
     {
       "a": "物料私有属性",
       "b": "物料属性值库",
-      "text_cosine": 0.0925,
+      "text_cosine": 0.0919,
       "key_field_jaccard": 0.1111,
       "shared_key_fields": [
         "属性代码"
@@ -6379,7 +6480,7 @@
     {
       "a": "物料私有属性",
       "b": "物料属性定义",
-      "text_cosine": 0.0921,
+      "text_cosine": 0.0915,
       "key_field_jaccard": 0.1667,
       "shared_key_fields": [
         "属性代码"
@@ -6388,7 +6489,7 @@
     {
       "a": "物料主数据",
       "b": "物料属性值库",
-      "text_cosine": 0.0898,
+      "text_cosine": 0.0873,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
@@ -6402,7 +6503,7 @@
     {
       "a": "物料私有属性",
       "b": "物料分类",
-      "text_cosine": 0.0734,
+      "text_cosine": 0.0729,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
@@ -6434,14 +6535,14 @@
     {
       "a": "物料私有属性",
       "b": "物料编码号段",
-      "text_cosine": 0.0591,
+      "text_cosine": 0.0587,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     },
     {
       "a": "物料主数据",
       "b": "物料属性定义",
-      "text_cosine": 0.0513,
+      "text_cosine": 0.0499,
       "key_field_jaccard": 0.0,
       "shared_key_fields": []
     }
@@ -6450,7 +6551,7 @@
     {
       "a": "物料基础属性",
       "b": "物料私有属性",
-      "text_cosine": 0.1107,
+      "text_cosine": 0.1099,
       "key_field_jaccard": 1.0,
       "shared_key_fields": [
         "加码id",
@@ -6482,7 +6583,7 @@
         "物料私有属性",
         "物料分类属性模板"
       ],
-      "avg_similarity": 0.4448
+      "avg_similarity": 0.4425
     },
     {
       "cluster_id": 3,

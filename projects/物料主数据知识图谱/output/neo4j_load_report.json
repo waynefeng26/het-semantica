@@ -1,0 +1,75 @@
+{
+  "started": "2026-10-23T16:06:05",
+  "options": {
+    "batch_size": 2000,
+    "tx_rows": 4000,
+    "limit_materials": null,
+    "basic_template_rel": true,
+    "merge": false
+  },
+  "validation": {
+    "checked": 391986,
+    "violations": {
+      "ecar_mismatch": 72
+    },
+    "examples": {
+      "ecar_mismatch": [
+        "物料 10935002697 的是否汽车电子为 1，与编码首位 1 不一致",
+        "物料 10935002439 的是否汽车电子为 1，与编码首位 1 不一致",
+        "物料 10935003169 的是否汽车电子为 1，与编码首位 1 不一致",
+        "物料 10931001632 的是否汽车电子为 1，与编码首位 1 不一致",
+        "物料 10939000306 的是否汽车电子为 1，与编码首位 1 不一致"
+      ]
+    },
+    "excluded_logically_deleted_status2": 105
+  },
+  "ontology": {
+    "ontology_nodes": 135,
+    "ontology_rels": 194
+  },
+  "dimensions": {
+    "MaterialClassification": 835,
+    "MaterialAttributeDef": 782,
+    "MaterialClassAttrTemplate": 5330,
+    "MaterialAttributeValue": 10450,
+    "MaterialCodeRange": 848,
+    "template_to_class": 33044,
+    "template_to_attrdef": 5330,
+    "value_to_template": 8160,
+    "value_to_attrdef": 10450,
+    "range_to_class": 848
+  },
+  "materials": {
+    "resumed_from_materials": 0,
+    "basic_template_resolved": 6884699,
+    "enum_matched": 576208,
+    "enum_ignored": 10883,
+    "private_template_resolved": 2121888,
+    "materials": 391990,
+    "basic_rows": 6916312,
+    "private_rows": 2135558,
+    "private_template_missing": 13670,
+    "basic_template_missing": 31613,
+    "quality::ecar_mismatch": 72,
+    "seconds": 1585.8
+  },
+  "neo4j_counts": {
+    "nodes": {
+      "MaterialMaster": 391990,
+      "MaterialBasicAttribute": 6916312,
+      "MaterialPrivateAttribute": 2135558,
+      "MaterialClassification": 835,
+      "MaterialAttributeDef": 782,
+      "MaterialClassAttrTemplate": 5330,
+      "MaterialAttributeValue": 10450,
+      "MaterialCodeRange": 848
+    },
+    "relationships": {
+      "partOf": 9051872,
+      "refersTo": 9848383,
+      "hasValue": 576239
+    }
+  },
+  "finished": "2026-10-23T16:39:53",
+  "enum_unmatched_values": {}
+}

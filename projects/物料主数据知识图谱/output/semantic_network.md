@@ -1,8 +1,8 @@
 # 语义网络抽取结果
 
-- 节点 129，边 189，平均度 2.93（moderate）
-- 节点类型：Entity 8，Field 45，DataTable 8，Dictionary 4，CommonAttribute 14，EnumValue 25，BusinessGroup 3，BusinessRule 19，Scenario 3
-- 关系类型：mapsToTable 8，hasKeyField 56，usesDictionary 5，partOf 2，refersTo 9，includesAttribute 14，derivesFrom 3，hasCoreAttribute 3，hasValue 25，preferredFor 3，indicatesBG 1，governedBy 25，supports 34，similarTo 1
+- 节点 135，边 194，平均度 2.87（moderate）
+- 节点类型：Entity 8，Field 45，DataTable 8，Dictionary 4，CommonAttribute 14，EnumValue 31，BusinessGroup 3，BusinessRule 19，Scenario 3
+- 关系类型：mapsToTable 8，hasKeyField 56，usesDictionary 5，partOf 2，refersTo 9，includesAttribute 14，derivesFrom 3，hasCoreAttribute 3，hasValue 31，preferredFor 3，indicatesBG 1，governedBy 25，supports 33，similarTo 1
 
 ## 实体级关系图（虚线 = 推断）
 
@@ -64,7 +64,6 @@ graph LR
     n34["优选标识属性"] --> n31["替代料推荐"]
     n35["制造商AVL等级属性"] --> n31["替代料推荐"]
     n36["标准件/非标准件"] --> n31["替代料推荐"]
-    n23["制造商名称属性"] --> n31["替代料推荐"]
     n24["制造商零件编号属性"] --> n31["替代料推荐"]
     n24["制造商零件编号属性"] --> n29["物料相似查找"]
     n26["生命周期阶段属性"] --> n31["替代料推荐"]
@@ -82,7 +81,7 @@ graph LR
 | BusinessRule | 分类代码层级规则 | 0 | 2 | 3 |
 | BusinessRule | 分类属性范围匹配规则 | 0 | 2 | 3 |
 | BusinessRule | 分类相近标准规则 | 0 | 1 | 2 |
-| BusinessRule | 同MPN替代规则 | 0 | 1 | 2 |
+| BusinessRule | 制造商AVL等级筛选规则 | 0 | 1 | 2 |
 | BusinessRule | 客户专用料规则 | 0 | 1 | 2 |
 | BusinessRule | 属性值解析规则 | 0 | 2 | 3 |
 | BusinessRule | 旧物料编码校验规则 | 0 | 1 | 2 |
@@ -100,15 +99,15 @@ graph LR
 | CommonAttribute | 专用客户属性 | 4 | 1 | 5 |
 | CommonAttribute | 优选标识属性 | 4 | 1 | 3 |
 | CommonAttribute | 制造商AVL等级属性 | 6 | 1 | 3 |
-| CommonAttribute | 制造商名称属性 | 2 | 2 | 6 |
-| CommonAttribute | 制造商零件编号属性 | 3 | 2 | 12 |
+| CommonAttribute | 制造商名称属性 | 1 | 2 | 4 |
+| CommonAttribute | 制造商零件编号属性 | 3 | 2 | 10 |
 | CommonAttribute | 品牌异常类型属性 | 0 | 1 | 1 |
 | CommonAttribute | 图号属性 | 1 | 1 | 3 |
 | CommonAttribute | 文档编号属性 | 0 | 1 | 1 |
 | CommonAttribute | 物料名称属性 | 2 | 2 | 4 |
 | CommonAttribute | 物料简称属性 | 1 | 1 | 2 |
 | CommonAttribute | 物料类型属性 | 1 | 1 | 2 |
-| CommonAttribute | 生命周期阶段属性 | 11 | 1 | 5 |
+| CommonAttribute | 生命周期阶段属性 | 17 | 1 | 5 |
 | CommonAttribute | 细分类属性 | 1 | 1 | 2 |
 | CommonAttribute | 项目类型属性 | 0 | 1 | 1 |
 | DataTable | ac_add_code_apply | 0 | 1 | 1 |
@@ -123,7 +122,7 @@ graph LR
 | Dictionary | pubOrPri字典 | 0 | 1 | 1 |
 | Dictionary | smc字典 | 0 | 1 | 1 |
 | Dictionary | yn字典 | 0 | 2 | 1 |
-| Entity | 物料主数据 | 24 | 2 | 20 |
+| Entity | 物料主数据 | 24 | 2 | 21 |
 | Entity | 物料分类 | 11 | 3 | 8 |
 | Entity | 物料分类属性模板 | 19 | 3 | 15 |
 | Entity | 物料基础属性 | 33 | 0 | 27 |
@@ -141,7 +140,13 @@ graph LR
 | EnumValue | 制造商AVL等级-考察 | 0 | 1 | 2 |
 | EnumValue | 制造商AVL等级-试用 | 0 | 1 | 2 |
 | EnumValue | 制造商AVL等级-限制 | 0 | 1 | 2 |
+| EnumValue | 生命周期阶段-05 | 0 | 1 | 2 |
 | EnumValue | 生命周期阶段-EOL | 0 | 1 | 2 |
+| EnumValue | 生命周期阶段-GA | 0 | 1 | 2 |
+| EnumValue | 生命周期阶段-NG | 0 | 1 | 2 |
+| EnumValue | 生命周期阶段-Preliminary | 0 | 1 | 2 |
+| EnumValue | 生命周期阶段-TA | 0 | 1 | 2 |
+| EnumValue | 生命周期阶段-YJ | 0 | 1 | 2 |
 | EnumValue | 生命周期阶段-完全停产 | 0 | 1 | 2 |
 | EnumValue | 生命周期阶段-完全失效 | 0 | 1 | 2 |
 | EnumValue | 生命周期阶段-批量 | 0 | 1 | 2 |
@@ -201,7 +206,7 @@ graph LR
 | Field | 英文描述 | 0 | 1 | 2 |
 | Field | 项次代码 | 0 | 1 | 1 |
 | Field | 默认值 | 0 | 1 | 1 |
-| Scenario | 替代料推荐 | 0 | 10 | 11 |
+| Scenario | 替代料推荐 | 0 | 9 | 10 |
 | Scenario | 物料相似查找 | 0 | 8 | 9 |
 | Scenario | 物料精确查找 | 0 | 16 | 17 |
 
@@ -324,6 +329,12 @@ graph LR
 | 生命周期阶段属性 | hasValue | 生命周期阶段-采购失效 |  | 业务方确认 |
 | 生命周期阶段属性 | hasValue | 生命周期阶段-完全失效 |  | 业务方确认 |
 | 生命周期阶段属性 | hasValue | 生命周期阶段-完全停产 |  | 业务方确认 |
+| 生命周期阶段属性 | hasValue | 生命周期阶段-TA |  | 业务方确认 |
+| 生命周期阶段属性 | hasValue | 生命周期阶段-GA |  | 业务方确认 |
+| 生命周期阶段属性 | hasValue | 生命周期阶段-NG |  | 业务方确认 |
+| 生命周期阶段属性 | hasValue | 生命周期阶段-05 |  | 业务方确认 |
+| 生命周期阶段属性 | hasValue | 生命周期阶段-YJ |  | 业务方确认 |
+| 生命周期阶段属性 | hasValue | 生命周期阶段-Preliminary |  | 业务方确认 |
 | 优选标识属性 | hasValue | 优选标识-优选A |  | 业务方确认 |
 | 优选标识属性 | hasValue | 优选标识-优选B |  | 业务方确认 |
 | 优选标识属性 | hasValue | 优选标识-优选1(汽电) |  | 业务方确认 |
@@ -349,7 +360,7 @@ graph LR
 | 物料基础属性 | governedBy | 物料基础属性取值规则 |  | 源码 |
 | 物料基础属性 | governedBy | 客户专用料规则 |  | 业务方确认 |
 | 物料基础属性 | governedBy | 物料查重规则 |  | 源码 |
-| 物料基础属性 | governedBy | 同MPN替代规则 |  | 业务方确认 |
+| 物料基础属性 | governedBy | 制造商AVL等级筛选规则 |  | 业务方确认 |
 | 物料基础属性 | governedBy | MPN相近替代判断规则 |  | 业务方确认 |
 | 物料基础属性 | governedBy | 替代料判断流程 |  | 业务方确认 |
 | 物料私有属性 | governedBy | 替代料判断流程 |  | 业务方确认 |
@@ -392,7 +403,6 @@ graph LR
 | 优选标识属性 | supports | 替代料推荐 |  | 业务方确认 |
 | 制造商AVL等级属性 | supports | 替代料推荐 |  | 业务方确认 |
 | 标准件/非标准件 | supports | 替代料推荐 |  | 业务方确认 |
-| 制造商名称属性 | supports | 替代料推荐 |  | 业务方确认 |
 | 制造商零件编号属性 | supports | 替代料推荐 |  | 业务方确认 |
 | 制造商零件编号属性 | supports | 物料相似查找 |  | 业务方确认 |
 | 生命周期阶段属性 | supports | 替代料推荐 |  | 业务方确认 |

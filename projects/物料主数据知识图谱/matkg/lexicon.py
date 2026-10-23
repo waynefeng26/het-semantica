@@ -261,7 +261,8 @@ RULES: List[RuleDef] = [
     ),
     RuleDef(
         "物料编码BG前缀规则",
-        "汽车电子BG的物料编码以2开头，其他BG的物料编码以1开头；汽车电子BG的物料，其是否汽车电子为是。",
+        "物料编码以2开头的是汽车电子BG的物料（汽车电子物料），其他编码开头的一律是非汽车电子物料；"
+        "汽车电子BG的物料，其是否汽车电子为是。",
         BIZ, "confirmed",
     ),
     RuleDef(
@@ -271,8 +272,9 @@ RULES: List[RuleDef] = [
         "AddCodeApplyController#dupCheck",
     ),
     RuleDef(
-        "同MPN替代规则",
-        "制造商零件编号属性相同但制造商名称属性不同的物料，算替代料。",
+        "制造商AVL等级筛选规则",
+        "使用时一般只筛选制造商AVL等级为主力、合格、试用的物料，其他取值一律认为不及格；"
+        "数据里出现的其他取值（例如“考察(暂定)”“AVL-C”）属于不规范数据，暂时忽略，不单独建枚举值。",
         BIZ, "confirmed",
     ),
     RuleDef(
@@ -365,7 +367,7 @@ ENTITY_RULES: Dict[str, List[str]] = {
         "物料描述拼接规则", "旧物料编码校验规则", "物料查重规则", "分类代码层级规则",
     ],
     "AcAddCodeApplyAttr": [
-        "物料基础属性取值规则", "客户专用料规则", "物料查重规则", "同MPN替代规则", "MPN相近替代判断规则", "替代料判断流程",
+        "物料基础属性取值规则", "客户专用料规则", "物料查重规则", "制造商AVL等级筛选规则", "MPN相近替代判断规则", "替代料判断流程",
     ],
     "AcAddCodeApplyAttrp": ["替代料判断流程"],
     "ClassificationManagement": ["分类代码层级规则", "分类相近标准规则"],
@@ -412,7 +414,7 @@ COMMON_ATTRS: List[CommonAttr] = [
                BIZ + "; AcAddCodeApplyAttrServiceImpl#batchUpdateMaterialAttributes", "confirmed"),
     CommonAttr("制造商AVL等级属性", "manufacturerAvlRating",
                "物料对应制造商的AVL等级，每天晚上定时根据采购维护的制造商等级更新；"
-               "研发设计BOM时优先考虑主力、合格、试用的物料。", None,
+               "研发设计BOM时优先考虑主力、合格、试用的物料；使用时只筛选这三个值，其他取值一律认为不及格。", None,
                BIZ + "; AddCodeApplyController#checkParam", "confirmed"),
     CommonAttr("专用客户属性", "notes",
                "该属性有值表示物料是某个客户的专用料，属性值保存的是客户编码：A001为兰吉尔，A002为京瓷，目前只有这两个客户。",
@@ -490,6 +492,13 @@ ENUM_GROUPS: List[EnumGroup] = [
         EnumValueDef("03", "采购失效", "物料对采购失效。"),
         EnumValueDef("04", "完全失效", "物料完全失效。"),
         EnumValueDef("99", "完全停产", "物料完全停产。"),
+        # 数据里实际出现、业务方要求补入的取值；字典里没有名称，业务含义待业务方说明（名称先用代码）
+        EnumValueDef("TA", "TA", "数据中实际出现的生命周期取值，业务含义待业务方说明。"),
+        EnumValueDef("GA", "GA", "数据中实际出现的生命周期取值，业务含义待业务方说明。"),
+        EnumValueDef("NG", "NG", "数据中实际出现的生命周期取值，业务含义待业务方说明。"),
+        EnumValueDef("05", "05", "数据中实际出现的生命周期取值，业务含义待业务方说明。"),
+        EnumValueDef("YJ", "YJ", "数据中实际出现的生命周期取值，业务含义待业务方说明。"),
+        EnumValueDef("Preliminary", "Preliminary", "数据中实际出现的生命周期取值，业务含义待业务方说明。"),
     ]),
     EnumGroup("优选标识属性", "优选标识", [
         EnumValueDef("优选A", "优选A", "采购标记为优选A的物料，研发设计BOM时会优先考虑。", "海外家电BG"),
@@ -535,7 +544,7 @@ SUPPORTS: List[Support] = [
     # ---- 物料精确查找 ----
     Support("AddCodeApply", "物料精确查找", "code", "物料主数据一行对应一个物料，物料编码、分类、描述和状态都在这张表里。", "AddCodeApply.java"),
     Support("物料编码", "物料精确查找", "confirmed",
-            "物料编码首位数字区分BG：汽车电子BG以2开头，其他BG以1开头；同一物料编码只有一条申请状态为2的有效记录。", BIZ),
+            "物料编码首位数字区分汽车电子：以2开头的是汽车电子BG的物料，其他一律是非汽车电子物料；同一物料编码只有一条申请状态为2的有效记录。", BIZ),
     Support("旧物料编码", "物料精确查找", "code", "新物料可以沿用旧物料编码，可用来从老编码反查物料。", "CodeRangeServiceImpl#getCodeAndCommit"),
     Support("申请状态", "物料精确查找", "confirmed", "只有申请状态为2的记录才是有效物料，其他状态的记录不进入图谱。", BIZ),
     Support("L4分类", "物料精确查找", "code", "物料主数据按L4分类归类，可先按分类缩小范围。", "AddCodeApply.java @Dict"),
@@ -567,8 +576,7 @@ SUPPORTS: List[Support] = [
     Support("制造商AVL等级属性", "替代料推荐", "confirmed",
             "优先推荐主力、合格、试用的物料；考察、限制表示制造商不合格或未验证，不宜优先推荐。", BIZ),
     Support("标准件/非标准件", "替代料推荐", "confirmed", "标准件之间更容易互相替换。", "ClassificationManagement.java"),
-    Support("制造商名称属性", "替代料推荐", "confirmed", "制造商零件编号相同、制造商不同的物料算替代料，判断时要对照制造商。", BIZ),
-    Support("制造商零件编号属性", "替代料推荐", "confirmed", "制造商零件编号相同、制造商不同的物料算替代料；前缀或系列号相同还要结合L4分类和物料私有属性判断。", BIZ),
+    Support("制造商零件编号属性", "替代料推荐", "confirmed", "由制造商零件编号找到物料主数据，是替代料判断的起点；前缀或系列号相同不能单独判断，还要结合L4分类和物料私有属性判断。", BIZ),
     Support("制造商零件编号属性", "物料相似查找", "confirmed", "制造商零件编号是比较物料相似程度的依据之一。", BIZ),
     Support("生命周期阶段属性", "替代料推荐", "confirmed", "物料进入EOL或失效、停产后，需要为它找替代；推荐的替代料自身也不应是失效或停产的。", BIZ),
     Support("专用客户属性", "替代料推荐", "confirmed", "推荐替代料时同样应该过滤掉客户专用料。", BIZ),

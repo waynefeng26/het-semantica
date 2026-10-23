@@ -18,7 +18,6 @@ from matkg.pipeline import (  # noqa: E402
     run_triplets,
 )
 from matkg.ingest_rules import (  # noqa: E402
-    BAD_CODE_PREFIX,
     DUPLICATE_EFFECTIVE,
     ECAR_MISMATCH,
     NON_EFFECTIVE,
@@ -120,7 +119,8 @@ def test_core_attributes_and_customers(triplets):
     assert _has(triplets, "制造商零件编号属性", "supports", "物料精确查找")
     assert _has(triplets, "制造商零件编号属性", "supports", "物料相似查找")
     assert _has(triplets, "制造商零件编号属性", "supports", "替代料推荐")
-    assert _has(triplets, "物料基础属性", "governedBy", "同MPN替代规则")
+    assert _has(triplets, "物料基础属性", "governedBy", "制造商AVL等级筛选规则")
+    assert not _has(triplets, "物料基础属性", "governedBy", "同MPN替代规则")
     assert _has(triplets, "物料基础属性", "governedBy", "MPN相近替代判断规则")
     assert _has(triplets, "物料私有属性", "governedBy", "替代料判断流程")
     assert _has(triplets, "物料分类属性模板", "governedBy", "核心技术属性判定规则")
@@ -151,11 +151,11 @@ def test_ingest_rules():
     bad = ok + [
         {"material_no": "10000001", "apply_status": 2},  # 重复的有效记录
         {"material_no": "10000002", "apply_status": 5},  # 历史版本不应入图
-        {"material_no": "30000001", "apply_status": 2},  # 编码首位不是 1/2
+        {"material_no": "30000001", "apply_status": 2},  # 首位不是 2：非汽车电子，不算违规
     ]
     bad.append({"material_no": "20000009", "apply_status": 2, "ecar": 0})  # 汽电编码但 ecar=0
     kinds = {p["type"] for p in validate_material_rows(bad)}
-    assert kinds == {DUPLICATE_EFFECTIVE, NON_EFFECTIVE, BAD_CODE_PREFIX, ECAR_MISMATCH}
+    assert kinds == {DUPLICATE_EFFECTIVE, NON_EFFECTIVE, ECAR_MISMATCH}
     with pytest.raises(ValueError):
         ensure_ingestable(bad)
 

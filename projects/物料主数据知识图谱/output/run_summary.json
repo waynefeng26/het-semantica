@@ -1,7 +1,7 @@
 {
-  "docs": 146,
-  "gazetteer_terms": 173,
-  "triplets": 188,
+  "docs": 151,
+  "gazetteer_terms": 179,
+  "triplets": 193,
   "predicates": {
     "mapsToTable": 8,
     "hasKeyField": 56,
@@ -12,18 +12,18 @@
     "hasCoreAttribute": 3,
     "derivesFrom": 3,
     "governedBy": 25,
-    "supports": 34,
-    "hasValue": 25,
+    "supports": 33,
+    "hasValue": 31,
     "preferredFor": 3,
     "indicatesBG": 1
   },
-  "network_nodes": 129,
-  "network_edges": 189,
+  "network_nodes": 135,
+  "network_edges": 194,
   "ontology": {
     "classes": 9,
     "object_properties": 14,
-    "individuals": 129,
-    "triples": 189,
-    "rdf_statements": 2176
+    "individuals": 135,
+    "triples": 194,
+    "rdf_statements": 2241
   }
 }

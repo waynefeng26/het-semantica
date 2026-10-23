@@ -1,14 +1,14 @@
 {
   "stats": {
-    "node_count": 129,
-    "edge_count": 189,
+    "node_count": 135,
+    "edge_count": 194,
     "node_types": {
       "Entity": 8,
       "Field": 45,
       "DataTable": 8,
       "Dictionary": 4,
       "CommonAttribute": 14,
-      "EnumValue": 25,
+      "EnumValue": 31,
       "BusinessGroup": 3,
       "BusinessRule": 19,
       "Scenario": 3
@@ -22,14 +22,14 @@
       "includesAttribute": 14,
       "derivesFrom": 3,
       "hasCoreAttribute": 3,
-      "hasValue": 25,
+      "hasValue": 31,
       "preferredFor": 3,
       "indicatesBG": 1,
       "governedBy": 25,
-      "supports": 34,
+      "supports": 33,
       "similarTo": 1
     },
-    "average_degree": 2.9302325581395348,
+    "average_degree": 2.8740740740740742,
     "connectivity": "moderate"
   },
   "nodes": [
@@ -57,7 +57,8 @@
         "governed:AddCodeApply:分类代码层级规则",
         "support:AddCodeApply:物料精确查找",
         "support:L4分类:物料精确查找",
-        "support:AcAddCodeApplyAttr:物料精确查找"
+        "support:AcAddCodeApplyAttr:物料精确查找",
+        "support:制造商零件编号属性:替代料推荐"
       ],
       "out_degree": 24,
       "in_degree": 2
@@ -275,7 +276,7 @@
         "governed:AcAddCodeApplyAttr:物料基础属性取值规则",
         "governed:AcAddCodeApplyAttr:客户专用料规则",
         "governed:AcAddCodeApplyAttr:物料查重规则",
-        "governed:AcAddCodeApplyAttr:同MPN替代规则",
+        "governed:AcAddCodeApplyAttr:制造商AVL等级筛选规则",
         "governed:AcAddCodeApplyAttr:MPN相近替代判断规则",
         "governed:AcAddCodeApplyAttr:替代料判断流程",
         "support:AcAddCodeApplyAttr:物料精确查找"
@@ -932,7 +933,7 @@
         "support:生命周期阶段属性:物料精确查找",
         "support:生命周期阶段属性:替代料推荐"
       ],
-      "out_degree": 11,
+      "out_degree": 17,
       "in_degree": 1
     },
     {
@@ -982,12 +983,10 @@
         "attr:manufacturersName",
         "attrs:core",
         "rule:物料查重规则",
-        "rule:同MPN替代规则",
         "rule:替代料判断流程",
         "rule:MPN相近替代判断规则",
         "support:制造商名称属性:物料精确查找",
         "support:制造商零件编号属性:物料精确查找",
-        "support:制造商名称属性:替代料推荐",
         "support:制造商零件编号属性:替代料推荐",
         "support:制造商零件编号属性:物料相似查找"
       ],
@@ -1002,11 +1001,9 @@
         "attr:manufacturersName",
         "attrs:core",
         "rule:物料查重规则",
-        "rule:同MPN替代规则",
-        "support:制造商名称属性:物料精确查找",
-        "support:制造商名称属性:替代料推荐"
+        "support:制造商名称属性:物料精确查找"
       ],
-      "out_degree": 2,
+      "out_degree": 1,
       "in_degree": 2
     },
     {
@@ -1228,6 +1225,72 @@
       "in_degree": 1
     },
     {
+      "id": "EnumValue:生命周期阶段-TA",
+      "label": "生命周期阶段-TA",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-TA"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-GA",
+      "label": "生命周期阶段-GA",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-GA"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-NG",
+      "label": "生命周期阶段-NG",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-NG"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-05",
+      "label": "生命周期阶段-05",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-05"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-YJ",
+      "label": "生命周期阶段-YJ",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-YJ"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:生命周期阶段-Preliminary",
+      "label": "生命周期阶段-Preliminary",
+      "type": "EnumValue",
+      "docs": [
+        "enum:生命周期阶段",
+        "enumval:生命周期阶段-Preliminary"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
       "id": "EnumValue:优选标识-优选A",
       "label": "优选标识-优选A",
       "type": "EnumValue",
@@ -1429,12 +1492,12 @@
       "in_degree": 2
     },
     {
-      "id": "BusinessRule:同MPN替代规则",
-      "label": "同MPN替代规则",
+      "id": "BusinessRule:制造商AVL等级筛选规则",
+      "label": "制造商AVL等级筛选规则",
       "type": "BusinessRule",
       "docs": [
-        "rule:同MPN替代规则",
-        "governed:AcAddCodeApplyAttr:同MPN替代规则"
+        "rule:制造商AVL等级筛选规则",
+        "governed:AcAddCodeApplyAttr:制造商AVL等级筛选规则"
       ],
       "out_degree": 0,
       "in_degree": 1
@@ -1643,13 +1706,12 @@
         "support:优选标识属性:替代料推荐",
         "support:制造商AVL等级属性:替代料推荐",
         "support:标准件/非标准件:替代料推荐",
-        "support:制造商名称属性:替代料推荐",
         "support:制造商零件编号属性:替代料推荐",
         "support:生命周期阶段属性:替代料推荐",
         "support:专用客户属性:替代料推荐"
       ],
       "out_degree": 0,
-      "in_degree": 10
+      "in_degree": 9
     }
   ],
   "edges": [
@@ -3063,6 +3125,78 @@
       "basis": "confirmed"
     },
     {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-TA",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-GA",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-NG",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-05",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-YJ",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:生命周期阶段属性",
+      "target": "EnumValue:生命周期阶段-Preliminary",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:生命周期阶段"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
       "source": "CommonAttribute:优选标识属性",
       "target": "EnumValue:优选标识-优选A",
       "label": "hasValue",
@@ -3364,12 +3498,12 @@
     },
     {
       "source": "Entity:物料基础属性",
-      "target": "BusinessRule:同MPN替代规则",
+      "target": "BusinessRule:制造商AVL等级筛选规则",
       "label": "governedBy",
       "confidence": 0.9,
       "via": [],
       "docs": [
-        "governed:AcAddCodeApplyAttr:同MPN替代规则"
+        "governed:AcAddCodeApplyAttr:制造商AVL等级筛选规则"
       ],
       "inferred": false,
       "basis": "confirmed"
@@ -3879,18 +4013,6 @@
       "basis": "confirmed"
     },
     {
-      "source": "CommonAttribute:制造商名称属性",
-      "target": "Scenario:替代料推荐",
-      "label": "supports",
-      "confidence": 0.9,
-      "via": [],
-      "docs": [
-        "support:制造商名称属性:替代料推荐"
-      ],
-      "inferred": false,
-      "basis": "confirmed"
-    },
-    {
       "source": "CommonAttribute:制造商零件编号属性",
       "target": "Scenario:替代料推荐",
       "label": "supports",
@@ -3942,7 +4064,7 @@
       "source": "Entity:物料基础属性",
       "target": "Entity:物料私有属性",
       "label": "similarTo",
-      "confidence": 0.1107,
+      "confidence": 0.1099,
       "via": [
         "加码id",
         "属性代码",
