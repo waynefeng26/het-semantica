@@ -97,6 +97,10 @@ def _attribute_docs(model: DomainModel) -> List[Doc]:
             id=f"attr:{a.code}", kind="attribute", title=a.label, text="".join(sents),
             source=a.source, meta={"attr_code": a.code, "basis": a.basis},
         ))
+    docs.append(Doc(
+        id="attrs:core", kind="attribute", title=f"{basic}的核心属性",
+        text=f"{basic}的核心属性包括{_join(lx.CORE_ATTRS)}。", source=lx.BIZ, meta={"basis": "confirmed"},
+    ))
     return docs
 
 

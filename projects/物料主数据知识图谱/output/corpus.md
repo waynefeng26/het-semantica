@@ -46,7 +46,7 @@
 - 类型：entity
 - 出处：ClassificationAttributeRef.java
 
-物料分类属性模板的业务口径：即分类属性维护，业务上是物料分类属性模板，规定某个分类下有哪些属性、公有还是私有、必填与否、描述拼接顺序。物料分类属性模板（ClassificationAttributeRef）对应数据表ac_classification_attribute_ref。物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。物料分类属性模板共有33个持久化字段。物料分类属性模板的公有属性/私有属性使用pubOrPri字典。物料分类属性模板的属性类型使用attrType字典。物料分类属性模板的单选/多选使用smc字典。
+物料分类属性模板的业务口径：即分类属性维护，业务上是物料分类属性模板，规定某个分类下有哪些属性、公有还是私有、必填与否、描述拼接顺序。物料分类属性模板（ClassificationAttributeRef）对应数据表ac_classification_attribute_ref。物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。物料分类属性模板共有33个持久化字段。物料分类属性模板的公有属性/私有属性使用pubOrPri字典。物料分类属性模板的属性类型使用attrType字典。物料分类属性模板的单选/多选使用smc字典。
 
 
 ## entity:AttributeValue
@@ -156,9 +156,9 @@
 ## attr:materialName
 
 - 类型：attribute
-- 出处：AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes
+- 出处：业务方说明; AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes
 
-物料基础属性包含常用属性物料名称属性。物料名称属性（materialName）：物料的名称，创建时默认就是物料子类L4的名称。物料名称属性取自物料子类L4。
+物料基础属性包含常用属性物料名称属性。物料名称属性（materialName）：物料的名称，创建时默认就是物料子类L4的名称，是查找物料时最直观的属性。物料名称属性取自物料子类L4。
 
 
 ## attr:materialAbbreviation
@@ -206,15 +206,31 @@
 - 类型：attribute
 - 出处：业务方说明
 
-物料基础属性包含常用属性专用客户属性。专用客户属性（notes）：该属性有值表示物料是某个客户的专用料，属性值就是指定的专用客户；属性值与客户名称、客户编码并不相等，但从字面上能看出是同一个客户。
+物料基础属性包含常用属性专用客户属性。专用客户属性（notes）：该属性有值表示物料是某个客户的专用料，属性值保存的是客户编码：A001为兰吉尔，A002为京瓷，目前只有这两个客户。
+
+
+## attr:manufacturerPartNumber
+
+- 类型：attribute
+- 出处：业务方说明; AddCodeApplyController#dupCheck; ClassificationAttributeRefController (标准件临时码仅MPN必填)
+
+物料基础属性包含常用属性制造商零件编号属性。制造商零件编号属性（manufacturerPartNumber）：制造商零件编号，即MPN，是识别通用件的关键属性，与制造商名称一起用于查重和检索；标准件临时码只要求必填它。
 
 
 ## attr:manufacturersName
 
 - 类型：attribute
-- 出处：AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase
+- 出处：业务方说明; AddCodeApplyController#dupCheck; AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase
 
-物料基础属性包含常用属性制造商名称属性。制造商名称属性（manufacturersName）：物料对应的制造商名称。
+物料基础属性包含常用属性制造商名称属性。制造商名称属性（manufacturersName）：物料对应的制造商名称，与制造商零件编号或图号一起用于查重和检索。
+
+
+## attr:mapNumber
+
+- 类型：attribute
+- 出处：AddCodeApplyController#dupCheck
+
+物料基础属性包含常用属性图号属性。图号属性（mapNumber）：定制件的图号，定制件靠它加制造商名称识别同一物料。
 
 
 ## attr:projectType
@@ -247,6 +263,14 @@
 - 出处：AddCodeApplyServiceImpl#handleNeed
 
 物料基础属性包含常用属性文档编号属性。文档编号属性（documentNumber）：物料关联的文档编号。
+
+
+## attrs:core
+
+- 类型：attribute
+- 出处：业务方说明
+
+物料基础属性的核心属性包括物料名称属性、制造商零件编号属性、制造商名称属性。
 
 
 ## enum:申请状态
@@ -417,6 +441,30 @@
 优选标识-优选1(汽电)：采购标记为优选1(汽电)的物料，研发设计BOM时会优先考虑。优选标识-优选1(汽电)标识汽车电子BG的优选物料。
 
 
+## enum:专用客户
+
+- 类型：enum
+- 出处：业务方说明
+
+专用客户属性的枚举值包括专用客户-兰吉尔、专用客户-京瓷。
+
+
+## enumval:专用客户-兰吉尔
+
+- 类型：enum
+- 出处：业务方说明
+
+专用客户-兰吉尔（A001）：客户兰吉尔的专用料，属性值保存客户编码A001。
+
+
+## enumval:专用客户-京瓷
+
+- 类型：enum
+- 出处：业务方说明
+
+专用客户-京瓷（A002）：客户京瓷的专用料，属性值保存客户编码A002。
+
+
 ## enum:制造商AVL等级
 
 - 类型：enum
@@ -505,12 +553,60 @@
 物料编码BG前缀规则：汽车电子BG的物料编码以2开头，其他BG的物料编码以1开头；汽车电子BG的物料，其是否汽车电子为是。
 
 
+## rule:物料查重规则
+
+- 类型：rule
+- 出处：AddCodeApplyController#dupCheck
+
+物料查重规则：新增物料前要查重：通用件按制造商零件编号属性加制造商名称属性查重，定制件按图号属性加制造商名称属性查重；查重时排除当前记录、升级前的历史版本，以及LOA标识为是的物料。
+
+
+## rule:同MPN替代规则
+
+- 类型：rule
+- 出处：业务方说明
+
+同MPN替代规则：制造商零件编号属性相同但制造商名称属性不同的物料，算替代料。
+
+
+## rule:替代料判断流程
+
+- 类型：rule
+- 出处：业务方说明
+
+替代料判断流程：判断两个制造商零件编号属性对应的物料是否互为替代料：先由制造商零件编号属性找到所在的物料主数据，再由物料主数据的L4分类找到对应的物料分类属性模板，进而找到该分类下的物料私有属性，比较两个物料的核心技术属性（物料私有属性中，物料分类属性模板的是否必填为X的属性）是否相近，相近的标准因分类而异，相近则互为替代料。
+
+
+## rule:核心技术属性判定规则
+
+- 类型：rule
+- 出处：业务方说明
+
+核心技术属性判定规则：物料私有属性中，物料分类属性模板的是否必填为X的属性，是核心技术属性；公有属性不算核心技术属性。
+
+
+## rule:分类相近标准规则
+
+- 类型：rule
+- 出处：业务方说明
+
+分类相近标准规则：物料相近的标准因分类而异，没有统一标准，核心技术属性取值的单位一般是统一的，按绝对差比较。L1分类为28（包材）的物料，核心技术属性里凡是长、宽、高这类尺寸数值属性，该分类有哪些就比较哪些，取值之差都在正负5以内才表示相近，可以互为替代料或相似料；不是每个包材分类都有长、宽、高。哪些属性算尺寸类，目前先按属性名称判断。
+
+
+## rule:MPN相近替代判断规则
+
+- 类型：rule
+- 出处：业务方说明
+
+MPN相近替代判断规则：制造商零件编号属性的前缀或系列号相同，不能单独判断是否算替代料，要结合L4分类和物料私有属性一起判断。
+
+
 ## rule:客户专用料规则
 
 - 类型：rule
 - 出处：业务方说明
 
-客户专用料规则：专用客户属性有值的物料是客户专用料。属性值与客户名称、客户编码并不相等，但从字面上能看出是哪个客户，目前可选的客户只有两个。研发查找物料时可以过滤掉客户专用料。
+客户专用料规则：专用客户属性有值的物料是客户专用料，属性值保存的是客户编码（A001对应兰吉尔，A002对应京瓷），目前只有这两个客户。研发查找物料时可以过滤掉客户专用料。
 
 
 ## rule:分类代码层级规则
@@ -625,6 +721,14 @@
 物料主数据受旧物料编码校验规则约束。
 
 
+## governed:AddCodeApply:物料查重规则
+
+- 类型：rule
+- 出处：AddCodeApplyController#dupCheck
+
+物料主数据受物料查重规则约束。
+
+
 ## governed:AddCodeApply:分类代码层级规则
 
 - 类型：rule
@@ -649,12 +753,60 @@
 物料基础属性受客户专用料规则约束。
 
 
+## governed:AcAddCodeApplyAttr:物料查重规则
+
+- 类型：rule
+- 出处：AddCodeApplyController#dupCheck
+
+物料基础属性受物料查重规则约束。
+
+
+## governed:AcAddCodeApplyAttr:同MPN替代规则
+
+- 类型：rule
+- 出处：业务方说明
+
+物料基础属性受同MPN替代规则约束。
+
+
+## governed:AcAddCodeApplyAttr:MPN相近替代判断规则
+
+- 类型：rule
+- 出处：业务方说明
+
+物料基础属性受MPN相近替代判断规则约束。
+
+
+## governed:AcAddCodeApplyAttr:替代料判断流程
+
+- 类型：rule
+- 出处：业务方说明
+
+物料基础属性受替代料判断流程约束。
+
+
+## governed:AcAddCodeApplyAttrp:替代料判断流程
+
+- 类型：rule
+- 出处：业务方说明
+
+物料私有属性受替代料判断流程约束。
+
+
 ## governed:ClassificationManagement:分类代码层级规则
 
 - 类型：rule
 - 出处：ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict
 
 物料分类受分类代码层级规则约束。
+
+
+## governed:ClassificationManagement:分类相近标准规则
+
+- 类型：rule
+- 出处：业务方说明
+
+物料分类受分类相近标准规则约束。
 
 
 ## governed:ClassificationAttributeRef:分类属性范围匹配规则
@@ -679,6 +831,14 @@
 - 出处：AddCodeApplyServiceImpl#generateDescriptions
 
 物料分类属性模板受物料描述拼接规则约束。
+
+
+## governed:ClassificationAttributeRef:核心技术属性判定规则
+
+- 类型：rule
+- 出处：业务方说明
+
+物料分类属性模板受核心技术属性判定规则约束。
 
 
 ## governed:AttributeValue:分类属性范围匹配规则
@@ -820,9 +980,25 @@ L4分类支持物料精确查找。物料主数据按L4分类归类，可先按�
 ## support:制造商名称属性:物料精确查找
 
 - 类型：support
-- 出处：AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase
+- 出处：AddCodeApplyController#queryPageList (selectAttr)
 
-制造商名称属性支持物料精确查找。可以按制造商名称限定物料范围。
+制造商名称属性支持物料精确查找。列表可以按制造商名称过滤物料，并与制造商零件编号一起识别同一物料。
+
+
+## support:制造商零件编号属性:物料精确查找
+
+- 类型：support
+- 出处：AddCodeApplyController#queryPageList (selectAttr)
+
+制造商零件编号属性支持物料精确查找。列表可以按制造商零件编号过滤物料；通用件靠它加制造商名称识别同一物料。
+
+
+## support:图号属性:物料精确查找
+
+- 类型：support
+- 出处：AddCodeApplyController#queryPageList (selectAttr)
+
+图号属性支持物料精确查找。列表可以按图号过滤物料；定制件靠它加制造商名称识别同一物料。
 
 
 ## support:生命周期阶段属性:物料精确查找
@@ -838,7 +1014,7 @@ L4分类支持物料精确查找。物料主数据按L4分类归类，可先按�
 - 类型：support
 - 出处：业务方说明
 
-专用客户属性支持物料精确查找。有值说明是客户专用料，研发查找物料时可以过滤掉这些专用料。
+专用客户属性支持物料精确查找。有值说明是客户专用料，研发查找物料时可以过滤掉这些专用料；属性值是客户编码A001（兰吉尔）或A002（京瓷）。
 
 
 ## support:是否汽车电子:物料精确查找
@@ -865,12 +1041,20 @@ L4分类支持物料相似查找。同一L4分类下的物料适用同一套属�
 物料分类属性模板支持物料相似查找。模板规定了每类物料有哪些属性，是比较的依据。
 
 
-## support:是否属于可比性属性:物料相似查找
+## support:是否必填:物料相似查找
 
 - 类型：support
-- 出处：ClassificationAttributeRef.java
+- 出处：业务方说明
 
-是否属于可比性属性支持物料相似查找。该标识表明哪些属性可以用来比较，源码里没有直接使用。
+是否必填支持物料相似查找。物料私有属性里该标识为X的属性是核心技术属性，比较物料是否相似时以它们为准。
+
+
+## support:是否必填:替代料推荐
+
+- 类型：support
+- 出处：业务方说明
+
+是否必填支持替代料推荐。物料私有属性里该标识为X的属性是核心技术属性，判断能否替代时以它们为准。
 
 
 ## support:属性值:物料相似查找
@@ -913,14 +1097,6 @@ L4分类支持物料相似查找。同一L4分类下的物料适用同一套属�
 物料私有属性支持替代料推荐。技术参数一致是替代的前提。
 
 
-## support:是否属于可比性属性:替代料推荐
-
-- 类型：support
-- 出处：ClassificationAttributeRef.java
-
-是否属于可比性属性支持替代料推荐。只比较可比性属性，才能判断能否替代。
-
-
 ## support:是否涉及优选:替代料推荐
 
 - 类型：support
@@ -956,9 +1132,25 @@ L4分类支持物料相似查找。同一L4分类下的物料适用同一套属�
 ## support:制造商名称属性:替代料推荐
 
 - 类型：support
-- 出处：AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase
+- 出处：业务方说明
 
-制造商名称属性支持替代料推荐。替代料常常是同规格、不同制造商的物料。
+制造商名称属性支持替代料推荐。制造商零件编号相同、制造商不同的物料算替代料，判断时要对照制造商。
+
+
+## support:制造商零件编号属性:替代料推荐
+
+- 类型：support
+- 出处：业务方说明
+
+制造商零件编号属性支持替代料推荐。制造商零件编号相同、制造商不同的物料算替代料；前缀或系列号相同还要结合L4分类和物料私有属性判断。
+
+
+## support:制造商零件编号属性:物料相似查找
+
+- 类型：support
+- 出处：业务方说明
+
+制造商零件编号属性支持物料相似查找。制造商零件编号是比较物料相似程度的依据之一。
 
 
 ## support:生命周期阶段属性:替代料推荐

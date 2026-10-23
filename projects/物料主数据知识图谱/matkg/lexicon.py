@@ -1,4 +1,4 @@
-﻿"""领域知识：本体 + 范围内实体的业务口径、关联、规则、常用属性、应用场景。
+"""领域知识：本体 + 范围内实体的业务口径、关联、规则、常用属性、应用场景。
 
 目标：让 agent 理解公司物料主数据的结构，从而更准确地 **查找物料、推荐替代料、查找相似物料**。
 因此只保留“数据结构 / 数据语义”层面的知识；service 层的调用关系、读写关系不进图谱，
@@ -13,7 +13,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, FrozenSet, List, Optional, Tuple
 
 # --------------------------------------------------------------------------- #
@@ -56,6 +56,7 @@ PREDICATES: Dict[str, PredicateDef] = {
         _p("usesDictionary", "使用字典", ["Field"], ["Dictionary"]),
         # 语义
         _p("includesAttribute", "包含常用属性", ["Entity"], ["CommonAttribute"]),
+        _p("hasCoreAttribute", "核心属性", ["Entity"], ["CommonAttribute"]),
         _p("derivesFrom", "取自", ["CommonAttribute"], ["Field"]),
         _p("governedBy", "受规则约束", ["Entity"], ["BusinessRule"]),
         _p("supports", "支持场景", ["Entity", "Field", "CommonAttribute"], ["Scenario"]),
@@ -154,7 +155,7 @@ KEY_FIELDS: Dict[str, List[str]] = {
     ],
     "AttributeManagement": ["attributeCode", "attributeName"],
     "ClassificationAttributeRef": [
-        "fourCode", "attributeCode", "pubPri", "attributeType", "comparabilityFlag", "uniqueFlag",
+        "fourCode", "attributeCode", "pubPri", "attributeType", "uniqueFlag",
         "phraseDescOrder", "erpPhraseDescFlag", "groupAttribute", "groupAttributeJoin", "requiredFalg", "defaultValue",
     ],
     "AttributeValue": ["fourCode", "attributeCode", "itemCode", "value", "valueDesc"],
@@ -264,9 +265,46 @@ RULES: List[RuleDef] = [
         BIZ, "confirmed",
     ),
     RuleDef(
+        "物料查重规则",
+        "新增物料前要查重：通用件按制造商零件编号属性加制造商名称属性查重，定制件按图号属性加制造商名称属性查重；"
+        "查重时排除当前记录、升级前的历史版本，以及LOA标识为是的物料。",
+        "AddCodeApplyController#dupCheck",
+    ),
+    RuleDef(
+        "同MPN替代规则",
+        "制造商零件编号属性相同但制造商名称属性不同的物料，算替代料。",
+        BIZ, "confirmed",
+    ),
+    RuleDef(
+        "替代料判断流程",
+        "判断两个制造商零件编号属性对应的物料是否互为替代料：先由制造商零件编号属性找到所在的物料主数据，"
+        "再由物料主数据的L4分类找到对应的物料分类属性模板，进而找到该分类下的物料私有属性，"
+        "比较两个物料的核心技术属性（物料私有属性中，物料分类属性模板的是否必填为X的属性）是否相近，"
+        "相近的标准因分类而异，相近则互为替代料。",
+        BIZ, "confirmed",
+    ),
+    RuleDef(
+        "核心技术属性判定规则",
+        "物料私有属性中，物料分类属性模板的是否必填为X的属性，是核心技术属性；公有属性不算核心技术属性。",
+        BIZ, "confirmed",
+    ),
+    RuleDef(
+        "分类相近标准规则",
+        "物料相近的标准因分类而异，没有统一标准，核心技术属性取值的单位一般是统一的，按绝对差比较。"
+        "L1分类为28（包材）的物料，核心技术属性里凡是长、宽、高这类尺寸数值属性，该分类有哪些就比较哪些，"
+        "取值之差都在正负5以内才表示相近，可以互为替代料或相似料；不是每个包材分类都有长、宽、高。"
+        "哪些属性算尺寸类，目前先按属性名称判断。",
+        BIZ, "confirmed",
+    ),
+    RuleDef(
+        "MPN相近替代判断规则",
+        "制造商零件编号属性的前缀或系列号相同，不能单独判断是否算替代料，要结合L4分类和物料私有属性一起判断。",
+        BIZ, "confirmed",
+    ),
+    RuleDef(
         "客户专用料规则",
-        "专用客户属性有值的物料是客户专用料。属性值与客户名称、客户编码并不相等，但从字面上能看出是哪个客户，"
-        "目前可选的客户只有两个。研发查找物料时可以过滤掉客户专用料。",
+        "专用客户属性有值的物料是客户专用料，属性值保存的是客户编码（A001对应兰吉尔，A002对应京瓷），目前只有这两个客户。"
+        "研发查找物料时可以过滤掉客户专用料。",
         BIZ, "confirmed",
     ),
     RuleDef(
@@ -324,11 +362,16 @@ RULES: List[RuleDef] = [
 ENTITY_RULES: Dict[str, List[str]] = {
     "AddCodeApply": [
         "有效物料判定规则", "物料升级规则", "物料状态口径规则", "物料编码BG前缀规则",
-        "物料描述拼接规则", "旧物料编码校验规则", "分类代码层级规则",
+        "物料描述拼接规则", "旧物料编码校验规则", "物料查重规则", "分类代码层级规则",
     ],
-    "AcAddCodeApplyAttr": ["物料基础属性取值规则", "客户专用料规则"],
-    "ClassificationManagement": ["分类代码层级规则"],
-    "ClassificationAttributeRef": ["分类属性范围匹配规则", "属性值解析规则", "物料描述拼接规则"],
+    "AcAddCodeApplyAttr": [
+        "物料基础属性取值规则", "客户专用料规则", "物料查重规则", "同MPN替代规则", "MPN相近替代判断规则", "替代料判断流程",
+    ],
+    "AcAddCodeApplyAttrp": ["替代料判断流程"],
+    "ClassificationManagement": ["分类代码层级规则", "分类相近标准规则"],
+    "ClassificationAttributeRef": [
+        "分类属性范围匹配规则", "属性值解析规则", "物料描述拼接规则", "核心技术属性判定规则",
+    ],
     "AttributeValue": ["分类属性范围匹配规则", "属性值解析规则"],
     "CodeRange": ["编码号段选取规则", "汽车电子号段规则"],
 }
@@ -347,11 +390,16 @@ class CommonAttr:
     derives_from: Optional[str]  # 取值来源字段（中文名）
     source: str
     basis: str = "code"
+    aliases: List[str] = field(default_factory=list)  # 其它叫法（词表别名 / 导出 altLabel）
 
+
+# 业务方特别强调的核心属性（识别 / 查找物料最重要的三个）
+CORE_ATTRS: List[str] = ["物料名称属性", "制造商零件编号属性", "制造商名称属性"]
 
 COMMON_ATTRS: List[CommonAttr] = [
-    CommonAttr("物料名称属性", "materialName", "物料的名称，创建时默认就是物料子类L4的名称。", "物料子类L4",
-               "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes"),
+    CommonAttr("物料名称属性", "materialName", "物料的名称，创建时默认就是物料子类L4的名称，是查找物料时最直观的属性。", "物料子类L4",
+               BIZ + "; AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
+               "confirmed"),
     CommonAttr("物料简称属性", "materialAbbreviation", "物料的简称，创建时默认来自分类上的元器件物料简称。", "元器件物料简称",
                "AddCodeApplyServiceImpl#createPublicAttributes"),
     CommonAttr("物料类型属性", "materialType", "物料类型，创建时默认来自所在号段的物料类型。", "物料类型",
@@ -367,10 +415,17 @@ COMMON_ATTRS: List[CommonAttr] = [
                "研发设计BOM时优先考虑主力、合格、试用的物料。", None,
                BIZ + "; AddCodeApplyController#checkParam", "confirmed"),
     CommonAttr("专用客户属性", "notes",
-               "该属性有值表示物料是某个客户的专用料，属性值就是指定的专用客户；"
-               "属性值与客户名称、客户编码并不相等，但从字面上能看出是同一个客户。", None, BIZ, "confirmed"),
-    CommonAttr("制造商名称属性", "manufacturersName", "物料对应的制造商名称。", None,
-               "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"),
+               "该属性有值表示物料是某个客户的专用料，属性值保存的是客户编码：A001为兰吉尔，A002为京瓷，目前只有这两个客户。",
+               None, BIZ, "confirmed"),
+    CommonAttr("制造商零件编号属性", "manufacturerPartNumber",
+               "制造商零件编号，即MPN，是识别通用件的关键属性，与制造商名称一起用于查重和检索；标准件临时码只要求必填它。", None,
+               BIZ + "; AddCodeApplyController#dupCheck; ClassificationAttributeRefController (标准件临时码仅MPN必填)",
+               "confirmed", ["MPN", "制造商零件编号"]),
+    CommonAttr("制造商名称属性", "manufacturersName",
+               "物料对应的制造商名称，与制造商零件编号或图号一起用于查重和检索。", None,
+               BIZ + "; AddCodeApplyController#dupCheck; AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase", "confirmed"),
+    CommonAttr("图号属性", "mapNumber", "定制件的图号，定制件靠它加制造商名称识别同一物料。", None,
+               "AddCodeApplyController#dupCheck"),
     CommonAttr("项目类型属性", "projectType", "物料所属项目的类型。", None,
                "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"),
     CommonAttr("品牌异常类型属性", "brandExceptionType",
@@ -402,6 +457,7 @@ class EnumValueDef:
     name: str
     desc: str
     bg: Optional[str] = None  # 仅优选标识：该值标识哪个 BG 的优选物料
+    alt: List[str] = field(default_factory=list)  # 其它叫法（导出 altLabel）
 
 
 @dataclass
@@ -439,6 +495,10 @@ ENUM_GROUPS: List[EnumGroup] = [
         EnumValueDef("优选A", "优选A", "采购标记为优选A的物料，研发设计BOM时会优先考虑。", "海外家电BG"),
         EnumValueDef("优选B", "优选B", "采购标记为优选B的物料，研发设计BOM时会优先考虑。", "国内家电BG"),
         EnumValueDef("优选1(汽电)", "优选1(汽电)", "采购标记为优选1(汽电)的物料，研发设计BOM时会优先考虑。", "汽车电子BG"),
+    ]),
+    EnumGroup("专用客户属性", "专用客户", [
+        EnumValueDef("A001", "兰吉尔", "客户兰吉尔的专用料，属性值保存客户编码A001。", None, ["兰吉尔", "A001"]),
+        EnumValueDef("A002", "京瓷", "客户京瓷的专用料，属性值保存客户编码A002。", None, ["京瓷", "A002"]),
     ]),
     EnumGroup("制造商AVL等级属性", "制造商AVL等级", [
         EnumValueDef("主力", "主力", "研发设计BOM时优先考虑。"),
@@ -484,32 +544,105 @@ SUPPORTS: List[Support] = [
     Support("物料短描述", "物料精确查找", "confirmed", "描述由属性值按固定顺序拼接而成，可以用关键字检索。", "AddCodeApplyServiceImpl#generateDescriptions"),
     Support("物料长描述", "物料精确查找", "confirmed", "长描述包含更完整的属性值，可以用关键字检索。", "AddCodeApplyServiceImpl#generateDescriptions"),
     Support("属性值", "物料精确查找", "confirmed", "属性代码加属性值的组合，可以按参数筛选物料。", "AcAddCodeApplyAttr.java"),
-    Support("制造商名称属性", "物料精确查找", "confirmed", "可以按制造商名称限定物料范围。", "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"),
+    Support("制造商名称属性", "物料精确查找", "confirmed", "列表可以按制造商名称过滤物料，并与制造商零件编号一起识别同一物料。", "AddCodeApplyController#queryPageList (selectAttr)"),
+    Support("制造商零件编号属性", "物料精确查找", "confirmed", "列表可以按制造商零件编号过滤物料；通用件靠它加制造商名称识别同一物料。", "AddCodeApplyController#queryPageList (selectAttr)"),
+    Support("图号属性", "物料精确查找", "code", "列表可以按图号过滤物料；定制件靠它加制造商名称识别同一物料。", "AddCodeApplyController#queryPageList (selectAttr)"),
     Support("生命周期阶段属性", "物料精确查找", "confirmed", "它是物料在业务上的状态，可以排除失效、停产的物料。", BIZ),
-    Support("专用客户属性", "物料精确查找", "confirmed", "有值说明是客户专用料，研发查找物料时可以过滤掉这些专用料。", BIZ),
+    Support("专用客户属性", "物料精确查找", "confirmed", "有值说明是客户专用料，研发查找物料时可以过滤掉这些专用料；属性值是客户编码A001（兰吉尔）或A002（京瓷）。", BIZ),
     Support("是否汽车电子", "物料精确查找", "confirmed", "可据此区分汽车电子BG的物料和其他BG的物料。", BIZ),
     # ---- 物料相似查找 ----
     Support("L4分类", "物料相似查找", "confirmed", "同一L4分类下的物料适用同一套属性模板，才有可比性。", "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode"),
     Support("ClassificationAttributeRef", "物料相似查找", "confirmed", "模板规定了每类物料有哪些属性，是比较的依据。", "ClassificationAttributeRef.java"),
-    Support("是否属于可比性属性", "物料相似查找", "confirmed", "该标识表明哪些属性可以用来比较，源码里没有直接使用。", "ClassificationAttributeRef.java"),
+    Support("是否必填", "物料相似查找", "confirmed", "物料私有属性里该标识为X的属性是核心技术属性，比较物料是否相似时以它们为准。", BIZ),
+    Support("是否必填", "替代料推荐", "confirmed", "物料私有属性里该标识为X的属性是核心技术属性，判断能否替代时以它们为准。", BIZ),
     Support("属性值", "物料相似查找", "confirmed", "属性值越接近，物料越相似。", "AcAddCodeApplyAttr.java"),
     Support("物料短描述", "物料相似查找", "confirmed", "描述的拼接顺序相同，描述文本可以用来比较相近程度。", "AddCodeApplyServiceImpl#generateDescriptions"),
     Support("AcAddCodeApplyAttrp", "物料相似查找", "confirmed", "私有属性是各分类特有的技术参数，决定物料是否相似。", "AcAddCodeApplyAttrp.java"),
     Support("细分类属性", "物料相似查找", "confirmed", "细分类相同说明物料更接近。", "AttributeValueServiceImpl#getSubdivisionDesc"),
     # ---- 替代料推荐 ----
     Support("AcAddCodeApplyAttrp", "替代料推荐", "confirmed", "技术参数一致是替代的前提。", "AcAddCodeApplyAttrp.java"),
-    Support("是否属于可比性属性", "替代料推荐", "confirmed", "只比较可比性属性，才能判断能否替代。", "ClassificationAttributeRef.java"),
     Support("是否涉及优选", "替代料推荐", "confirmed", "替代时应优先推荐优选物料。", "AddCodeApplyServiceImpl#pushMainData"),
     Support("优选标识属性", "替代料推荐", "confirmed",
             "被标记为优选的物料研发设计BOM时优先考虑，推荐替代料时应优先给出，并注意优选所属的BG。", BIZ),
     Support("制造商AVL等级属性", "替代料推荐", "confirmed",
             "优先推荐主力、合格、试用的物料；考察、限制表示制造商不合格或未验证，不宜优先推荐。", BIZ),
     Support("标准件/非标准件", "替代料推荐", "confirmed", "标准件之间更容易互相替换。", "ClassificationManagement.java"),
-    Support("制造商名称属性", "替代料推荐", "confirmed", "替代料常常是同规格、不同制造商的物料。", "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"),
+    Support("制造商名称属性", "替代料推荐", "confirmed", "制造商零件编号相同、制造商不同的物料算替代料，判断时要对照制造商。", BIZ),
+    Support("制造商零件编号属性", "替代料推荐", "confirmed", "制造商零件编号相同、制造商不同的物料算替代料；前缀或系列号相同还要结合L4分类和物料私有属性判断。", BIZ),
+    Support("制造商零件编号属性", "物料相似查找", "confirmed", "制造商零件编号是比较物料相似程度的依据之一。", BIZ),
     Support("生命周期阶段属性", "替代料推荐", "confirmed", "物料进入EOL或失效、停产后，需要为它找替代；推荐的替代料自身也不应是失效或停产的。", BIZ),
     Support("专用客户属性", "替代料推荐", "confirmed", "推荐替代料时同样应该过滤掉客户专用料。", BIZ),
 ]
 
+
+# --------------------------------------------------------------------------- #
+# 推理路径：场景下，agent 沿图谱里哪几条边走（每一步都必须是已抽取的三元组，导出时校验）
+# --------------------------------------------------------------------------- #
+
+
+@dataclass
+class PathDef:
+    scenario: str
+    name: str
+    description: str
+    steps: List[Tuple[str, str, str]]  # (主语节点名, 谓词, 宾语节点名)
+    basis: str = "confirmed"
+
+
+SCENARIO_PATHS: List[PathDef] = [
+    PathDef(
+        "替代料推荐", "MPN → 核心技术属性比较",
+        "由制造商零件编号找到物料主数据，沿L4分类找到对应的物料分类属性模板和物料私有属性，"
+        "比较两个物料的核心技术属性（物料私有属性中，模板里是否必填为X的属性）是否相近，相近的标准因分类而异，相近则互为替代料。",
+        [
+            ("物料基础属性", "includesAttribute", "制造商零件编号属性"),  # MPN 是物料基础属性里的属性
+            ("物料基础属性", "partOf", "物料主数据"),  # 物料基础属性挂在物料主数据上
+            ("物料主数据", "refersTo", "物料分类"),  # 物料主数据 → L4分类
+            ("物料分类属性模板", "refersTo", "物料分类"),  # L4分类 → 对应的分类属性模板
+            ("物料私有属性", "refersTo", "物料分类属性模板"),  # 模板 → 对应的私有属性（技术属性）
+            ("物料分类属性模板", "hasKeyField", "是否必填"),  # 是否必填为X的属性是核心技术属性
+            ("物料私有属性", "partOf", "物料主数据"),  # 比较的是两个物料各自的私有属性取值
+        ],
+    ),
+]
+
+
+# --------------------------------------------------------------------------- #
+# 相近标准：各分类不统一，目前只有 L1=28（包材）有口径
+# --------------------------------------------------------------------------- #
+
+
+@dataclass
+class SimilarityCriterion:
+    """一条相近标准：作用范围（某个分类）+ 比较方式 + 适用哪类属性。
+
+    属性不逐个写死，而是描述“哪一类核心技术属性按这个标准比”；分类下实际有哪些属性，
+    由物料分类属性模板决定，没有的就不比。新增分类 / 调整容差只需增删这里的记录。
+    """
+
+    scope_level: str  # L1 | L2 | L3 | L4
+    scope_code: str
+    scope_name: str
+    kind: str  # abs_diff：两个物料同一属性取值之差的绝对值不超过 tolerance
+    tolerance: float
+    applies_to: str  # 适用的核心技术属性类别（文字描述）
+    examples: List[str]  # 例子，仅供理解，不是穷举
+    identify_by: str  # 怎么判断属性属于 applies_to：attribute_name（按属性名称）| 以后可扩展为字段标记
+    name_hints: List[str]  # 按名称判断时的参考词（含这些字的属性名视为尺寸类），可随时增补
+    combine: str  # all：适用的属性每一项都要满足；该分类没有的属性不参与
+    meaning: str  # 满足标准意味着什么
+    unit_note: str = "单位一般是统一的"
+    source: str = BIZ
+
+
+SIMILARITY_CRITERIA: List[SimilarityCriterion] = [
+    SimilarityCriterion(
+        "L1", "28", "包材", "abs_diff", 5, "尺寸类的数值属性", ["长", "宽", "高"],
+        "attribute_name", ["长", "宽", "高", "直径", "内径", "外径", "厚", "深", "尺寸"], "all",
+        "相近，可以互为替代料或相似料",
+    ),
+]
+# 其他分类暂无相近标准（需要业务方逐个补充）
 
 # --------------------------------------------------------------------------- #
 # 8. 抽取规则（中文关系触发词）
@@ -523,6 +656,7 @@ RELATION_CUES: List[Tuple[str, str]] = [
     ("hasKeyField", r"的关键字段(?:包括|有)"),
     ("hasValue", r"的枚举值(?:包括|有)"),
     ("includesAttribute", r"包含常用属性"),
+    ("hasCoreAttribute", r"的核心属性(?:包括|有)"),
     ("preferredFor", r"标识(?=[^。；]*?的优选物料)"),
     ("indicatesBG", r"标明"),
     ("partOf", r"属于"),

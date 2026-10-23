@@ -4,12 +4,12 @@
 
 | 角色 | 数量 |
 |---|---|
-| predicate | 105 |
-| agent | 105 |
-| attribute | 69 |
-| purpose | 30 |
-| value | 23 |
-| constraint | 17 |
+| predicate | 121 |
+| agent | 121 |
+| attribute | 73 |
+| purpose | 34 |
+| value | 25 |
+| constraint | 25 |
 | key | 15 |
 | theme | 11 |
 | location | 8 |
@@ -22,44 +22,43 @@
 
 | 实体 A | 实体 B | 文本余弦 | 关键字段 Jaccard | 共享关键字段 |
 |---|---|---|---|---|
-| 物料分类 | 物料编码号段 | 0.4574 | 0.0667 | L4分类代码 |
-| 物料分类属性模板 | 物料属性值库 | 0.3345 | 0.1333 | L4分类代码、属性代码 |
-| 物料主数据 | 物料分类 | 0.272 | 0.0 |  |
+| 物料分类 | 物料编码号段 | 0.4532 | 0.0667 | L4分类代码 |
+| 物料私有属性 | 物料分类属性模板 | 0.4448 | 0.1429 | 属性代码、属性类型 |
+| 物料主数据 | 物料私有属性 | 0.3245 | 0.0 |  |
+| 物料主数据 | 物料分类属性模板 | 0.3103 | 0.0 |  |
+| 物料分类属性模板 | 物料属性值库 | 0.304 | 0.1429 | L4分类代码、属性代码 |
+| 物料主数据 | 物料分类 | 0.27 | 0.0 |  |
 | 物料属性定义 | 物料属性值库 | 0.263 | 0.1667 | 属性代码 |
-| 物料属性定义 | 物料分类属性模板 | 0.2416 | 0.0769 | 属性代码 |
-| 物料基础属性 | 物料分类 | 0.2144 | 0.0 |  |
-| 物料基础属性 | 物料编码号段 | 0.2129 | 0.0 |  |
-| 物料分类 | 物料分类属性模板 | 0.2061 | 0.0526 | L4分类代码 |
-| 物料主数据 | 物料编码号段 | 0.2025 | 0.0 |  |
-| 物料主数据 | 物料基础属性 | 0.1791 | 0.0 |  |
-| 物料私有属性 | 物料分类属性模板 | 0.1374 | 0.1333 | 属性代码、属性类型 |
-| 物料基础属性 | 物料分类属性模板 | 0.1351 | 0.1333 | 属性代码、属性类型 |
-| 物料分类 | 物料属性值库 | 0.1229 | 0.0833 | L4分类代码 |
-| 物料分类属性模板 | 物料编码号段 | 0.1204 | 0.0526 | L4分类代码 |
-| 物料主数据 | 物料私有属性 | 0.1069 | 0.0 |  |
-| 物料私有属性 | 物料属性定义 | 0.1039 | 0.1667 | 属性代码 |
+| 物料属性定义 | 物料分类属性模板 | 0.2163 | 0.0833 | 属性代码 |
+| 物料分类 | 物料分类属性模板 | 0.2077 | 0.0556 | L4分类代码 |
+| 物料主数据 | 物料编码号段 | 0.1989 | 0.0 |  |
+| 物料基础属性 | 物料编码号段 | 0.1955 | 0.0 |  |
+| 物料基础属性 | 物料分类 | 0.1888 | 0.0 |  |
+| 物料主数据 | 物料基础属性 | 0.1778 | 0.0 |  |
+| 物料基础属性 | 物料分类属性模板 | 0.1389 | 0.1429 | 属性代码、属性类型 |
+| 物料分类属性模板 | 物料编码号段 | 0.1277 | 0.0556 | L4分类代码 |
+| 物料分类 | 物料属性值库 | 0.1226 | 0.0833 | L4分类代码 |
+| 物料基础属性 | 物料私有属性 | 0.1107 | 1.0 | 加码id、属性代码、属性值、属性描述、属性类型 |
 | 物料属性值库 | 物料编码号段 | 0.0946 | 0.0833 | L4分类代码 |
-| 物料主数据 | 物料分类属性模板 | 0.0926 | 0.0 |  |
-| 物料基础属性 | 物料属性定义 | 0.0808 | 0.1667 | 属性代码 |
-| 物料主数据 | 物料属性值库 | 0.0752 | 0.0 |  |
+| 物料私有属性 | 物料属性值库 | 0.0925 | 0.1111 | 属性代码 |
+| 物料私有属性 | 物料属性定义 | 0.0921 | 0.1667 | 属性代码 |
+| 物料主数据 | 物料属性值库 | 0.0898 | 0.0 |  |
 | 物料属性定义 | 物料编码号段 | 0.0736 | 0.0 |  |
-| 物料私有属性 | 物料属性值库 | 0.0715 | 0.1111 | 属性代码 |
-| 物料基础属性 | 物料属性值库 | 0.0712 | 0.1111 | 属性代码 |
-| 物料分类 | 物料属性定义 | 0.0675 | 0.0 |  |
-| 物料基础属性 | 物料私有属性 | 0.0645 | 1.0 | 加码id、属性代码、属性值、属性描述、属性类型 |
-| 物料私有属性 | 物料分类 | 0.0457 | 0.0 |  |
-| 物料私有属性 | 物料编码号段 | 0.0432 | 0.0 |  |
-| 物料主数据 | 物料属性定义 | 0.0429 | 0.0 |  |
+| 物料私有属性 | 物料分类 | 0.0734 | 0.0 |  |
+| 物料基础属性 | 物料属性值库 | 0.0665 | 0.1111 | 属性代码 |
+| 物料分类 | 物料属性定义 | 0.0644 | 0.0 |  |
+| 物料基础属性 | 物料属性定义 | 0.0629 | 0.1667 | 属性代码 |
+| 物料私有属性 | 物料编码号段 | 0.0591 | 0.0 |  |
+| 物料主数据 | 物料属性定义 | 0.0513 | 0.0 |  |
 
 ## 实体聚类（阈值 0.35）
 
 - 簇 0：物料主数据（平均相似度 1.0）
 - 簇 1：物料基础属性（平均相似度 1.0）
-- 簇 2：物料私有属性（平均相似度 1.0）
-- 簇 3：物料分类、物料编码号段（平均相似度 0.4574）
+- 簇 2：物料私有属性、物料分类属性模板（平均相似度 0.4448）
+- 簇 3：物料分类、物料编码号段（平均相似度 0.4532）
 - 簇 4：物料属性定义（平均相似度 1.0）
-- 簇 5：物料分类属性模板（平均相似度 1.0）
-- 簇 6：物料属性值库（平均相似度 1.0）
+- 簇 5：物料属性值库（平均相似度 1.0）
 
 ## 文档级语义特征
 
@@ -70,7 +69,7 @@
 | entity:AcAddCodeApplyAttrp | entity | 14 | 7 | 10 |
 | entity:ClassificationManagement | entity | 16 | 10 | 13 |
 | entity:AttributeManagement | entity | 11 | 4 | 7 |
-| entity:ClassificationAttributeRef | entity | 29 | 18 | 26 |
+| entity:ClassificationAttributeRef | entity | 28 | 17 | 25 |
 | entity:AttributeValue | entity | 13 | 7 | 10 |
 | entity:CodeRange | entity | 19 | 12 | 13 |
 | relation:AcAddCodeApplyAttr-partOf-AddCodeApply | relation | 3 | 3 | 4 |
@@ -90,12 +89,15 @@
 | attr:lifeCyclePhase | attribute | 4 | 2 | 3 |
 | attr:preferredIdentification | attribute | 4 | 2 | 3 |
 | attr:manufacturerAvlRating | attribute | 4 | 2 | 3 |
-| attr:notes | attribute | 6 | 3 | 3 |
-| attr:manufacturersName | attribute | 4 | 2 | 3 |
+| attr:notes | attribute | 5 | 3 | 3 |
+| attr:manufacturerPartNumber | attribute | 6 | 2 | 3 |
+| attr:manufacturersName | attribute | 5 | 3 | 3 |
+| attr:mapNumber | attribute | 4 | 2 | 3 |
 | attr:projectType | attribute | 4 | 2 | 3 |
 | attr:brandExceptionType | attribute | 4 | 2 | 3 |
 | attr:subdivision | attribute | 5 | 3 | 3 |
 | attr:documentNumber | attribute | 4 | 2 | 3 |
+| attrs:core | attribute | 4 | 4 | 5 |
 | enum:申请状态 | enum | 7 | 7 | 8 |
 | enumval:申请状态-草稿 | enum | 1 | 1 | 0 |
 | enumval:申请状态-标准化审批中 | enum | 1 | 1 | 0 |
@@ -117,6 +119,9 @@
 | enumval:优选标识-优选A | enum | 3 | 2 | 3 |
 | enumval:优选标识-优选B | enum | 3 | 2 | 3 |
 | enumval:优选标识-优选1(汽电) | enum | 3 | 2 | 3 |
+| enum:专用客户 | enum | 3 | 3 | 4 |
+| enumval:专用客户-兰吉尔 | enum | 2 | 2 | 0 |
+| enumval:专用客户-京瓷 | enum | 2 | 2 | 0 |
 | enum:制造商AVL等级 | enum | 6 | 6 | 7 |
 | enumval:制造商AVL等级-主力 | enum | 1 | 1 | 0 |
 | enumval:制造商AVL等级-合格 | enum | 1 | 1 | 0 |
@@ -128,6 +133,12 @@
 | rule:物料升级规则 | rule | 6 | 4 | 0 |
 | rule:物料状态口径规则 | rule | 2 | 2 | 0 |
 | rule:物料编码BG前缀规则 | rule | 6 | 4 | 0 |
+| rule:物料查重规则 | rule | 5 | 4 | 0 |
+| rule:同MPN替代规则 | rule | 3 | 3 | 0 |
+| rule:替代料判断流程 | rule | 12 | 7 | 0 |
+| rule:核心技术属性判定规则 | rule | 7 | 5 | 0 |
+| rule:分类相近标准规则 | rule | 5 | 4 | 0 |
+| rule:MPN相近替代判断规则 | rule | 4 | 4 | 0 |
 | rule:客户专用料规则 | rule | 3 | 3 | 0 |
 | rule:分类代码层级规则 | rule | 13 | 11 | 0 |
 | rule:分类属性范围匹配规则 | rule | 9 | 7 | 0 |
@@ -143,13 +154,21 @@
 | governed:AddCodeApply:物料编码BG前缀规则 | rule | 2 | 2 | 3 |
 | governed:AddCodeApply:物料描述拼接规则 | rule | 2 | 2 | 3 |
 | governed:AddCodeApply:旧物料编码校验规则 | rule | 2 | 2 | 3 |
+| governed:AddCodeApply:物料查重规则 | rule | 2 | 2 | 3 |
 | governed:AddCodeApply:分类代码层级规则 | rule | 2 | 2 | 3 |
 | governed:AcAddCodeApplyAttr:物料基础属性取值规则 | rule | 2 | 2 | 3 |
 | governed:AcAddCodeApplyAttr:客户专用料规则 | rule | 2 | 2 | 3 |
+| governed:AcAddCodeApplyAttr:物料查重规则 | rule | 2 | 2 | 3 |
+| governed:AcAddCodeApplyAttr:同MPN替代规则 | rule | 2 | 2 | 3 |
+| governed:AcAddCodeApplyAttr:MPN相近替代判断规则 | rule | 2 | 2 | 3 |
+| governed:AcAddCodeApplyAttr:替代料判断流程 | rule | 2 | 2 | 3 |
+| governed:AcAddCodeApplyAttrp:替代料判断流程 | rule | 2 | 2 | 3 |
 | governed:ClassificationManagement:分类代码层级规则 | rule | 2 | 2 | 3 |
+| governed:ClassificationManagement:分类相近标准规则 | rule | 2 | 2 | 3 |
 | governed:ClassificationAttributeRef:分类属性范围匹配规则 | rule | 2 | 2 | 3 |
 | governed:ClassificationAttributeRef:属性值解析规则 | rule | 2 | 2 | 3 |
 | governed:ClassificationAttributeRef:物料描述拼接规则 | rule | 2 | 2 | 3 |
+| governed:ClassificationAttributeRef:核心技术属性判定规则 | rule | 2 | 2 | 3 |
 | governed:AttributeValue:分类属性范围匹配规则 | rule | 2 | 2 | 3 |
 | governed:AttributeValue:属性值解析规则 | rule | 2 | 2 | 3 |
 | governed:CodeRange:编码号段选取规则 | rule | 2 | 2 | 3 |
@@ -167,23 +186,27 @@
 | support:物料短描述:物料精确查找 | support | 3 | 3 | 3 |
 | support:物料长描述:物料精确查找 | support | 3 | 3 | 3 |
 | support:属性值:物料精确查找 | support | 4 | 3 | 3 |
-| support:制造商名称属性:物料精确查找 | support | 2 | 2 | 3 |
+| support:制造商名称属性:物料精确查找 | support | 3 | 3 | 3 |
+| support:制造商零件编号属性:物料精确查找 | support | 3 | 2 | 3 |
+| support:图号属性:物料精确查找 | support | 2 | 2 | 3 |
 | support:生命周期阶段属性:物料精确查找 | support | 2 | 2 | 3 |
-| support:专用客户属性:物料精确查找 | support | 2 | 2 | 3 |
+| support:专用客户属性:物料精确查找 | support | 3 | 3 | 3 |
 | support:是否汽车电子:物料精确查找 | support | 3 | 3 | 3 |
 | support:L4分类:物料相似查找 | support | 4 | 3 | 3 |
 | support:ClassificationAttributeRef:物料相似查找 | support | 2 | 2 | 3 |
-| support:是否属于可比性属性:物料相似查找 | support | 2 | 2 | 3 |
+| support:是否必填:物料相似查找 | support | 4 | 3 | 3 |
+| support:是否必填:替代料推荐 | support | 4 | 3 | 3 |
 | support:属性值:物料相似查找 | support | 3 | 2 | 3 |
 | support:物料短描述:物料相似查找 | support | 2 | 2 | 3 |
 | support:AcAddCodeApplyAttrp:物料相似查找 | support | 3 | 2 | 3 |
 | support:细分类属性:物料相似查找 | support | 2 | 2 | 3 |
 | support:AcAddCodeApplyAttrp:替代料推荐 | support | 2 | 2 | 3 |
-| support:是否属于可比性属性:替代料推荐 | support | 2 | 2 | 3 |
 | support:是否涉及优选:替代料推荐 | support | 2 | 2 | 3 |
 | support:优选标识属性:替代料推荐 | support | 2 | 2 | 3 |
 | support:制造商AVL等级属性:替代料推荐 | support | 2 | 2 | 3 |
 | support:标准件/非标准件:替代料推荐 | support | 2 | 2 | 3 |
-| support:制造商名称属性:替代料推荐 | support | 2 | 2 | 3 |
+| support:制造商名称属性:替代料推荐 | support | 3 | 3 | 3 |
+| support:制造商零件编号属性:替代料推荐 | support | 5 | 4 | 3 |
+| support:制造商零件编号属性:物料相似查找 | support | 3 | 2 | 3 |
 | support:生命周期阶段属性:替代料推荐 | support | 2 | 2 | 3 |
 | support:专用客户属性:替代料推荐 | support | 2 | 2 | 3 |

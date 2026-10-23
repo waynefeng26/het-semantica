@@ -244,6 +244,7 @@ _ROLE_OF_PREDICATE: Dict[str, str] = {
     "refersTo": "theme",
     "usesDictionary": "resource",
     "includesAttribute": "attribute",
+    "hasCoreAttribute": "attribute",
     "derivesFrom": "source",
     "governedBy": "constraint",
     "supports": "purpose",

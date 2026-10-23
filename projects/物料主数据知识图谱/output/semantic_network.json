@@ -1,34 +1,35 @@
 {
   "stats": {
-    "node_count": 120,
-    "edge_count": 171,
+    "node_count": 129,
+    "edge_count": 189,
     "node_types": {
       "Entity": 8,
-      "Field": 46,
+      "Field": 45,
       "DataTable": 8,
       "Dictionary": 4,
-      "CommonAttribute": 12,
-      "EnumValue": 23,
+      "CommonAttribute": 14,
+      "EnumValue": 25,
       "BusinessGroup": 3,
-      "BusinessRule": 13,
+      "BusinessRule": 19,
       "Scenario": 3
     },
     "relation_types": {
       "mapsToTable": 8,
-      "hasKeyField": 57,
+      "hasKeyField": 56,
       "usesDictionary": 5,
       "partOf": 2,
       "refersTo": 9,
-      "includesAttribute": 12,
+      "includesAttribute": 14,
       "derivesFrom": 3,
-      "hasValue": 23,
+      "hasCoreAttribute": 3,
+      "hasValue": 25,
       "preferredFor": 3,
       "indicatesBG": 1,
-      "governedBy": 17,
-      "supports": 30,
+      "governedBy": 25,
+      "supports": 34,
       "similarTo": 1
     },
-    "average_degree": 2.85,
+    "average_degree": 2.9302325581395348,
     "connectivity": "moderate"
   },
   "nodes": [
@@ -44,6 +45,7 @@
         "relation:AddCodeApply-refersTo-CodeRange",
         "rule:有效物料判定规则",
         "rule:物料升级规则",
+        "rule:替代料判断流程",
         "rule:分类代码层级规则",
         "governed:AddCodeApply:有效物料判定规则",
         "governed:AddCodeApply:物料升级规则",
@@ -51,12 +53,13 @@
         "governed:AddCodeApply:物料编码BG前缀规则",
         "governed:AddCodeApply:物料描述拼接规则",
         "governed:AddCodeApply:旧物料编码校验规则",
+        "governed:AddCodeApply:物料查重规则",
         "governed:AddCodeApply:分类代码层级规则",
         "support:AddCodeApply:物料精确查找",
         "support:L4分类:物料精确查找",
         "support:AcAddCodeApplyAttr:物料精确查找"
       ],
-      "out_degree": 23,
+      "out_degree": 24,
       "in_degree": 2
     },
     {
@@ -88,10 +91,13 @@
         "entity:CodeRange",
         "relation:AddCodeApply-refersTo-ClassificationManagement",
         "relation:AddCodeApply-refersTo-CodeRange",
+        "rule:替代料判断流程",
+        "rule:MPN相近替代判断规则",
         "rule:分类代码层级规则",
         "rule:编码号段选取规则",
         "support:L4分类:物料精确查找",
-        "support:L4分类:物料相似查找"
+        "support:L4分类:物料相似查找",
+        "support:制造商零件编号属性:替代料推荐"
       ],
       "out_degree": 2,
       "in_degree": 1
@@ -128,6 +134,7 @@
       "docs": [
         "entity:AddCodeApply",
         "relation:AddCodeApply-refersTo-ClassificationManagement",
+        "rule:分类相近标准规则",
         "rule:分类代码层级规则",
         "rule:分类属性范围匹配规则",
         "rule:编码号段选取规则"
@@ -255,17 +262,25 @@
         "attr:preferredIdentification",
         "attr:manufacturerAvlRating",
         "attr:notes",
+        "attr:manufacturerPartNumber",
         "attr:manufacturersName",
+        "attr:mapNumber",
         "attr:projectType",
         "attr:brandExceptionType",
         "attr:subdivision",
         "attr:documentNumber",
+        "attrs:core",
+        "rule:核心技术属性判定规则",
         "rule:物料基础属性取值规则",
         "governed:AcAddCodeApplyAttr:物料基础属性取值规则",
         "governed:AcAddCodeApplyAttr:客户专用料规则",
+        "governed:AcAddCodeApplyAttr:物料查重规则",
+        "governed:AcAddCodeApplyAttr:同MPN替代规则",
+        "governed:AcAddCodeApplyAttr:MPN相近替代判断规则",
+        "governed:AcAddCodeApplyAttr:替代料判断流程",
         "support:AcAddCodeApplyAttr:物料精确查找"
       ],
-      "out_degree": 24,
+      "out_degree": 33,
       "in_degree": 0
     },
     {
@@ -320,11 +335,14 @@
         "entity:AcAddCodeApplyAttr",
         "entity:AcAddCodeApplyAttrp",
         "attr:notes",
+        "enumval:专用客户-兰吉尔",
+        "enumval:专用客户-京瓷",
         "rule:客户专用料规则",
         "scenario:物料精确查找",
         "support:物料短描述:物料精确查找",
         "support:物料长描述:物料精确查找",
         "support:属性值:物料精确查找",
+        "support:专用客户属性:物料精确查找",
         "support:属性值:物料相似查找"
       ],
       "out_degree": 2,
@@ -362,11 +380,19 @@
         "entity:AcAddCodeApplyAttrp",
         "relation:AcAddCodeApplyAttrp-partOf-AddCodeApply",
         "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef",
+        "rule:替代料判断流程",
+        "rule:核心技术属性判定规则",
+        "rule:分类相近标准规则",
+        "rule:MPN相近替代判断规则",
         "rule:物料描述拼接规则",
+        "governed:AcAddCodeApplyAttrp:替代料判断流程",
+        "support:是否必填:物料相似查找",
+        "support:是否必填:替代料推荐",
         "support:AcAddCodeApplyAttrp:物料相似查找",
-        "support:AcAddCodeApplyAttrp:替代料推荐"
+        "support:AcAddCodeApplyAttrp:替代料推荐",
+        "support:制造商零件编号属性:替代料推荐"
       ],
-      "out_degree": 10,
+      "out_degree": 11,
       "in_degree": 1
     },
     {
@@ -390,9 +416,10 @@
         "relation:CodeRange-refersTo-ClassificationManagement",
         "rule:分类代码层级规则",
         "rule:物料基础属性取值规则",
-        "governed:ClassificationManagement:分类代码层级规则"
+        "governed:ClassificationManagement:分类代码层级规则",
+        "governed:ClassificationManagement:分类相近标准规则"
       ],
-      "out_degree": 10,
+      "out_degree": 11,
       "in_degree": 3
     },
     {
@@ -520,7 +547,8 @@
       "label": "属性名称",
       "type": "Field",
       "docs": [
-        "entity:AttributeManagement"
+        "entity:AttributeManagement",
+        "rule:分类相近标准规则"
       ],
       "out_degree": 0,
       "in_degree": 1
@@ -546,10 +574,13 @@
         "relation:AttributeValue-refersTo-ClassificationAttributeRef",
         "relation:AcAddCodeApplyAttr-refersTo-ClassificationAttributeRef",
         "relation:AcAddCodeApplyAttrp-refersTo-ClassificationAttributeRef",
+        "rule:替代料判断流程",
+        "rule:核心技术属性判定规则",
         "rule:分类属性范围匹配规则",
         "governed:ClassificationAttributeRef:分类属性范围匹配规则",
         "governed:ClassificationAttributeRef:属性值解析规则",
         "governed:ClassificationAttributeRef:物料描述拼接规则",
+        "governed:ClassificationAttributeRef:核心技术属性判定规则",
         "support:L4分类:物料相似查找",
         "support:ClassificationAttributeRef:物料相似查找"
       ],
@@ -574,18 +605,6 @@
         "entity:ClassificationAttributeRef"
       ],
       "out_degree": 1,
-      "in_degree": 1
-    },
-    {
-      "id": "Field:是否属于可比性属性",
-      "label": "是否属于可比性属性",
-      "type": "Field",
-      "docs": [
-        "entity:ClassificationAttributeRef",
-        "support:是否属于可比性属性:物料相似查找",
-        "support:是否属于可比性属性:替代料推荐"
-      ],
-      "out_degree": 2,
       "in_degree": 1
     },
     {
@@ -648,9 +667,13 @@
       "label": "是否必填",
       "type": "Field",
       "docs": [
-        "entity:ClassificationAttributeRef"
+        "entity:ClassificationAttributeRef",
+        "rule:替代料判断流程",
+        "rule:核心技术属性判定规则",
+        "support:是否必填:物料相似查找",
+        "support:是否必填:替代料推荐"
       ],
-      "out_degree": 0,
+      "out_degree": 2,
       "in_degree": 1
     },
     {
@@ -869,11 +892,12 @@
       "type": "CommonAttribute",
       "docs": [
         "attr:materialName",
+        "attrs:core",
         "rule:物料基础属性取值规则",
         "support:物料名称属性:物料精确查找"
       ],
       "out_degree": 2,
-      "in_degree": 1
+      "in_degree": 2
     },
     {
       "id": "CommonAttribute:物料简称属性",
@@ -941,12 +965,34 @@
       "type": "CommonAttribute",
       "docs": [
         "attr:notes",
+        "enum:专用客户",
         "rule:客户专用料规则",
         "support:专用客户属性:物料精确查找",
         "support:专用客户属性:替代料推荐"
       ],
-      "out_degree": 2,
+      "out_degree": 4,
       "in_degree": 1
+    },
+    {
+      "id": "CommonAttribute:制造商零件编号属性",
+      "label": "制造商零件编号属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:manufacturerPartNumber",
+        "attr:manufacturersName",
+        "attrs:core",
+        "rule:物料查重规则",
+        "rule:同MPN替代规则",
+        "rule:替代料判断流程",
+        "rule:MPN相近替代判断规则",
+        "support:制造商名称属性:物料精确查找",
+        "support:制造商零件编号属性:物料精确查找",
+        "support:制造商名称属性:替代料推荐",
+        "support:制造商零件编号属性:替代料推荐",
+        "support:制造商零件编号属性:物料相似查找"
+      ],
+      "out_degree": 3,
+      "in_degree": 2
     },
     {
       "id": "CommonAttribute:制造商名称属性",
@@ -954,10 +1000,25 @@
       "type": "CommonAttribute",
       "docs": [
         "attr:manufacturersName",
+        "attrs:core",
+        "rule:物料查重规则",
+        "rule:同MPN替代规则",
         "support:制造商名称属性:物料精确查找",
         "support:制造商名称属性:替代料推荐"
       ],
       "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "id": "CommonAttribute:图号属性",
+      "label": "图号属性",
+      "type": "CommonAttribute",
+      "docs": [
+        "attr:mapNumber",
+        "rule:物料查重规则",
+        "support:图号属性:物料精确查找"
+      ],
+      "out_degree": 1,
       "in_degree": 1
     },
     {
@@ -1235,6 +1296,28 @@
       "in_degree": 2
     },
     {
+      "id": "EnumValue:专用客户-兰吉尔",
+      "label": "专用客户-兰吉尔",
+      "type": "EnumValue",
+      "docs": [
+        "enum:专用客户",
+        "enumval:专用客户-兰吉尔"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "EnumValue:专用客户-京瓷",
+      "label": "专用客户-京瓷",
+      "type": "EnumValue",
+      "docs": [
+        "enum:专用客户",
+        "enumval:专用客户-京瓷"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
       "id": "EnumValue:制造商AVL等级-主力",
       "label": "制造商AVL等级-主力",
       "type": "EnumValue",
@@ -1329,6 +1412,74 @@
       "docs": [
         "rule:物料编码BG前缀规则",
         "governed:AddCodeApply:物料编码BG前缀规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:物料查重规则",
+      "label": "物料查重规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:物料查重规则",
+        "governed:AddCodeApply:物料查重规则",
+        "governed:AcAddCodeApplyAttr:物料查重规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "BusinessRule:同MPN替代规则",
+      "label": "同MPN替代规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:同MPN替代规则",
+        "governed:AcAddCodeApplyAttr:同MPN替代规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:替代料判断流程",
+      "label": "替代料判断流程",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:替代料判断流程",
+        "governed:AcAddCodeApplyAttr:替代料判断流程",
+        "governed:AcAddCodeApplyAttrp:替代料判断流程"
+      ],
+      "out_degree": 0,
+      "in_degree": 2
+    },
+    {
+      "id": "BusinessRule:核心技术属性判定规则",
+      "label": "核心技术属性判定规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:核心技术属性判定规则",
+        "governed:ClassificationAttributeRef:核心技术属性判定规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:分类相近标准规则",
+      "label": "分类相近标准规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:分类相近标准规则",
+        "governed:ClassificationManagement:分类相近标准规则"
+      ],
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "id": "BusinessRule:MPN相近替代判断规则",
+      "label": "MPN相近替代判断规则",
+      "type": "BusinessRule",
+      "docs": [
+        "rule:MPN相近替代判断规则",
+        "governed:AcAddCodeApplyAttr:MPN相近替代判断规则"
       ],
       "out_degree": 0,
       "in_degree": 1
@@ -1453,12 +1604,14 @@
         "support:物料长描述:物料精确查找",
         "support:属性值:物料精确查找",
         "support:制造商名称属性:物料精确查找",
+        "support:制造商零件编号属性:物料精确查找",
+        "support:图号属性:物料精确查找",
         "support:生命周期阶段属性:物料精确查找",
         "support:专用客户属性:物料精确查找",
         "support:是否汽车电子:物料精确查找"
       ],
       "out_degree": 0,
-      "in_degree": 14
+      "in_degree": 16
     },
     {
       "id": "Scenario:物料相似查找",
@@ -1468,14 +1621,15 @@
         "scenario:物料相似查找",
         "support:L4分类:物料相似查找",
         "support:ClassificationAttributeRef:物料相似查找",
-        "support:是否属于可比性属性:物料相似查找",
+        "support:是否必填:物料相似查找",
         "support:属性值:物料相似查找",
         "support:物料短描述:物料相似查找",
         "support:AcAddCodeApplyAttrp:物料相似查找",
-        "support:细分类属性:物料相似查找"
+        "support:细分类属性:物料相似查找",
+        "support:制造商零件编号属性:物料相似查找"
       ],
       "out_degree": 0,
-      "in_degree": 7
+      "in_degree": 8
     },
     {
       "id": "Scenario:替代料推荐",
@@ -1483,18 +1637,19 @@
       "type": "Scenario",
       "docs": [
         "scenario:替代料推荐",
+        "support:是否必填:替代料推荐",
         "support:AcAddCodeApplyAttrp:替代料推荐",
-        "support:是否属于可比性属性:替代料推荐",
         "support:是否涉及优选:替代料推荐",
         "support:优选标识属性:替代料推荐",
         "support:制造商AVL等级属性:替代料推荐",
         "support:标准件/非标准件:替代料推荐",
         "support:制造商名称属性:替代料推荐",
+        "support:制造商零件编号属性:替代料推荐",
         "support:生命周期阶段属性:替代料推荐",
         "support:专用客户属性:替代料推荐"
       ],
       "out_degree": 0,
-      "in_degree": 9
+      "in_degree": 10
     }
   ],
   "edges": [
@@ -2028,18 +2183,6 @@
     },
     {
       "source": "Entity:物料分类属性模板",
-      "target": "Field:是否属于可比性属性",
-      "label": "hasKeyField",
-      "confidence": 0.9,
-      "via": [],
-      "docs": [
-        "entity:ClassificationAttributeRef"
-      ],
-      "inferred": false,
-      "basis": "code"
-    },
-    {
-      "source": "Entity:物料分类属性模板",
       "target": "Field:唯一性",
       "label": "hasKeyField",
       "confidence": 0.9,
@@ -2506,7 +2649,7 @@
         "attr:materialName"
       ],
       "inferred": false,
-      "basis": "code"
+      "basis": "confirmed"
     },
     {
       "source": "CommonAttribute:物料名称属性",
@@ -2519,7 +2662,7 @@
         "rule:物料基础属性取值规则"
       ],
       "inferred": false,
-      "basis": "code"
+      "basis": "confirmed"
     },
     {
       "source": "Entity:物料基础属性",
@@ -2621,12 +2764,36 @@
     },
     {
       "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:制造商零件编号属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:manufacturerPartNumber"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
       "target": "CommonAttribute:制造商名称属性",
       "label": "includesAttribute",
       "confidence": 0.9,
       "via": [],
       "docs": [
         "attr:manufacturersName"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:图号属性",
+      "label": "includesAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attr:mapNumber"
       ],
       "inferred": false,
       "basis": "code"
@@ -2678,6 +2845,42 @@
       ],
       "inferred": false,
       "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:物料名称属性",
+      "label": "hasCoreAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attrs:core"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:制造商零件编号属性",
+      "label": "hasCoreAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attrs:core"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "CommonAttribute:制造商名称属性",
+      "label": "hasCoreAttribute",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "attrs:core"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
     },
     {
       "source": "Field:申请状态",
@@ -2932,6 +3135,30 @@
       "basis": "confirmed"
     },
     {
+      "source": "CommonAttribute:专用客户属性",
+      "target": "EnumValue:专用客户-兰吉尔",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:专用客户"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:专用客户属性",
+      "target": "EnumValue:专用客户-京瓷",
+      "label": "hasValue",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "enum:专用客户"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
       "source": "CommonAttribute:制造商AVL等级属性",
       "target": "EnumValue:制造商AVL等级-主力",
       "label": "hasValue",
@@ -3077,6 +3304,18 @@
     },
     {
       "source": "Entity:物料主数据",
+      "target": "BusinessRule:物料查重规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AddCodeApply:物料查重规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料主数据",
       "target": "BusinessRule:分类代码层级规则",
       "label": "governedBy",
       "confidence": 0.9,
@@ -3112,6 +3351,66 @@
       "basis": "confirmed"
     },
     {
+      "source": "Entity:物料基础属性",
+      "target": "BusinessRule:物料查重规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AcAddCodeApplyAttr:物料查重规则"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "BusinessRule:同MPN替代规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AcAddCodeApplyAttr:同MPN替代规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "BusinessRule:MPN相近替代判断规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AcAddCodeApplyAttr:MPN相近替代判断规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料基础属性",
+      "target": "BusinessRule:替代料判断流程",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AcAddCodeApplyAttr:替代料判断流程"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Entity:物料私有属性",
+      "target": "BusinessRule:替代料判断流程",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:AcAddCodeApplyAttrp:替代料判断流程"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
       "source": "Entity:物料分类",
       "target": "BusinessRule:分类代码层级规则",
       "label": "governedBy",
@@ -3122,6 +3421,18 @@
       ],
       "inferred": false,
       "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类",
+      "target": "BusinessRule:分类相近标准规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:ClassificationManagement:分类相近标准规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
     },
     {
       "source": "Entity:物料分类属性模板",
@@ -3158,6 +3469,18 @@
       ],
       "inferred": false,
       "basis": "code"
+    },
+    {
+      "source": "Entity:物料分类属性模板",
+      "target": "BusinessRule:核心技术属性判定规则",
+      "label": "governedBy",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "governed:ClassificationAttributeRef:核心技术属性判定规则"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
     },
     {
       "source": "Entity:物料属性值库",
@@ -3340,6 +3663,30 @@
       "basis": "confirmed"
     },
     {
+      "source": "CommonAttribute:制造商零件编号属性",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:制造商零件编号属性:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:图号属性",
+      "target": "Scenario:物料精确查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:图号属性:物料精确查找"
+      ],
+      "inferred": false,
+      "basis": "code"
+    },
+    {
       "source": "CommonAttribute:生命周期阶段属性",
       "target": "Scenario:物料精确查找",
       "label": "supports",
@@ -3400,13 +3747,25 @@
       "basis": "confirmed"
     },
     {
-      "source": "Field:是否属于可比性属性",
+      "source": "Field:是否必填",
       "target": "Scenario:物料相似查找",
       "label": "supports",
       "confidence": 0.9,
       "via": [],
       "docs": [
-        "support:是否属于可比性属性:物料相似查找"
+        "support:是否必填:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "Field:是否必填",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:是否必填:替代料推荐"
       ],
       "inferred": false,
       "basis": "confirmed"
@@ -3472,18 +3831,6 @@
       "basis": "confirmed"
     },
     {
-      "source": "Field:是否属于可比性属性",
-      "target": "Scenario:替代料推荐",
-      "label": "supports",
-      "confidence": 0.9,
-      "via": [],
-      "docs": [
-        "support:是否属于可比性属性:替代料推荐"
-      ],
-      "inferred": false,
-      "basis": "confirmed"
-    },
-    {
       "source": "Field:是否涉及优选",
       "target": "Scenario:替代料推荐",
       "label": "supports",
@@ -3544,6 +3891,30 @@
       "basis": "confirmed"
     },
     {
+      "source": "CommonAttribute:制造商零件编号属性",
+      "target": "Scenario:替代料推荐",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:制造商零件编号属性:替代料推荐"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
+      "source": "CommonAttribute:制造商零件编号属性",
+      "target": "Scenario:物料相似查找",
+      "label": "supports",
+      "confidence": 0.9,
+      "via": [],
+      "docs": [
+        "support:制造商零件编号属性:物料相似查找"
+      ],
+      "inferred": false,
+      "basis": "confirmed"
+    },
+    {
       "source": "CommonAttribute:生命周期阶段属性",
       "target": "Scenario:替代料推荐",
       "label": "supports",
@@ -3571,7 +3942,7 @@
       "source": "Entity:物料基础属性",
       "target": "Entity:物料私有属性",
       "label": "similarTo",
-      "confidence": 0.0645,
+      "confidence": 0.1107,
       "via": [
         "加码id",
         "属性代码",

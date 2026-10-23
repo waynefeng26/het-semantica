@@ -488,7 +488,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -505,7 +505,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -522,7 +522,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -539,7 +539,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -556,7 +556,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -573,7 +573,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -590,24 +590,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
-      }
-    ]
-  },
-  {
-    "subject": "物料分类属性模板",
-    "predicate": "hasKeyField",
-    "object": "是否属于可比性属性",
-    "subject_type": "Entity",
-    "object_type": "Field",
-    "confidence": 0.9,
-    "via": [],
-    "basis": "code",
-    "evidence": [
-      {
-        "doc": "entity:ClassificationAttributeRef",
-        "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -624,7 +607,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -641,7 +624,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -658,7 +641,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -675,7 +658,7 @@
       {
         "doc": "entity:ClassificationAttributeRef",
         "source": "ClassificationAttributeRef.java",
-        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、是否属于可比性属性、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
+        "sentence": "物料分类属性模板的关键字段包括L4分类代码、属性代码、公有属性/私有属性、属性类型、唯一性、物料短描述顺序、是否进ERP物料短描述、成组属性、成组属性拼接符、是否必填、默认值。"
       }
     ]
   },
@@ -1461,12 +1444,29 @@
     "object_type": "CommonAttribute",
     "confidence": 0.9,
     "via": [],
-    "basis": "code",
+    "basis": "confirmed",
     "evidence": [
       {
         "doc": "attr:manufacturersName",
-        "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+        "source": "业务方说明; AddCodeApplyController#dupCheck; AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
         "sentence": "物料基础属性包含常用属性制造商名称属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "制造商零件编号属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attr:manufacturerPartNumber",
+        "source": "业务方说明; AddCodeApplyController#dupCheck; ClassificationAttributeRefController (标准件临时码仅MPN必填)",
+        "sentence": "物料基础属性包含常用属性制造商零件编号属性。"
       }
     ]
   },
@@ -1484,6 +1484,23 @@
         "doc": "attr:brandExceptionType",
         "source": "AddCodeApplyController#checkParam",
         "sentence": "物料基础属性包含常用属性品牌异常类型属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "includesAttribute",
+    "object": "图号属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "attr:mapNumber",
+        "source": "AddCodeApplyController#dupCheck",
+        "sentence": "物料基础属性包含常用属性图号属性。"
       }
     ]
   },
@@ -1512,11 +1529,11 @@
     "object_type": "CommonAttribute",
     "confidence": 0.9,
     "via": [],
-    "basis": "code",
+    "basis": "confirmed",
     "evidence": [
       {
         "doc": "attr:materialName",
-        "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
+        "source": "业务方说明; AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
         "sentence": "物料基础属性包含常用属性物料名称属性。"
       }
     ]
@@ -1607,6 +1624,57 @@
     ]
   },
   {
+    "subject": "物料基础属性",
+    "predicate": "hasCoreAttribute",
+    "object": "制造商名称属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attrs:core",
+        "source": "业务方说明",
+        "sentence": "物料基础属性的核心属性包括物料名称属性、制造商零件编号属性、制造商名称属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "hasCoreAttribute",
+    "object": "制造商零件编号属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attrs:core",
+        "source": "业务方说明",
+        "sentence": "物料基础属性的核心属性包括物料名称属性、制造商零件编号属性、制造商名称属性。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "hasCoreAttribute",
+    "object": "物料名称属性",
+    "subject_type": "Entity",
+    "object_type": "CommonAttribute",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "attrs:core",
+        "source": "业务方说明",
+        "sentence": "物料基础属性的核心属性包括物料名称属性、制造商零件编号属性、制造商名称属性。"
+      }
+    ]
+  },
+  {
     "subject": "物料名称属性",
     "predicate": "derivesFrom",
     "object": "物料子类L4",
@@ -1614,11 +1682,11 @@
     "object_type": "Field",
     "confidence": 0.9,
     "via": [],
-    "basis": "code",
+    "basis": "confirmed",
     "evidence": [
       {
         "doc": "attr:materialName",
-        "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
+        "source": "业务方说明; AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes",
         "sentence": "物料名称属性取自物料子类L4。"
       },
       {
@@ -1760,6 +1828,23 @@
   {
     "subject": "物料主数据",
     "predicate": "governedBy",
+    "object": "物料查重规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AddCodeApply:物料查重规则",
+        "source": "AddCodeApplyController#dupCheck",
+        "sentence": "物料主数据受物料查重规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料主数据",
+    "predicate": "governedBy",
     "object": "物料状态口径规则",
     "subject_type": "Entity",
     "object_type": "BusinessRule",
@@ -1809,6 +1894,23 @@
     ]
   },
   {
+    "subject": "物料分类",
+    "predicate": "governedBy",
+    "object": "分类相近标准规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:ClassificationManagement:分类相近标准规则",
+        "source": "业务方说明",
+        "sentence": "物料分类受分类相近标准规则约束。"
+      }
+    ]
+  },
+  {
     "subject": "物料分类属性模板",
     "predicate": "governedBy",
     "object": "分类属性范围匹配规则",
@@ -1845,6 +1947,23 @@
   {
     "subject": "物料分类属性模板",
     "predicate": "governedBy",
+    "object": "核心技术属性判定规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:ClassificationAttributeRef:核心技术属性判定规则",
+        "source": "业务方说明",
+        "sentence": "物料分类属性模板受核心技术属性判定规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料分类属性模板",
+    "predicate": "governedBy",
     "object": "物料描述拼接规则",
     "subject_type": "Entity",
     "object_type": "BusinessRule",
@@ -1856,6 +1975,40 @@
         "doc": "governed:ClassificationAttributeRef:物料描述拼接规则",
         "source": "AddCodeApplyServiceImpl#generateDescriptions",
         "sentence": "物料分类属性模板受物料描述拼接规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "governedBy",
+    "object": "MPN相近替代判断规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AcAddCodeApplyAttr:MPN相近替代判断规则",
+        "source": "业务方说明",
+        "sentence": "物料基础属性受MPN相近替代判断规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "governedBy",
+    "object": "同MPN替代规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AcAddCodeApplyAttr:同MPN替代规则",
+        "source": "业务方说明",
+        "sentence": "物料基础属性受同MPN替代规则约束。"
       }
     ]
   },
@@ -1879,6 +2032,23 @@
   {
     "subject": "物料基础属性",
     "predicate": "governedBy",
+    "object": "替代料判断流程",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AcAddCodeApplyAttr:替代料判断流程",
+        "source": "业务方说明",
+        "sentence": "物料基础属性受替代料判断流程约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "governedBy",
     "object": "物料基础属性取值规则",
     "subject_type": "Entity",
     "object_type": "BusinessRule",
@@ -1890,6 +2060,23 @@
         "doc": "governed:AcAddCodeApplyAttr:物料基础属性取值规则",
         "source": "AddCodeApplyServiceImpl#createPublicAttributes",
         "sentence": "物料基础属性受物料基础属性取值规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料基础属性",
+    "predicate": "governedBy",
+    "object": "物料查重规则",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "governed:AcAddCodeApplyAttr:物料查重规则",
+        "source": "AddCodeApplyController#dupCheck",
+        "sentence": "物料基础属性受物料查重规则约束。"
       }
     ]
   },
@@ -1924,6 +2111,23 @@
         "doc": "governed:AttributeValue:属性值解析规则",
         "source": "ClassificationAttributeRefServiceImpl#getParsedValue",
         "sentence": "物料属性值库受属性值解析规则约束。"
+      }
+    ]
+  },
+  {
+    "subject": "物料私有属性",
+    "predicate": "governedBy",
+    "object": "替代料判断流程",
+    "subject_type": "Entity",
+    "object_type": "BusinessRule",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "governed:AcAddCodeApplyAttrp:替代料判断流程",
+        "source": "业务方说明",
+        "sentence": "物料私有属性受替代料判断流程约束。"
       }
     ]
   },
@@ -2075,7 +2279,7 @@
     "evidence": [
       {
         "doc": "support:制造商名称属性:替代料推荐",
-        "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+        "source": "业务方说明",
         "sentence": "制造商名称属性支持替代料推荐。"
       }
     ]
@@ -2092,8 +2296,76 @@
     "evidence": [
       {
         "doc": "support:制造商名称属性:物料精确查找",
-        "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase",
+        "source": "AddCodeApplyController#queryPageList (selectAttr)",
         "sentence": "制造商名称属性支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商零件编号属性",
+    "predicate": "supports",
+    "object": "替代料推荐",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:制造商零件编号属性:替代料推荐",
+        "source": "业务方说明",
+        "sentence": "制造商零件编号属性支持替代料推荐。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商零件编号属性",
+    "predicate": "supports",
+    "object": "物料相似查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:制造商零件编号属性:物料相似查找",
+        "source": "业务方说明",
+        "sentence": "制造商零件编号属性支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "制造商零件编号属性",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "support:制造商零件编号属性:物料精确查找",
+        "source": "AddCodeApplyController#queryPageList (selectAttr)",
+        "sentence": "制造商零件编号属性支持物料精确查找。"
+      }
+    ]
+  },
+  {
+    "subject": "图号属性",
+    "predicate": "supports",
+    "object": "物料精确查找",
+    "subject_type": "CommonAttribute",
+    "object_type": "Scenario",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "code",
+    "evidence": [
+      {
+        "doc": "support:图号属性:物料精确查找",
+        "source": "AddCodeApplyController#queryPageList (selectAttr)",
+        "sentence": "图号属性支持物料精确查找。"
       }
     ]
   },
@@ -2149,7 +2421,7 @@
     ]
   },
   {
-    "subject": "是否属于可比性属性",
+    "subject": "是否必填",
     "predicate": "supports",
     "object": "替代料推荐",
     "subject_type": "Field",
@@ -2159,14 +2431,14 @@
     "basis": "confirmed",
     "evidence": [
       {
-        "doc": "support:是否属于可比性属性:替代料推荐",
-        "source": "ClassificationAttributeRef.java",
-        "sentence": "是否属于可比性属性支持替代料推荐。"
+        "doc": "support:是否必填:替代料推荐",
+        "source": "业务方说明",
+        "sentence": "是否必填支持替代料推荐。"
       }
     ]
   },
   {
-    "subject": "是否属于可比性属性",
+    "subject": "是否必填",
     "predicate": "supports",
     "object": "物料相似查找",
     "subject_type": "Field",
@@ -2176,9 +2448,9 @@
     "basis": "confirmed",
     "evidence": [
       {
-        "doc": "support:是否属于可比性属性:物料相似查找",
-        "source": "ClassificationAttributeRef.java",
-        "sentence": "是否属于可比性属性支持物料相似查找。"
+        "doc": "support:是否必填:物料相似查找",
+        "source": "业务方说明",
+        "sentence": "是否必填支持物料相似查找。"
       }
     ]
   },
@@ -2468,6 +2740,40 @@
         "doc": "support:细分类属性:物料相似查找",
         "source": "AttributeValueServiceImpl#getSubdivisionDesc",
         "sentence": "细分类属性支持物料相似查找。"
+      }
+    ]
+  },
+  {
+    "subject": "专用客户属性",
+    "predicate": "hasValue",
+    "object": "专用客户-京瓷",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:专用客户",
+        "source": "业务方说明",
+        "sentence": "专用客户属性的枚举值包括专用客户-兰吉尔、专用客户-京瓷。"
+      }
+    ]
+  },
+  {
+    "subject": "专用客户属性",
+    "predicate": "hasValue",
+    "object": "专用客户-兰吉尔",
+    "subject_type": "CommonAttribute",
+    "object_type": "EnumValue",
+    "confidence": 0.9,
+    "via": [],
+    "basis": "confirmed",
+    "evidence": [
+      {
+        "doc": "enum:专用客户",
+        "source": "业务方说明",
+        "sentence": "专用客户属性的枚举值包括专用客户-兰吉尔、专用客户-京瓷。"
       }
     ]
   },

@@ -15,20 +15,22 @@
 
 ## 物料基础属性里的常用属性
 
-| 规范名 | attr_code | 说明 | 取自 | 出处 |
-|---|---|---|---|---|
-| 物料名称属性 | materialName | 物料的名称，创建时默认就是物料子类L4的名称。 | 物料子类L4 | AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes |
-| 物料简称属性 | materialAbbreviation | 物料的简称，创建时默认来自分类上的元器件物料简称。 | 元器件物料简称 | AddCodeApplyServiceImpl#createPublicAttributes |
-| 物料类型属性 | materialType | 物料类型，创建时默认来自所在号段的物料类型。 | 物料类型 | AddCodeApplyServiceImpl#createPublicAttributes |
-| 生命周期阶段属性 | lifeCyclePhase | 物料在业务上的物料状态，分为研发、测试、试产、批量、EOL、部分失效、采购失效、完全失效、完全停产。 |  | 业务方说明; AddCodeApplyController#checkLifeCyclePhase |
-| 优选标识属性 | preferredIdentification | 由采购维护，标记物料是否为某个BG的优选物料；被标记为优选的物料，研发设计BOM时会优先考虑。 |  | 业务方说明; AcAddCodeApplyAttrServiceImpl#batchUpdateMaterialAttributes |
-| 制造商AVL等级属性 | manufacturerAvlRating | 物料对应制造商的AVL等级，每天晚上定时根据采购维护的制造商等级更新；研发设计BOM时优先考虑主力、合格、试用的物料。 |  | 业务方说明; AddCodeApplyController#checkParam |
-| 专用客户属性 | notes | 该属性有值表示物料是某个客户的专用料，属性值就是指定的专用客户；属性值与客户名称、客户编码并不相等，但从字面上能看出是同一个客户。 |  | 业务方说明 |
-| 制造商名称属性 | manufacturersName | 物料对应的制造商名称。 |  | AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase |
-| 项目类型属性 | projectType | 物料所属项目的类型。 |  | AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase |
-| 品牌异常类型属性 | brandExceptionType | 品牌异常的类型；制造商AVL等级为考察、限制时必填，为主力、合格、试用时不能填写。 |  | AddCodeApplyController#checkParam |
-| 细分类属性 | subdivision | 物料的细分类，取值的描述存放在物料属性值库里。 |  | AttributeValueServiceImpl#getSubdivisionDesc |
-| 文档编号属性 | documentNumber | 物料关联的文档编号。 |  | AddCodeApplyServiceImpl#handleNeed |
+| 规范名 | attr_code | 核心 | 别名 | 说明 | 取自 | 出处 |
+|---|---|---|---|---|---|---|
+| 物料名称属性 | materialName | ★ |  | 物料的名称，创建时默认就是物料子类L4的名称，是查找物料时最直观的属性。 | 物料子类L4 | 业务方说明; AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes |
+| 物料简称属性 | materialAbbreviation |  |  | 物料的简称，创建时默认来自分类上的元器件物料简称。 | 元器件物料简称 | AddCodeApplyServiceImpl#createPublicAttributes |
+| 物料类型属性 | materialType |  |  | 物料类型，创建时默认来自所在号段的物料类型。 | 物料类型 | AddCodeApplyServiceImpl#createPublicAttributes |
+| 生命周期阶段属性 | lifeCyclePhase |  |  | 物料在业务上的物料状态，分为研发、测试、试产、批量、EOL、部分失效、采购失效、完全失效、完全停产。 |  | 业务方说明; AddCodeApplyController#checkLifeCyclePhase |
+| 优选标识属性 | preferredIdentification |  |  | 由采购维护，标记物料是否为某个BG的优选物料；被标记为优选的物料，研发设计BOM时会优先考虑。 |  | 业务方说明; AcAddCodeApplyAttrServiceImpl#batchUpdateMaterialAttributes |
+| 制造商AVL等级属性 | manufacturerAvlRating |  |  | 物料对应制造商的AVL等级，每天晚上定时根据采购维护的制造商等级更新；研发设计BOM时优先考虑主力、合格、试用的物料。 |  | 业务方说明; AddCodeApplyController#checkParam |
+| 专用客户属性 | notes |  |  | 该属性有值表示物料是某个客户的专用料，属性值保存的是客户编码：A001为兰吉尔，A002为京瓷，目前只有这两个客户。 |  | 业务方说明 |
+| 制造商零件编号属性 | manufacturerPartNumber | ★ | MPN、制造商零件编号 | 制造商零件编号，即MPN，是识别通用件的关键属性，与制造商名称一起用于查重和检索；标准件临时码只要求必填它。 |  | 业务方说明; AddCodeApplyController#dupCheck; ClassificationAttributeRefController (标准件临时码仅MPN必填) |
+| 制造商名称属性 | manufacturersName | ★ |  | 物料对应的制造商名称，与制造商零件编号或图号一起用于查重和检索。 |  | 业务方说明; AddCodeApplyController#dupCheck; AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase |
+| 图号属性 | mapNumber |  |  | 定制件的图号，定制件靠它加制造商名称识别同一物料。 |  | AddCodeApplyController#dupCheck |
+| 项目类型属性 | projectType |  |  | 物料所属项目的类型。 |  | AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase |
+| 品牌异常类型属性 | brandExceptionType |  |  | 品牌异常的类型；制造商AVL等级为考察、限制时必填，为主力、合格、试用时不能填写。 |  | AddCodeApplyController#checkParam |
+| 细分类属性 | subdivision |  |  | 物料的细分类，取值的描述存放在物料属性值库里。 |  | AttributeValueServiceImpl#getSubdivisionDesc |
+| 文档编号属性 | documentNumber |  |  | 物料关联的文档编号。 |  | AddCodeApplyServiceImpl#handleNeed |
 
 ## 枚举值
 
@@ -52,6 +54,8 @@
 | 优选标识属性 | 优选标识-优选A | 优选A | 采购标记为优选A的物料，研发设计BOM时会优先考虑。 | 海外家电BG |
 | 优选标识属性 | 优选标识-优选B | 优选B | 采购标记为优选B的物料，研发设计BOM时会优先考虑。 | 国内家电BG |
 | 优选标识属性 | 优选标识-优选1(汽电) | 优选1(汽电) | 采购标记为优选1(汽电)的物料，研发设计BOM时会优先考虑。 | 汽车电子BG |
+| 专用客户属性 | 专用客户-兰吉尔 | A001 | 客户兰吉尔的专用料，属性值保存客户编码A001。 |  |
+| 专用客户属性 | 专用客户-京瓷 | A002 | 客户京瓷的专用料，属性值保存客户编码A002。 |  |
 | 制造商AVL等级属性 | 制造商AVL等级-主力 | 主力 | 研发设计BOM时优先考虑。 |  |
 | 制造商AVL等级属性 | 制造商AVL等级-合格 | 合格 | 研发设计BOM时优先考虑。 |  |
 | 制造商AVL等级属性 | 制造商AVL等级-试用 | 试用 | 研发设计BOM时优先考虑。 |  |
@@ -66,7 +70,13 @@
 | 物料升级规则 | 物料升级时会新建一条物料主数据，物料编码保持不变；新建的升级记录审批通过后，申请状态改为2，原来申请状态为2的记录改为5即历史版本，因此同一物料编码始终只有一条有效记录。 | 业务方确认 | 业务方说明 |
 | 物料状态口径规则 | 物料在业务上的物料状态以生命周期阶段属性为准。 | 业务方确认 | 业务方说明 |
 | 物料编码BG前缀规则 | 汽车电子BG的物料编码以2开头，其他BG的物料编码以1开头；汽车电子BG的物料，其是否汽车电子为是。 | 业务方确认 | 业务方说明 |
-| 客户专用料规则 | 专用客户属性有值的物料是客户专用料。属性值与客户名称、客户编码并不相等，但从字面上能看出是哪个客户，目前可选的客户只有两个。研发查找物料时可以过滤掉客户专用料。 | 业务方确认 | 业务方说明 |
+| 物料查重规则 | 新增物料前要查重：通用件按制造商零件编号属性加制造商名称属性查重，定制件按图号属性加制造商名称属性查重；查重时排除当前记录、升级前的历史版本，以及LOA标识为是的物料。 | 源码 | AddCodeApplyController#dupCheck |
+| 同MPN替代规则 | 制造商零件编号属性相同但制造商名称属性不同的物料，算替代料。 | 业务方确认 | 业务方说明 |
+| 替代料判断流程 | 判断两个制造商零件编号属性对应的物料是否互为替代料：先由制造商零件编号属性找到所在的物料主数据，再由物料主数据的L4分类找到对应的物料分类属性模板，进而找到该分类下的物料私有属性，比较两个物料的核心技术属性（物料私有属性中，物料分类属性模板的是否必填为X的属性）是否相近，相近的标准因分类而异，相近则互为替代料。 | 业务方确认 | 业务方说明 |
+| 核心技术属性判定规则 | 物料私有属性中，物料分类属性模板的是否必填为X的属性，是核心技术属性；公有属性不算核心技术属性。 | 业务方确认 | 业务方说明 |
+| 分类相近标准规则 | 物料相近的标准因分类而异，没有统一标准，核心技术属性取值的单位一般是统一的，按绝对差比较。L1分类为28（包材）的物料，核心技术属性里凡是长、宽、高这类尺寸数值属性，该分类有哪些就比较哪些，取值之差都在正负5以内才表示相近，可以互为替代料或相似料；不是每个包材分类都有长、宽、高。哪些属性算尺寸类，目前先按属性名称判断。 | 业务方确认 | 业务方说明 |
+| MPN相近替代判断规则 | 制造商零件编号属性的前缀或系列号相同，不能单独判断是否算替代料，要结合L4分类和物料私有属性一起判断。 | 业务方确认 | 业务方说明 |
+| 客户专用料规则 | 专用客户属性有值的物料是客户专用料，属性值保存的是客户编码（A001对应兰吉尔，A002对应京瓷），目前只有这两个客户。研发查找物料时可以过滤掉客户专用料。 | 业务方确认 | 业务方说明 |
 | 分类代码层级规则 | L4分类代码的前两位就是L1分类代码；物料主数据的L1分类、L2分类、L3分类、L4分类，分别对应物料分类里的L1分类代码、L2分类代码、L3分类代码、L4分类代码。 | 源码 | ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict |
 | 分类属性范围匹配规则 | 物料分类属性模板与物料属性值库的L4分类代码有三种写法：具体的L4分类代码、L1分类代码，以及形如起始-终止的L1分类范围。按L4分类代码查询时，命中任意一种写法的记录都会返回，并按排序和物料短描述顺序排列。 | 源码 | ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode |
 | 属性值解析规则 | 解析分类属性时，属性类型为single、multiple、list或multList的属性，要到物料属性值库里查询可选值；其他类型的属性可选值为空。 | 源码 | ClassificationAttributeRefServiceImpl#getParsedValue |

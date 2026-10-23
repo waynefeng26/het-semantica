@@ -453,7 +453,8 @@ def write_glossary(out_dir: Path, model: DomainModel) -> None:
             "confirmed_by_user": True,  # 前三项业务方直接给出，其余五项“同理”推出后已确认
         })
     attrs = [
-        {"canonical": a.label, "attr_code": a.code, "desc": a.desc, "derives_from": a.derives_from, "source": a.source}
+        {"canonical": a.label, "attr_code": a.code, "desc": a.desc, "derives_from": a.derives_from, "source": a.source,
+         "aliases": a.aliases, "core": a.label in lx.CORE_ATTRS}
         for a in lx.COMMON_ATTRS
     ]
     rules = [{"name": r.name, "text": r.text, "source": r.source, "basis": r.basis} for r in lx.RULES]
@@ -472,9 +473,12 @@ def write_glossary(out_dir: Path, model: DomainModel) -> None:
     for r in rows:
         src = "业务方确认" if r["confirmed_by_user"] else "待确认"
         L.append(f"| {r['canonical']} | {r['tech_name']} | {r['java_class']} | {r['table']} | {'、'.join(r['aliases'])} | {r['business_desc']} | {src} |")
-    L += ["\n## 物料基础属性里的常用属性\n", "| 规范名 | attr_code | 说明 | 取自 | 出处 |", "|---|---|---|---|---|"]
+    L += ["\n## 物料基础属性里的常用属性\n", "| 规范名 | attr_code | 核心 | 别名 | 说明 | 取自 | 出处 |", "|---|---|---|---|---|---|---|"]
     for a in attrs:
-        L.append(f"| {a['canonical']} | {a['attr_code']} | {a['desc']} | {a['derives_from'] or ''} | {a['source']} |")
+        L.append(
+            f"| {a['canonical']} | {a['attr_code']} | {'★' if a['core'] else ''} | {'、'.join(a['aliases'])} "
+            f"| {a['desc']} | {a['derives_from'] or ''} | {a['source']} |"
+        )
     L += ["\n## 枚举值\n", "| 所属 | 节点名 | 编码 | 说明 | 优选所属BG |", "|---|---|---|---|---|"]
     for en in enums:
         L.append(f"| {en['owner']} | {en['value']} | {en['code']} | {en['desc']} | {en['bg'] or ''} |")

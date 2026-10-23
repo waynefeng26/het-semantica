@@ -189,6 +189,8 @@ def build_domain_model(scan: ScanResult) -> DomainModel:
     for a in lx.COMMON_ATTRS:
         gaz.add(a.label, a.label, "CommonAttribute", a.source)
         gaz.add(a.code, a.label, "CommonAttribute", a.source)
+        for alias in a.aliases:
+            gaz.add(alias, a.label, "CommonAttribute", a.source)
     for g in lx.ENUM_GROUPS:
         if gaz.lookup(g.owner) is None:
             raise ValueError(f"枚举所属 {g.owner!r} 不在实体表里")

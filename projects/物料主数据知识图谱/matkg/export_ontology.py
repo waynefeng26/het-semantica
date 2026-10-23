@@ -5,6 +5,7 @@
 * 类（TBox）：lexicon.CONCEPTS
 * 对象属性：lexicon.PREDICATES（domain / range 多于一个类时用 ``owl:unionOf``）
 * 个体（ABox）：语义网络里的节点（实体、字段、常用属性、枚举值、规则、场景 …）
+* 推理路径：场景下沿图谱走的边（JSON 里是结构化的 ``reasoning_paths``，Turtle 里是场景个体的 ``skos:scopeNote``）
 * 三元组：每条三元组直接写成 ``个体 属性 个体``；依据（confirmed / code / analysis）、
   关联字段、出处用 ``owl:Axiom`` 标注在三元组上（Turtle），JSON 里则直接挂在三元组上。
 
@@ -54,6 +55,7 @@ PREDICATE_DESC = {
     "partOf": "业务实体从属于另一个业务实体（关联字段见三元组标注 via）。",
     "usesDictionary": "字段使用的数据字典。",
     "includesAttribute": "物料基础属性包含的常用属性。",
+    "hasCoreAttribute": "物料基础属性的核心属性（业务方特别强调：识别、查找物料最重要的属性）。",
     "derivesFrom": "常用属性的默认取值来源字段。",
     "governedBy": "业务实体受业务规则约束。",
     "supports": "实体 / 字段 / 常用属性支持某个应用场景。",
@@ -141,10 +143,12 @@ def build_ontology(
             a = attrs[label]
             props_ = {"attrCode": a.code}
             comment = a.desc
+            aliases = [a.code, *a.aliases]
         elif typ == "EnumValue":
             g, v = enums[label]
             props_ = {"enumCode": v.code}
             comment = v.desc
+            aliases = list(v.alt)
         elif typ == "BusinessRule":
             r = rules[label]
             props_ = {"ruleSource": r.source}
@@ -179,6 +183,22 @@ def build_ontology(
             "basis": "analysis", "via": e.get("via") or [], "source": "semantic_analysis（语义画像余弦 / 关键字段 Jaccard）",
         })
 
+    # ---- 推理路径：每一步都必须是已有三元组 ----
+    by_key = {(t["subject"], t["predicate"], t["object"]): t for t in triples}
+    paths: List[Dict[str, Any]] = []
+    for pd in lx.SCENARIO_PATHS:
+        steps = []
+        for s_, p_, o_ in pd.steps:
+            t = by_key.get((s_, p_, o_))
+            if t is None:
+                raise ValueError(f"推理路径 {pd.name!r} 的步骤 {s_} {p_} {o_} 不在三元组里")
+            steps.append({"subject": s_, "predicate": p_, "object": o_,
+                          "subject_iri": t["subject_iri"], "object_iri": t["object_iri"]})
+        paths.append({
+            "scenario": pd.scenario, "scenario_iri": id_of[("Scenario", pd.scenario)], "name": pd.name,
+            "description": pd.description, "basis": pd.basis, "steps": steps,
+        })
+
     return {
         "ontology": {
             "uri": BASE.rstrip("#"), "namespace": BASE, "name": NAME, "version": VERSION, "description": DESCRIPTION,
@@ -191,6 +211,19 @@ def build_ontology(
         "data_properties": data_props,
         "individuals": individuals,
         "triples": triples,
+        "reasoning_paths": paths,
+        "similarity_criteria": {
+            "note": "相近没有统一标准，各分类不同；未列出的分类暂无标准。规则按“分类范围 + 属性类别”配置，不逐个属性写死。",
+            "items": [
+                {"scope": {"level": c.scope_level, "code": c.scope_code, "name": c.scope_name},
+                 "kind": c.kind, "tolerance": c.tolerance, "applies_to": c.applies_to, "examples": c.examples,
+                 "identify_by": c.identify_by, "name_hints": c.name_hints,
+                 "combine": c.combine, "unit_note": c.unit_note, "meaning": c.meaning, "source": c.source,
+                 "note": "只比较该分类核心技术属性里属于 applies_to 的属性，分类没有的属性不参与比较；"
+                         "目前按属性名称判断（identify_by=attribute_name，name_hints 为参考词，可增补），examples 不是穷举"}
+                for c in lx.SIMILARITY_CRITERIA
+            ],
+        },
     }
 
 
@@ -252,6 +285,21 @@ def to_graph(onto: Dict[str, Any]) -> Graph:
             g.add((u, SKOS.altLabel, Literal(alt, lang="zh")))
         for k, v in i["properties"].items():
             g.add((u, MK[k], Literal(v)))
+
+    for path in onto["reasoning_paths"]:  # TTL 里用 skos:scopeNote 记录路径（结构化版本见 JSON）
+        chain = "；".join(f"{s['subject']} -{s['predicate']}-> {s['object']}" for s in path["steps"])
+        g.add((URIRef(path["scenario_iri"]), SKOS.scopeNote,
+               Literal(f"{path['name']}：{path['description']}路径：{chain}", lang="zh")))
+
+    crit = "；".join(
+        f"{c['scope']['level']}分类={c['scope']['code']}（{c['scope']['name']}）：核心技术属性里的{c['applies_to']}"
+        f"（如{'、'.join(c['examples'])}，按属性名称判断，分类有哪些就比较哪些）"
+        f"{'每一项' if c['combine'] == 'all' else '任一项'}的取值之差（绝对值，{c['unit_note']}）在±{c['tolerance']:g}以内表示{c['meaning']}"
+        for c in onto["similarity_criteria"]["items"]
+    )
+    for iri in {i["iri"] for i in onto["individuals"] if i["type"] == "Scenario" and i["label"] in ("物料相似查找", "替代料推荐")}:
+        g.add((URIRef(iri), SKOS.scopeNote,
+               Literal(f"相近标准因分类而异，没有统一标准。{crit}；其他分类暂无标准。", lang="zh")))
 
     for t in onto["triples"]:
         s, p, o = URIRef(t["subject_iri"]), MK[t["predicate"]], URIRef(t["object_iri"])

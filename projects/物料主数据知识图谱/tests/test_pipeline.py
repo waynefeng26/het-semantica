@@ -110,6 +110,35 @@ def test_business_rules_confirmed(triplets):
     assert _has(triplets, "是否汽车电子", "indicatesBG", "汽车电子BG")
 
 
+def test_core_attributes_and_customers(triplets):
+    for a in ("物料名称属性", "制造商零件编号属性", "制造商名称属性"):
+        assert _has(triplets, "物料基础属性", "hasCoreAttribute", a)
+    assert sum(1 for t in triplets if t["predicate"] == "hasCoreAttribute") == len(lx.CORE_ATTRS)
+    assert _has(triplets, "专用客户属性", "hasValue", "专用客户-兰吉尔")
+    assert _has(triplets, "专用客户属性", "hasValue", "专用客户-京瓷")
+    assert _has(triplets, "物料主数据", "governedBy", "物料查重规则")
+    assert _has(triplets, "制造商零件编号属性", "supports", "物料精确查找")
+    assert _has(triplets, "制造商零件编号属性", "supports", "物料相似查找")
+    assert _has(triplets, "制造商零件编号属性", "supports", "替代料推荐")
+    assert _has(triplets, "物料基础属性", "governedBy", "同MPN替代规则")
+    assert _has(triplets, "物料基础属性", "governedBy", "MPN相近替代判断规则")
+    assert _has(triplets, "物料私有属性", "governedBy", "替代料判断流程")
+    assert _has(triplets, "物料分类属性模板", "governedBy", "核心技术属性判定规则")
+    assert _has(triplets, "物料分类", "governedBy", "分类相近标准规则")
+    assert _has(triplets, "是否必填", "supports", "替代料推荐")
+    c = lx.SIMILARITY_CRITERIA[0]
+    assert (c.scope_level, c.scope_code, c.tolerance, c.combine) == ("L1", "28", 5, "all")
+    assert "长" in c.examples and c.applies_to == "尺寸类的数值属性"  # 不逐个属性写死
+    assert c.identify_by == "attribute_name" and "直径" in c.name_hints
+    assert not any("可比性" in t["subject"] or "可比性" in t["object"] for t in triplets)  # 该字段已忽略
+
+
+def test_reasoning_paths_follow_existing_triplets(triplets):
+    for pd in lx.SCENARIO_PATHS:
+        for s, p, o in pd.steps:
+            assert _has(triplets, s, p, o), (pd.name, s, p, o)
+
+
 def test_material_status_field_dropped(ctx):
     assert "物料状态" not in {t.surface for t in ctx.model.gazetteer.terms() if t.label == "Field"}
 
@@ -188,6 +217,7 @@ def test_export_ontology(ctx, triplets, tmp_path):
 
     g = Graph().parse(str(tmp_path / "ontology.ttl"), format="turtle")
     assert len(g) == stats["rdf_statements"]
+    assert len(onto["reasoning_paths"]) == len(lx.SCENARIO_PATHS)
     assert len(list(g.subjects(RDF.type, OWL.Class))) >= len(lx.CONCEPTS)
     # 每条三元组都能在 RDF 里找到，并带依据标注
     for t in onto["triples"]:
