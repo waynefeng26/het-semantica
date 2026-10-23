@@ -1,4 +1,4 @@
-# 物料主数据知识图谱
+﻿# 物料主数据知识图谱
 
 基于 [Semantica](../../../semantica) 对 `het-main/.../modules/addcode` 中 8 个核心实体做语义抽取。
 
@@ -12,11 +12,11 @@
 | 物料主数据 | `AddCodeApply`（加码申请表） | `ac_add_code_apply` | 业务方确认 |
 | 物料基础属性 | `AcAddCodeApplyAttr` | `ac_add_code_apply_attr` | 业务方确认 |
 | 物料私有属性（物料技术属性） | `AcAddCodeApplyAttrp` | `ac_add_code_apply_attrp` | 业务方确认 |
-| 物料分类 | `ClassificationManagement` | `ac_classification_management` | “同理”推出，待确认 |
-| 物料属性定义 | `AttributeManagement` | `ac_attribute_management` | 待确认 |
-| 物料分类属性模板 | `ClassificationAttributeRef` | `ac_classification_attribute_ref` | 待确认 |
-| 物料属性值库 | `AttributeValue` | `ac_attribute_value` | 待确认 |
-| 物料编码号段 | `CodeRange` | `ac_code_range` | 待确认 |
+| 物料分类 | `ClassificationManagement` | `ac_classification_management` | 业务方确认 |
+| 物料属性定义 | `AttributeManagement` | `ac_attribute_management` | 业务方确认 |
+| 物料分类属性模板 | `ClassificationAttributeRef` | `ac_classification_attribute_ref` | 业务方确认 |
+| 物料属性值库 | `AttributeValue` | `ac_attribute_value` | 业务方确认 |
+| 物料编码号段 | `CodeRange` | `ac_code_range` | 业务方确认 |
 
 ## 本体
 
@@ -45,11 +45,11 @@
 
 ## 待确认
 
-`output/to_confirm.md` 汇总了所有“推断”出来的支撑关系、实体关系和按“同理”推出的业务名，可直接在表里填 是 / 否。
+目前没有待确认项（`output/to_confirm.md` 会列出所有仍为“推断”的内容）。
 
 已移除：Service / Operation 概念，以及 `manages`、`dependsOn`、`providesOperation`、`reads`、`writes`、`matchesBy`、`generates`。
 
-当前已完成：**三元组抽取 → 语义分析 → 语义网络抽取**。LLM 增强、校验、导出：待确认后再做。
+当前已完成：**三元组抽取 → 语义分析 → 语义网络抽取**。本体导出（`matkg/export_ontology.py`）已完成；LLM 增强、入图校验的接入：待确认后再做。
 
 ## 运行
 
@@ -66,7 +66,7 @@ python -m pytest tests -q
 - `matkg/corpus.py`        把源码事实写成中文叙述语料
 - `matkg/zh_extract.py`    Semantica 中文适配（实体 / 关系 / 三元组方法注册，角色、相似度、聚类）
 - `matkg/pipeline.py`      三个阶段与结果输出
-- `output/`                `glossary.{json,md}`、`corpus.{json,md}`、`triplets.{json,md}`、`semantic_analysis.{json,md}`、`semantic_network.{json,md}`
+- `output/`                `glossary.{json,md}`、`corpus.{json,md}`、`triplets.{json,md}`、`semantic_analysis.{json,md}`、`semantic_network.{json,md}`、`ontology.{ttl,json}`（本体导出）
 
 ## 说明
 

@@ -85,7 +85,7 @@
 | 物料主数据 | 物料分类 | L1分类、L2分类、L3分类、L4分类 | 源码 | AddCodeApply.java @Dict(dictTable=ac_classification_management) |
 | 物料主数据 | 物料编码号段 | L4分类 | 源码 | CodeRangeServiceImpl#getCodeAndCommit (four_code = classifyL4 或 classifyL1+010101) |
 | 物料分类属性模板 | 物料分类 | L4分类代码 | 源码 | ClassificationAttributeRefController#queryById (classificationManagementService.queryByFourCode) |
-| 物料分类属性模板 | 物料属性定义 | 属性代码 | 推断（待确认） | ClassificationAttributeRef.attributeCode 与 AttributeManagement.attributeCode 同名同义（未见显式 JOIN） |
+| 物料分类属性模板 | 物料属性定义 | 属性代码 | 业务方确认 | ClassificationAttributeRef.attributeCode 与 AttributeManagement.attributeCode 同名同义（未见显式 JOIN） |
 | 物料基础属性 | 物料分类属性模板 | 属性代码 | 源码 | AddCodeApplyServiceImpl#buildAttrList (attr.setAttrCode(ref.getAttributeCode())) |
 | 物料属性值库 | 物料分类属性模板 | L4分类代码、属性代码 | 源码 | ClassificationAttributeRefServiceImpl#getParsedValue (queryRangeByFourCode(ref.fourCode, ref.attributeCode)) |
 | 物料属性值库 | 物料属性定义 | 属性代码 | 源码 | AttributeValueServiceImpl#getSubdivisionDesc (attribute_code 过滤) |

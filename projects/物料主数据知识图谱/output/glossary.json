@@ -55,7 +55,7 @@
         "物料分类维护"
       ],
       "business_desc": "即分类维护，业务上是物料分类体系，分为L1至L4四级，L4是最末级分类。",
-      "confirmed_by_user": false
+      "confirmed_by_user": true
     },
     {
       "canonical": "物料属性定义",
@@ -67,7 +67,7 @@
         "AttributeManagement"
       ],
       "business_desc": "即属性维护，业务上是物料属性的定义清单，每个属性有属性代码和属性名称。",
-      "confirmed_by_user": false
+      "confirmed_by_user": true
     },
     {
       "canonical": "物料分类属性模板",
@@ -81,7 +81,7 @@
         "属性模板"
       ],
       "business_desc": "即分类属性维护，业务上是物料分类属性模板，规定某个分类下有哪些属性、公有还是私有、必填与否、描述拼接顺序。",
-      "confirmed_by_user": false
+      "confirmed_by_user": true
     },
     {
       "canonical": "物料属性值库",
@@ -93,7 +93,7 @@
         "AttributeValue"
       ],
       "business_desc": "即属性值库维护，业务上是物料属性值库，保存单选、多选类属性的可选值及其描述。",
-      "confirmed_by_user": false
+      "confirmed_by_user": true
     },
     {
       "canonical": "物料编码号段",
@@ -106,7 +106,7 @@
         "编码号段"
       ],
       "business_desc": "即编码范围，业务上是物料编码号段，按L4分类划分起止号段并记录当前最大编码，用于顺序分配物料编码。",
-      "confirmed_by_user": false
+      "confirmed_by_user": true
     }
   ],
   "common_attributes": [

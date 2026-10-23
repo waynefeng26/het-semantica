@@ -1174,7 +1174,7 @@
     "via": [
       "属性代码"
     ],
-    "basis": "inferred",
+    "basis": "confirmed",
     "evidence": [
       {
         "doc": "relation:ClassificationAttributeRef-refersTo-AttributeManagement",

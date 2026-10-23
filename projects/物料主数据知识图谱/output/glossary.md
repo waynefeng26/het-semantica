@@ -7,11 +7,11 @@
 | 物料主数据 | 加码申请 | AddCodeApply | ac_add_code_apply | 加码申请、AddCodeApply、加码申请表、物料主数据表 | 即加码申请表，业务上是物料主数据表，一行对应一个物料，记录物料编码、L1至L4分类、物料描述和申请状态。 | 业务方确认 |
 | 物料基础属性 | 加码申请基础属性 | AcAddCodeApplyAttr | ac_add_code_apply_attr | 加码申请基础属性、AcAddCodeApplyAttr、基础属性、公有属性、物料公有属性 | 即加码申请基础属性，业务上是物料基础属性，也叫公有属性，是同一分类下物料共有的属性取值。 | 业务方确认 |
 | 物料私有属性 | 加码申请私有属性 | AcAddCodeApplyAttrp | ac_add_code_apply_attrp | 加码申请私有属性、AcAddCodeApplyAttrp、私有属性、物料技术属性、技术属性 | 即加码申请私有属性，业务上是物料私有属性，也叫物料技术属性，是各分类自己特有的技术参数取值。 | 业务方确认 |
-| 物料分类 | 分类维护 | ClassificationManagement | ac_classification_management | 分类维护、ClassificationManagement、物料分类维护 | 即分类维护，业务上是物料分类体系，分为L1至L4四级，L4是最末级分类。 | 按“同理”推出，待确认 |
-| 物料属性定义 | 属性维护 | AttributeManagement | ac_attribute_management | 属性维护、AttributeManagement | 即属性维护，业务上是物料属性的定义清单，每个属性有属性代码和属性名称。 | 按“同理”推出，待确认 |
-| 物料分类属性模板 | 分类属性维护 | ClassificationAttributeRef | ac_classification_attribute_ref | 分类属性维护、ClassificationAttributeRef、分类属性模板、属性模板 | 即分类属性维护，业务上是物料分类属性模板，规定某个分类下有哪些属性、公有还是私有、必填与否、描述拼接顺序。 | 按“同理”推出，待确认 |
-| 物料属性值库 | 属性值库维护 | AttributeValue | ac_attribute_value | 属性值库维护、AttributeValue | 即属性值库维护，业务上是物料属性值库，保存单选、多选类属性的可选值及其描述。 | 按“同理”推出，待确认 |
-| 物料编码号段 | 编码范围 | CodeRange | ac_code_range | 编码范围、CodeRange、编码号段 | 即编码范围，业务上是物料编码号段，按L4分类划分起止号段并记录当前最大编码，用于顺序分配物料编码。 | 按“同理”推出，待确认 |
+| 物料分类 | 分类维护 | ClassificationManagement | ac_classification_management | 分类维护、ClassificationManagement、物料分类维护 | 即分类维护，业务上是物料分类体系，分为L1至L4四级，L4是最末级分类。 | 业务方确认 |
+| 物料属性定义 | 属性维护 | AttributeManagement | ac_attribute_management | 属性维护、AttributeManagement | 即属性维护，业务上是物料属性的定义清单，每个属性有属性代码和属性名称。 | 业务方确认 |
+| 物料分类属性模板 | 分类属性维护 | ClassificationAttributeRef | ac_classification_attribute_ref | 分类属性维护、ClassificationAttributeRef、分类属性模板、属性模板 | 即分类属性维护，业务上是物料分类属性模板，规定某个分类下有哪些属性、公有还是私有、必填与否、描述拼接顺序。 | 业务方确认 |
+| 物料属性值库 | 属性值库维护 | AttributeValue | ac_attribute_value | 属性值库维护、AttributeValue | 即属性值库维护，业务上是物料属性值库，保存单选、多选类属性的可选值及其描述。 | 业务方确认 |
+| 物料编码号段 | 编码范围 | CodeRange | ac_code_range | 编码范围、CodeRange、编码号段 | 即编码范围，业务上是物料编码号段，按L4分类划分起止号段并记录当前最大编码，用于顺序分配物料编码。 | 业务方确认 |
 
 ## 物料基础属性里的常用属性
 

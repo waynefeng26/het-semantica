@@ -1,0 +1,3774 @@
+{
+  "ontology": {
+    "uri": "http://het.com/ontology/material-master",
+    "namespace": "http://het.com/ontology/material-master#",
+    "name": "物料主数据知识图谱本体",
+    "version": "1.0",
+    "description": "和而泰物料主数据本体：描述物料主数据、基础属性、私有属性、分类、属性定义、分类属性模板、属性值库、编码号段之间的结构，以及常用属性、枚举值、业务规则和应用场景（物料精确查找、物料相似查找、替代料推荐）。",
+    "basis_values": {
+      "confirmed": "业务方确认",
+      "code": "源码有直接证据",
+      "analysis": "语义分析推断"
+    }
+  },
+  "classes": [
+    {
+      "name": "Entity",
+      "label": "业务实体",
+      "comment": "物料主数据体系里的业务实体（对应一个 Java 实体 / 一张表）。"
+    },
+    {
+      "name": "DataTable",
+      "label": "数据表",
+      "comment": "数据库表。"
+    },
+    {
+      "name": "Field",
+      "label": "字段",
+      "comment": "业务实体的字段。"
+    },
+    {
+      "name": "Dictionary",
+      "label": "数据字典",
+      "comment": "字段使用的数据字典。"
+    },
+    {
+      "name": "CommonAttribute",
+      "label": "常用属性",
+      "comment": "物料基础属性里常用的属性（以 attr_code 区分）。"
+    },
+    {
+      "name": "BusinessRule",
+      "label": "业务规则",
+      "comment": "影响数据存储与查找的业务规则。"
+    },
+    {
+      "name": "Scenario",
+      "label": "应用场景",
+      "comment": "图谱服务的应用场景。"
+    },
+    {
+      "name": "EnumValue",
+      "label": "枚举值",
+      "comment": "字段或属性的枚举取值。"
+    },
+    {
+      "name": "BusinessGroup",
+      "label": "业务群(BG)",
+      "comment": "业务群（BG）。"
+    }
+  ],
+  "object_properties": [
+    {
+      "name": "mapsToTable",
+      "label": "映射到数据表",
+      "comment": "业务实体对应的数据表。",
+      "domain": [
+        "Entity"
+      ],
+      "range": [
+        "DataTable"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "hasKeyField",
+      "label": "包含关键字段",
+      "comment": "业务实体的关键字段。",
+      "domain": [
+        "Entity"
+      ],
+      "range": [
+        "Field"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "refersTo",
+      "label": "引用",
+      "comment": "业务实体引用另一个业务实体（关联字段见三元组标注 via）。",
+      "domain": [
+        "Entity"
+      ],
+      "range": [
+        "Entity"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "partOf",
+      "label": "属于",
+      "comment": "业务实体从属于另一个业务实体（关联字段见三元组标注 via）。",
+      "domain": [
+        "Entity"
+      ],
+      "range": [
+        "Entity"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "usesDictionary",
+      "label": "使用字典",
+      "comment": "字段使用的数据字典。",
+      "domain": [
+        "Field"
+      ],
+      "range": [
+        "Dictionary"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "includesAttribute",
+      "label": "包含常用属性",
+      "comment": "物料基础属性包含的常用属性。",
+      "domain": [
+        "Entity"
+      ],
+      "range": [
+        "CommonAttribute"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "derivesFrom",
+      "label": "取自",
+      "comment": "常用属性的默认取值来源字段。",
+      "domain": [
+        "CommonAttribute"
+      ],
+      "range": [
+        "Field"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "governedBy",
+      "label": "受规则约束",
+      "comment": "业务实体受业务规则约束。",
+      "domain": [
+        "Entity"
+      ],
+      "range": [
+        "BusinessRule"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "supports",
+      "label": "支持场景",
+      "comment": "实体 / 字段 / 常用属性支持某个应用场景。",
+      "domain": [
+        "CommonAttribute",
+        "Entity",
+        "Field"
+      ],
+      "range": [
+        "Scenario"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "hasValue",
+      "label": "枚举值",
+      "comment": "字段或常用属性的枚举取值。",
+      "domain": [
+        "CommonAttribute",
+        "Field"
+      ],
+      "range": [
+        "EnumValue"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "preferredFor",
+      "label": "标识优选物料所属BG",
+      "comment": "优选标识的枚举值标明哪个 BG 的优选物料。",
+      "domain": [
+        "EnumValue"
+      ],
+      "range": [
+        "BusinessGroup"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "indicatesBG",
+      "label": "标明所属BG",
+      "comment": "字段标明物料所属的 BG。",
+      "domain": [
+        "Field"
+      ],
+      "range": [
+        "BusinessGroup"
+      ],
+      "symmetric": false
+    },
+    {
+      "name": "similarTo",
+      "label": "语义相近",
+      "comment": "语义相近（由语义分析推断，对称）。",
+      "domain": [
+        "Entity"
+      ],
+      "range": [
+        "Entity"
+      ],
+      "symmetric": true
+    }
+  ],
+  "data_properties": [
+    {
+      "name": "javaClass",
+      "label": "Java 类名",
+      "domain": [
+        "Entity"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "techName",
+      "label": "源码 / 技术侧叫法",
+      "domain": [
+        "Entity"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "tableName",
+      "label": "数据表名",
+      "domain": [
+        "Entity"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "javaField",
+      "label": "Java 字段名",
+      "domain": [
+        "Field"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "ownerEntity",
+      "label": "所属业务实体",
+      "domain": [
+        "Field"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "dictCode",
+      "label": "字典编码",
+      "domain": [
+        "Dictionary"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "attrCode",
+      "label": "属性代码（attr_code）",
+      "domain": [
+        "CommonAttribute"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "enumCode",
+      "label": "枚举编码",
+      "domain": [
+        "EnumValue"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "name": "ruleSource",
+      "label": "规则出处",
+      "domain": [
+        "BusinessRule"
+      ],
+      "range": "xsd:string"
+    }
+  ],
+  "individuals": [
+    {
+      "id": "BusinessGroup:国内家电BG",
+      "iri": "http://het.com/ontology/material-master#BusinessGroup_国内家电BG",
+      "type": "BusinessGroup",
+      "label": "国内家电BG",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "BusinessGroup:汽车电子BG",
+      "iri": "http://het.com/ontology/material-master#BusinessGroup_汽车电子BG",
+      "type": "BusinessGroup",
+      "label": "汽车电子BG",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "BusinessGroup:海外家电BG",
+      "iri": "http://het.com/ontology/material-master#BusinessGroup_海外家电BG",
+      "type": "BusinessGroup",
+      "label": "海外家电BG",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "BusinessRule:分类代码层级规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_分类代码层级规则",
+      "type": "BusinessRule",
+      "label": "分类代码层级规则",
+      "comment": "L4分类代码的前两位就是L1分类代码；物料主数据的L1分类、L2分类、L3分类、L4分类，分别对应物料分类里的L1分类代码、L2分类代码、L3分类代码、L4分类代码。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict"
+      }
+    },
+    {
+      "id": "BusinessRule:分类属性范围匹配规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_分类属性范围匹配规则",
+      "type": "BusinessRule",
+      "label": "分类属性范围匹配规则",
+      "comment": "物料分类属性模板与物料属性值库的L4分类代码有三种写法：具体的L4分类代码、L1分类代码，以及形如起始-终止的L1分类范围。按L4分类代码查询时，命中任意一种写法的记录都会返回，并按排序和物料短描述顺序排列。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode"
+      }
+    },
+    {
+      "id": "BusinessRule:客户专用料规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_客户专用料规则",
+      "type": "BusinessRule",
+      "label": "客户专用料规则",
+      "comment": "专用客户属性有值的物料是客户专用料。属性值与客户名称、客户编码并不相等，但从字面上能看出是哪个客户，目前可选的客户只有两个。研发查找物料时可以过滤掉客户专用料。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "业务方说明"
+      }
+    },
+    {
+      "id": "BusinessRule:属性值解析规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_属性值解析规则",
+      "type": "BusinessRule",
+      "label": "属性值解析规则",
+      "comment": "解析分类属性时，属性类型为single、multiple、list或multList的属性，要到物料属性值库里查询可选值；其他类型的属性可选值为空。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "ClassificationAttributeRefServiceImpl#getParsedValue"
+      }
+    },
+    {
+      "id": "BusinessRule:旧物料编码校验规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_旧物料编码校验规则",
+      "type": "BusinessRule",
+      "label": "旧物料编码校验规则",
+      "comment": "物料沿用旧物料编码时，旧物料编码必须是11位数字，不能与已有物料编码重复，且前4位必须与新生成编码的前4位一致。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "CodeRangeServiceImpl#getCodeAndCommit"
+      }
+    },
+    {
+      "id": "BusinessRule:有效物料判定规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_有效物料判定规则",
+      "type": "BusinessRule",
+      "label": "有效物料判定规则",
+      "comment": "物料主数据的申请状态表示申请审批状态，申请状态为2即审批完成的记录才是有效物料。同一个物料编码，申请状态为2的记录只有一条，进入图数据库的物料主数据只取申请状态为2的记录。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "业务方说明"
+      }
+    },
+    {
+      "id": "BusinessRule:汽车电子号段规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_汽车电子号段规则",
+      "type": "BusinessRule",
+      "label": "汽车电子号段规则",
+      "comment": "汽车电子物料（即汽车电子BG的物料）使用汽车电子编码起始、汽车电子编码终止和汽车电子当前最大编码三个号段字段，其他物料使用普通的编码起始、编码终止和当前最大编码。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "CodeRangeServiceImpl#getCodeAndCommit (addCodeApply.getEcar() == 1)"
+      }
+    },
+    {
+      "id": "BusinessRule:物料升级规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_物料升级规则",
+      "type": "BusinessRule",
+      "label": "物料升级规则",
+      "comment": "物料升级时会新建一条物料主数据，物料编码保持不变；新建的升级记录审批通过后，申请状态改为2，原来申请状态为2的记录改为5即历史版本，因此同一物料编码始终只有一条有效记录。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "业务方说明"
+      }
+    },
+    {
+      "id": "BusinessRule:物料基础属性取值规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_物料基础属性取值规则",
+      "type": "BusinessRule",
+      "label": "物料基础属性取值规则",
+      "comment": "创建物料基础属性时，物料名称属性取自物料分类的物料子类L4，物料简称属性取自物料分类的元器件物料简称，物料类型属性取自物料编码号段的物料类型，其余属性按申请信息填充。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "AddCodeApplyServiceImpl#createPublicAttributes"
+      }
+    },
+    {
+      "id": "BusinessRule:物料描述拼接规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_物料描述拼接规则",
+      "type": "BusinessRule",
+      "label": "物料描述拼接规则",
+      "comment": "物料短描述和英文描述取是否进ERP物料短描述标识为X或XY的属性，物料长描述取标识为Y或XY的属性，均按物料短描述顺序升序拼接；顺序小于1000的作为前缀，大于1000的作为后缀，私有属性夹在前缀和后缀之间；同一成组属性之间用成组属性拼接符连接，其余用空格连接。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "AddCodeApplyServiceImpl#generateDescriptions"
+      }
+    },
+    {
+      "id": "BusinessRule:物料状态口径规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_物料状态口径规则",
+      "type": "BusinessRule",
+      "label": "物料状态口径规则",
+      "comment": "物料在业务上的物料状态以生命周期阶段属性为准。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "业务方说明"
+      }
+    },
+    {
+      "id": "BusinessRule:物料编码BG前缀规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_物料编码BG前缀规则",
+      "type": "BusinessRule",
+      "label": "物料编码BG前缀规则",
+      "comment": "汽车电子BG的物料编码以2开头，其他BG的物料编码以1开头；汽车电子BG的物料，其是否汽车电子为是。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "业务方说明"
+      }
+    },
+    {
+      "id": "BusinessRule:编码号段选取规则",
+      "iri": "http://het.com/ontology/material-master#BusinessRule_编码号段选取规则",
+      "type": "BusinessRule",
+      "label": "编码号段选取规则",
+      "comment": "L1分类为38，或L4分类为40120101时，取该L4分类自己的号段；其他情况取L1分类加010101对应的号段。",
+      "altLabels": [],
+      "properties": {
+        "ruleSource": "CodeRangeServiceImpl#getCodeAndCommit"
+      }
+    },
+    {
+      "id": "CommonAttribute:专用客户属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_专用客户属性",
+      "type": "CommonAttribute",
+      "label": "专用客户属性",
+      "comment": "该属性有值表示物料是某个客户的专用料，属性值就是指定的专用客户；属性值与客户名称、客户编码并不相等，但从字面上能看出是同一个客户。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "notes"
+      }
+    },
+    {
+      "id": "CommonAttribute:优选标识属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_优选标识属性",
+      "type": "CommonAttribute",
+      "label": "优选标识属性",
+      "comment": "由采购维护，标记物料是否为某个BG的优选物料；被标记为优选的物料，研发设计BOM时会优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "preferredIdentification"
+      }
+    },
+    {
+      "id": "CommonAttribute:制造商AVL等级属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "type": "CommonAttribute",
+      "label": "制造商AVL等级属性",
+      "comment": "物料对应制造商的AVL等级，每天晚上定时根据采购维护的制造商等级更新；研发设计BOM时优先考虑主力、合格、试用的物料。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "manufacturerAvlRating"
+      }
+    },
+    {
+      "id": "CommonAttribute:制造商名称属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_制造商名称属性",
+      "type": "CommonAttribute",
+      "label": "制造商名称属性",
+      "comment": "物料对应的制造商名称。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "manufacturersName"
+      }
+    },
+    {
+      "id": "CommonAttribute:品牌异常类型属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_品牌异常类型属性",
+      "type": "CommonAttribute",
+      "label": "品牌异常类型属性",
+      "comment": "品牌异常的类型；制造商AVL等级为考察、限制时必填，为主力、合格、试用时不能填写。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "brandExceptionType"
+      }
+    },
+    {
+      "id": "CommonAttribute:文档编号属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_文档编号属性",
+      "type": "CommonAttribute",
+      "label": "文档编号属性",
+      "comment": "物料关联的文档编号。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "documentNumber"
+      }
+    },
+    {
+      "id": "CommonAttribute:物料名称属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_物料名称属性",
+      "type": "CommonAttribute",
+      "label": "物料名称属性",
+      "comment": "物料的名称，创建时默认就是物料子类L4的名称。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "materialName"
+      }
+    },
+    {
+      "id": "CommonAttribute:物料简称属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_物料简称属性",
+      "type": "CommonAttribute",
+      "label": "物料简称属性",
+      "comment": "物料的简称，创建时默认来自分类上的元器件物料简称。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "materialAbbreviation"
+      }
+    },
+    {
+      "id": "CommonAttribute:物料类型属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_物料类型属性",
+      "type": "CommonAttribute",
+      "label": "物料类型属性",
+      "comment": "物料类型，创建时默认来自所在号段的物料类型。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "materialType"
+      }
+    },
+    {
+      "id": "CommonAttribute:生命周期阶段属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "type": "CommonAttribute",
+      "label": "生命周期阶段属性",
+      "comment": "物料在业务上的物料状态，分为研发、测试、试产、批量、EOL、部分失效、采购失效、完全失效、完全停产。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "lifeCyclePhase"
+      }
+    },
+    {
+      "id": "CommonAttribute:细分类属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_细分类属性",
+      "type": "CommonAttribute",
+      "label": "细分类属性",
+      "comment": "物料的细分类，取值的描述存放在物料属性值库里。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "subdivision"
+      }
+    },
+    {
+      "id": "CommonAttribute:项目类型属性",
+      "iri": "http://het.com/ontology/material-master#CommonAttribute_项目类型属性",
+      "type": "CommonAttribute",
+      "label": "项目类型属性",
+      "comment": "物料所属项目的类型。",
+      "altLabels": [],
+      "properties": {
+        "attrCode": "projectType"
+      }
+    },
+    {
+      "id": "DataTable:ac_add_code_apply",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_add_code_apply",
+      "type": "DataTable",
+      "label": "ac_add_code_apply",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "DataTable:ac_add_code_apply_attr",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_add_code_apply_attr",
+      "type": "DataTable",
+      "label": "ac_add_code_apply_attr",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "DataTable:ac_add_code_apply_attrp",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_add_code_apply_attrp",
+      "type": "DataTable",
+      "label": "ac_add_code_apply_attrp",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "DataTable:ac_attribute_management",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_attribute_management",
+      "type": "DataTable",
+      "label": "ac_attribute_management",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "DataTable:ac_attribute_value",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_attribute_value",
+      "type": "DataTable",
+      "label": "ac_attribute_value",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "DataTable:ac_classification_attribute_ref",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_classification_attribute_ref",
+      "type": "DataTable",
+      "label": "ac_classification_attribute_ref",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "DataTable:ac_classification_management",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_classification_management",
+      "type": "DataTable",
+      "label": "ac_classification_management",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "DataTable:ac_code_range",
+      "iri": "http://het.com/ontology/material-master#DataTable_ac_code_range",
+      "type": "DataTable",
+      "label": "ac_code_range",
+      "comment": null,
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "Dictionary:attrType字典",
+      "iri": "http://het.com/ontology/material-master#Dictionary_attrType字典",
+      "type": "Dictionary",
+      "label": "attrType字典",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "dictCode": "attrType"
+      }
+    },
+    {
+      "id": "Dictionary:pubOrPri字典",
+      "iri": "http://het.com/ontology/material-master#Dictionary_pubOrPri字典",
+      "type": "Dictionary",
+      "label": "pubOrPri字典",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "dictCode": "pubOrPri"
+      }
+    },
+    {
+      "id": "Dictionary:smc字典",
+      "iri": "http://het.com/ontology/material-master#Dictionary_smc字典",
+      "type": "Dictionary",
+      "label": "smc字典",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "dictCode": "smc"
+      }
+    },
+    {
+      "id": "Dictionary:yn字典",
+      "iri": "http://het.com/ontology/material-master#Dictionary_yn字典",
+      "type": "Dictionary",
+      "label": "yn字典",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "dictCode": "yn"
+      }
+    },
+    {
+      "id": "Entity:物料主数据",
+      "iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "type": "Entity",
+      "label": "物料主数据",
+      "comment": "即加码申请表，业务上是物料主数据表，一行对应一个物料，记录物料编码、L1至L4分类、物料描述和申请状态。",
+      "altLabels": [
+        "加码申请",
+        "AddCodeApply",
+        "加码申请表",
+        "物料主数据表"
+      ],
+      "properties": {
+        "javaClass": "AddCodeApply",
+        "techName": "加码申请",
+        "tableName": "ac_add_code_apply"
+      }
+    },
+    {
+      "id": "Entity:物料分类",
+      "iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "type": "Entity",
+      "label": "物料分类",
+      "comment": "即分类维护，业务上是物料分类体系，分为L1至L4四级，L4是最末级分类。",
+      "altLabels": [
+        "分类维护",
+        "ClassificationManagement",
+        "物料分类维护"
+      ],
+      "properties": {
+        "javaClass": "ClassificationManagement",
+        "techName": "分类维护",
+        "tableName": "ac_classification_management"
+      }
+    },
+    {
+      "id": "Entity:物料分类属性模板",
+      "iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "type": "Entity",
+      "label": "物料分类属性模板",
+      "comment": "即分类属性维护，业务上是物料分类属性模板，规定某个分类下有哪些属性、公有还是私有、必填与否、描述拼接顺序。",
+      "altLabels": [
+        "分类属性维护",
+        "ClassificationAttributeRef",
+        "分类属性模板",
+        "属性模板"
+      ],
+      "properties": {
+        "javaClass": "ClassificationAttributeRef",
+        "techName": "分类属性维护",
+        "tableName": "ac_classification_attribute_ref"
+      }
+    },
+    {
+      "id": "Entity:物料基础属性",
+      "iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "type": "Entity",
+      "label": "物料基础属性",
+      "comment": "即加码申请基础属性，业务上是物料基础属性，也叫公有属性，是同一分类下物料共有的属性取值。",
+      "altLabels": [
+        "加码申请基础属性",
+        "AcAddCodeApplyAttr",
+        "基础属性",
+        "公有属性",
+        "物料公有属性"
+      ],
+      "properties": {
+        "javaClass": "AcAddCodeApplyAttr",
+        "techName": "加码申请基础属性",
+        "tableName": "ac_add_code_apply_attr"
+      }
+    },
+    {
+      "id": "Entity:物料属性值库",
+      "iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "type": "Entity",
+      "label": "物料属性值库",
+      "comment": "即属性值库维护，业务上是物料属性值库，保存单选、多选类属性的可选值及其描述。",
+      "altLabels": [
+        "属性值库维护",
+        "AttributeValue"
+      ],
+      "properties": {
+        "javaClass": "AttributeValue",
+        "techName": "属性值库维护",
+        "tableName": "ac_attribute_value"
+      }
+    },
+    {
+      "id": "Entity:物料属性定义",
+      "iri": "http://het.com/ontology/material-master#Entity_物料属性定义",
+      "type": "Entity",
+      "label": "物料属性定义",
+      "comment": "即属性维护，业务上是物料属性的定义清单，每个属性有属性代码和属性名称。",
+      "altLabels": [
+        "属性维护",
+        "AttributeManagement"
+      ],
+      "properties": {
+        "javaClass": "AttributeManagement",
+        "techName": "属性维护",
+        "tableName": "ac_attribute_management"
+      }
+    },
+    {
+      "id": "Entity:物料私有属性",
+      "iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "type": "Entity",
+      "label": "物料私有属性",
+      "comment": "即加码申请私有属性，业务上是物料私有属性，也叫物料技术属性，是各分类自己特有的技术参数取值。",
+      "altLabels": [
+        "加码申请私有属性",
+        "AcAddCodeApplyAttrp",
+        "私有属性",
+        "物料技术属性",
+        "技术属性"
+      ],
+      "properties": {
+        "javaClass": "AcAddCodeApplyAttrp",
+        "techName": "加码申请私有属性",
+        "tableName": "ac_add_code_apply_attrp"
+      }
+    },
+    {
+      "id": "Entity:物料编码号段",
+      "iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "type": "Entity",
+      "label": "物料编码号段",
+      "comment": "即编码范围，业务上是物料编码号段，按L4分类划分起止号段并记录当前最大编码，用于顺序分配物料编码。",
+      "altLabels": [
+        "编码范围",
+        "CodeRange",
+        "编码号段"
+      ],
+      "properties": {
+        "javaClass": "CodeRange",
+        "techName": "编码范围",
+        "tableName": "ac_code_range"
+      }
+    },
+    {
+      "id": "EnumValue:优选标识-优选1(汽电)",
+      "iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选1_汽电_",
+      "type": "EnumValue",
+      "label": "优选标识-优选1(汽电)",
+      "comment": "采购标记为优选1(汽电)的物料，研发设计BOM时会优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "优选1(汽电)"
+      }
+    },
+    {
+      "id": "EnumValue:优选标识-优选A",
+      "iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选A",
+      "type": "EnumValue",
+      "label": "优选标识-优选A",
+      "comment": "采购标记为优选A的物料，研发设计BOM时会优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "优选A"
+      }
+    },
+    {
+      "id": "EnumValue:优选标识-优选B",
+      "iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选B",
+      "type": "EnumValue",
+      "label": "优选标识-优选B",
+      "comment": "采购标记为优选B的物料，研发设计BOM时会优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "优选B"
+      }
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-主力",
+      "iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_主力",
+      "type": "EnumValue",
+      "label": "制造商AVL等级-主力",
+      "comment": "研发设计BOM时优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "主力"
+      }
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-合格",
+      "iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_合格",
+      "type": "EnumValue",
+      "label": "制造商AVL等级-合格",
+      "comment": "研发设计BOM时优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "合格"
+      }
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-考察",
+      "iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_考察",
+      "type": "EnumValue",
+      "label": "制造商AVL等级-考察",
+      "comment": "物料对应的制造商不合格或未验证，研发设计BOM时不优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "考察"
+      }
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-试用",
+      "iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_试用",
+      "type": "EnumValue",
+      "label": "制造商AVL等级-试用",
+      "comment": "研发设计BOM时优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "试用"
+      }
+    },
+    {
+      "id": "EnumValue:制造商AVL等级-限制",
+      "iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_限制",
+      "type": "EnumValue",
+      "label": "制造商AVL等级-限制",
+      "comment": "处理方式和考察一样：物料对应的制造商不合格或未验证，研发设计BOM时不优先考虑。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "限制"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-EOL",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_EOL",
+      "type": "EnumValue",
+      "label": "生命周期阶段-EOL",
+      "comment": "物料为EOL状态。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "00"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-完全停产",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_完全停产",
+      "type": "EnumValue",
+      "label": "生命周期阶段-完全停产",
+      "comment": "物料完全停产。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "99"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-完全失效",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_完全失效",
+      "type": "EnumValue",
+      "label": "生命周期阶段-完全失效",
+      "comment": "物料完全失效。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "04"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-批量",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_批量",
+      "type": "EnumValue",
+      "label": "生命周期阶段-批量",
+      "comment": "物料处于批量阶段。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "AP"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-测试",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_测试",
+      "type": "EnumValue",
+      "label": "生命周期阶段-测试",
+      "comment": "物料处于测试阶段。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "NA"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-研发",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_研发",
+      "type": "EnumValue",
+      "label": "生命周期阶段-研发",
+      "comment": "物料处于研发阶段。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "YF"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-试产",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_试产",
+      "type": "EnumValue",
+      "label": "生命周期阶段-试产",
+      "comment": "物料处于试产阶段。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "CA"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-部分失效",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_部分失效",
+      "type": "EnumValue",
+      "label": "生命周期阶段-部分失效",
+      "comment": "物料部分失效。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "02"
+      }
+    },
+    {
+      "id": "EnumValue:生命周期阶段-采购失效",
+      "iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_采购失效",
+      "type": "EnumValue",
+      "label": "生命周期阶段-采购失效",
+      "comment": "物料对采购失效。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "03"
+      }
+    },
+    {
+      "id": "EnumValue:申请状态-SCM采购审批中",
+      "iri": "http://het.com/ontology/material-master#EnumValue_申请状态_SCM采购审批中",
+      "type": "EnumValue",
+      "label": "申请状态-SCM采购审批中",
+      "comment": "申请正在SCM采购审批。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "3"
+      }
+    },
+    {
+      "id": "EnumValue:申请状态-历史版本",
+      "iri": "http://het.com/ontology/material-master#EnumValue_申请状态_历史版本",
+      "type": "EnumValue",
+      "label": "申请状态-历史版本",
+      "comment": "物料升级后被新版本取代的旧记录。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "5"
+      }
+    },
+    {
+      "id": "EnumValue:申请状态-审批完成",
+      "iri": "http://het.com/ontology/material-master#EnumValue_申请状态_审批完成",
+      "type": "EnumValue",
+      "label": "申请状态-审批完成",
+      "comment": "审批通过的有效数据，同一物料编码只有一条。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "2"
+      }
+    },
+    {
+      "id": "EnumValue:申请状态-标准化审批中",
+      "iri": "http://het.com/ontology/material-master#EnumValue_申请状态_标准化审批中",
+      "type": "EnumValue",
+      "label": "申请状态-标准化审批中",
+      "comment": "申请已提交，正在标准化审批。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "1"
+      }
+    },
+    {
+      "id": "EnumValue:申请状态-草稿",
+      "iri": "http://het.com/ontology/material-master#EnumValue_申请状态_草稿",
+      "type": "EnumValue",
+      "label": "申请状态-草稿",
+      "comment": "申请还没有提交。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "0"
+      }
+    },
+    {
+      "id": "EnumValue:申请状态-退回",
+      "iri": "http://het.com/ontology/material-master#EnumValue_申请状态_退回",
+      "type": "EnumValue",
+      "label": "申请状态-退回",
+      "comment": "申请被退回。",
+      "altLabels": [],
+      "properties": {
+        "enumCode": "4"
+      }
+    },
+    {
+      "id": "Field:L1分类",
+      "iri": "http://het.com/ontology/material-master#Field_L1分类",
+      "type": "Field",
+      "label": "L1分类",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "classifyL1",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:L1分类代码",
+      "iri": "http://het.com/ontology/material-master#Field_L1分类代码",
+      "type": "Field",
+      "label": "L1分类代码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "firstCode",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:L2分类",
+      "iri": "http://het.com/ontology/material-master#Field_L2分类",
+      "type": "Field",
+      "label": "L2分类",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "classifyL2",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:L2分类代码",
+      "iri": "http://het.com/ontology/material-master#Field_L2分类代码",
+      "type": "Field",
+      "label": "L2分类代码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "secondCode",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:L3分类",
+      "iri": "http://het.com/ontology/material-master#Field_L3分类",
+      "type": "Field",
+      "label": "L3分类",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "classifyL3",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:L3分类代码",
+      "iri": "http://het.com/ontology/material-master#Field_L3分类代码",
+      "type": "Field",
+      "label": "L3分类代码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "thirdCode",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:L4分类",
+      "iri": "http://het.com/ontology/material-master#Field_L4分类",
+      "type": "Field",
+      "label": "L4分类",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "classifyL4",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:L4分类代码",
+      "iri": "http://het.com/ontology/material-master#Field_L4分类代码",
+      "type": "Field",
+      "label": "L4分类代码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "fourCode",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:元器件物料简称",
+      "iri": "http://het.com/ontology/material-master#Field_元器件物料简称",
+      "type": "Field",
+      "label": "元器件物料简称",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "compMeterialShort",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:公有属性/私有属性",
+      "iri": "http://het.com/ontology/material-master#Field_公有属性_私有属性",
+      "type": "Field",
+      "label": "公有属性/私有属性",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "pubPri",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:加码id",
+      "iri": "http://het.com/ontology/material-master#Field_加码id",
+      "type": "Field",
+      "label": "加码id",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "addCodeId",
+        "ownerEntity": "物料基础属性"
+      }
+    },
+    {
+      "id": "Field:单选/多选",
+      "iri": "http://het.com/ontology/material-master#Field_单选_多选",
+      "type": "Field",
+      "label": "单选/多选",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "smc",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:参数值",
+      "iri": "http://het.com/ontology/material-master#Field_参数值",
+      "type": "Field",
+      "label": "参数值",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "value",
+        "ownerEntity": "物料属性值库"
+      }
+    },
+    {
+      "id": "Field:唯一性",
+      "iri": "http://het.com/ontology/material-master#Field_唯一性",
+      "type": "Field",
+      "label": "唯一性",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "uniqueFlag",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:属性代码",
+      "iri": "http://het.com/ontology/material-master#Field_属性代码",
+      "type": "Field",
+      "label": "属性代码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "attrCode",
+        "ownerEntity": "物料基础属性"
+      }
+    },
+    {
+      "id": "Field:属性值",
+      "iri": "http://het.com/ontology/material-master#Field_属性值",
+      "type": "Field",
+      "label": "属性值",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "attrValue",
+        "ownerEntity": "物料基础属性"
+      }
+    },
+    {
+      "id": "Field:属性值描述",
+      "iri": "http://het.com/ontology/material-master#Field_属性值描述",
+      "type": "Field",
+      "label": "属性值描述",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "valueDesc",
+        "ownerEntity": "物料属性值库"
+      }
+    },
+    {
+      "id": "Field:属性名称",
+      "iri": "http://het.com/ontology/material-master#Field_属性名称",
+      "type": "Field",
+      "label": "属性名称",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "attributeName",
+        "ownerEntity": "物料属性定义"
+      }
+    },
+    {
+      "id": "Field:属性描述",
+      "iri": "http://het.com/ontology/material-master#Field_属性描述",
+      "type": "Field",
+      "label": "属性描述",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "attrDesc",
+        "ownerEntity": "物料基础属性"
+      }
+    },
+    {
+      "id": "Field:属性类型",
+      "iri": "http://het.com/ontology/material-master#Field_属性类型",
+      "type": "Field",
+      "label": "属性类型",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "attrType",
+        "ownerEntity": "物料基础属性"
+      }
+    },
+    {
+      "id": "Field:当前最大编码",
+      "iri": "http://het.com/ontology/material-master#Field_当前最大编码",
+      "type": "Field",
+      "label": "当前最大编码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "currentNumber",
+        "ownerEntity": "物料编码号段"
+      }
+    },
+    {
+      "id": "Field:成组属性",
+      "iri": "http://het.com/ontology/material-master#Field_成组属性",
+      "type": "Field",
+      "label": "成组属性",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "groupAttribute",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:成组属性拼接符",
+      "iri": "http://het.com/ontology/material-master#Field_成组属性拼接符",
+      "type": "Field",
+      "label": "成组属性拼接符",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "groupAttributeJoin",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:旧物料编码",
+      "iri": "http://het.com/ontology/material-master#Field_旧物料编码",
+      "type": "Field",
+      "label": "旧物料编码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "oldMaterialNo",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:是否临时码",
+      "iri": "http://het.com/ontology/material-master#Field_是否临时码",
+      "type": "Field",
+      "label": "是否临时码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "tempCode",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:是否属于可比性属性",
+      "iri": "http://het.com/ontology/material-master#Field_是否属于可比性属性",
+      "type": "Field",
+      "label": "是否属于可比性属性",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "comparabilityFlag",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:是否必填",
+      "iri": "http://het.com/ontology/material-master#Field_是否必填",
+      "type": "Field",
+      "label": "是否必填",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "requiredFalg",
+        "ownerEntity": "物料基础属性"
+      }
+    },
+    {
+      "id": "Field:是否汽车电子",
+      "iri": "http://het.com/ontology/material-master#Field_是否汽车电子",
+      "type": "Field",
+      "label": "是否汽车电子",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "ecar",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:是否涉及优选",
+      "iri": "http://het.com/ontology/material-master#Field_是否涉及优选",
+      "type": "Field",
+      "label": "是否涉及优选",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "preferred",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:是否进ERP物料短描述",
+      "iri": "http://het.com/ontology/material-master#Field_是否进ERP物料短描述",
+      "type": "Field",
+      "label": "是否进ERP物料短描述",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "erpPhraseDescFlag",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:标准件/非标准件",
+      "iri": "http://het.com/ontology/material-master#Field_标准件_非标准件",
+      "type": "Field",
+      "label": "标准件/非标准件",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "standardType",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:汽车电子当前最大编码",
+      "iri": "http://het.com/ontology/material-master#Field_汽车电子当前最大编码",
+      "type": "Field",
+      "label": "汽车电子当前最大编码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "currentNumberCars",
+        "ownerEntity": "物料编码号段"
+      }
+    },
+    {
+      "id": "Field:汽车电子编码终止",
+      "iri": "http://het.com/ontology/material-master#Field_汽车电子编码终止",
+      "type": "Field",
+      "label": "汽车电子编码终止",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "endNumberCars",
+        "ownerEntity": "物料编码号段"
+      }
+    },
+    {
+      "id": "Field:汽车电子编码起始",
+      "iri": "http://het.com/ontology/material-master#Field_汽车电子编码起始",
+      "type": "Field",
+      "label": "汽车电子编码起始",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "startNumberCars",
+        "ownerEntity": "物料编码号段"
+      }
+    },
+    {
+      "id": "Field:物料子类L4",
+      "iri": "http://het.com/ontology/material-master#Field_物料子类L4",
+      "type": "Field",
+      "label": "物料子类L4",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "fourName",
+        "ownerEntity": "物料分类"
+      }
+    },
+    {
+      "id": "Field:物料短描述",
+      "iri": "http://het.com/ontology/material-master#Field_物料短描述",
+      "type": "Field",
+      "label": "物料短描述",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "shortDesc",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:物料短描述顺序",
+      "iri": "http://het.com/ontology/material-master#Field_物料短描述顺序",
+      "type": "Field",
+      "label": "物料短描述顺序",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "phraseDescOrder",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Field:物料类型",
+      "iri": "http://het.com/ontology/material-master#Field_物料类型",
+      "type": "Field",
+      "label": "物料类型",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "materialType",
+        "ownerEntity": "物料编码号段"
+      }
+    },
+    {
+      "id": "Field:物料编码",
+      "iri": "http://het.com/ontology/material-master#Field_物料编码",
+      "type": "Field",
+      "label": "物料编码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "materialNo",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:物料长描述",
+      "iri": "http://het.com/ontology/material-master#Field_物料长描述",
+      "type": "Field",
+      "label": "物料长描述",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "longDesc",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:申请状态",
+      "iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "type": "Field",
+      "label": "申请状态",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "applyStatus",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:编码终止",
+      "iri": "http://het.com/ontology/material-master#Field_编码终止",
+      "type": "Field",
+      "label": "编码终止",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "endNumber",
+        "ownerEntity": "物料编码号段"
+      }
+    },
+    {
+      "id": "Field:编码起始",
+      "iri": "http://het.com/ontology/material-master#Field_编码起始",
+      "type": "Field",
+      "label": "编码起始",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "startNumber",
+        "ownerEntity": "物料编码号段"
+      }
+    },
+    {
+      "id": "Field:英文描述",
+      "iri": "http://het.com/ontology/material-master#Field_英文描述",
+      "type": "Field",
+      "label": "英文描述",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "englishDesc",
+        "ownerEntity": "物料主数据"
+      }
+    },
+    {
+      "id": "Field:项次代码",
+      "iri": "http://het.com/ontology/material-master#Field_项次代码",
+      "type": "Field",
+      "label": "项次代码",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "itemCode",
+        "ownerEntity": "物料属性值库"
+      }
+    },
+    {
+      "id": "Field:默认值",
+      "iri": "http://het.com/ontology/material-master#Field_默认值",
+      "type": "Field",
+      "label": "默认值",
+      "comment": null,
+      "altLabels": [],
+      "properties": {
+        "javaField": "defaultValue",
+        "ownerEntity": "物料分类属性模板"
+      }
+    },
+    {
+      "id": "Scenario:替代料推荐",
+      "iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "type": "Scenario",
+      "label": "替代料推荐",
+      "comment": "为某个物料推荐可以替换的其他物料。",
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "Scenario:物料相似查找",
+      "iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "type": "Scenario",
+      "label": "物料相似查找",
+      "comment": "在同分类下找出属性相近的物料。",
+      "altLabels": [],
+      "properties": {}
+    },
+    {
+      "id": "Scenario:物料精确查找",
+      "iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "type": "Scenario",
+      "label": "物料精确查找",
+      "comment": "根据物料编码、描述关键字、分类或属性值，定位到具体的物料。",
+      "altLabels": [],
+      "properties": {}
+    }
+  ],
+  "triples": [
+    {
+      "subject": "物料主数据",
+      "predicate": "mapsToTable",
+      "object": "ac_add_code_apply",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_add_code_apply",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "mapsToTable",
+      "object": "ac_classification_management",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_classification_management",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "mapsToTable",
+      "object": "ac_classification_attribute_ref",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_classification_attribute_ref",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "mapsToTable",
+      "object": "ac_add_code_apply_attr",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_add_code_apply_attr",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "mapsToTable",
+      "object": "ac_attribute_value",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_attribute_value",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeValue.java"
+    },
+    {
+      "subject": "物料属性定义",
+      "predicate": "mapsToTable",
+      "object": "ac_attribute_management",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性定义",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_attribute_management",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeManagement.java"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "mapsToTable",
+      "object": "ac_add_code_apply_attrp",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_add_code_apply_attrp",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "mapsToTable",
+      "object": "ac_code_range",
+      "subject_type": "Entity",
+      "object_type": "DataTable",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#DataTable_ac_code_range",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "L1分类",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_L1分类",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "L2分类",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_L2分类",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "L3分类",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_L3分类",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "L4分类",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_L4分类",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "旧物料编码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_旧物料编码",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "是否临时码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_是否临时码",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "是否汽车电子",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_是否汽车电子",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "物料短描述",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料短描述",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "物料编码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料编码",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "物料长描述",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料长描述",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "申请状态",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "hasKeyField",
+      "object": "英文描述",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Field_英文描述",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "L1分类代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_L1分类代码",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "L2分类代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_L2分类代码",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "L3分类代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_L3分类代码",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "L4分类代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_L4分类代码",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "元器件物料简称",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_元器件物料简称",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "是否涉及优选",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_是否涉及优选",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "标准件/非标准件",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_标准件_非标准件",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "hasKeyField",
+      "object": "物料子类L4",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料子类L4",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "L4分类代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_L4分类代码",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "公有属性/私有属性",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_公有属性_私有属性",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "唯一性",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_唯一性",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "属性代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性代码",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "属性类型",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性类型",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "成组属性",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_成组属性",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "成组属性拼接符",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_成组属性拼接符",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "是否属于可比性属性",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_是否属于可比性属性",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "是否必填",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_是否必填",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "是否进ERP物料短描述",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_是否进ERP物料短描述",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "物料短描述顺序",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料短描述顺序",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "hasKeyField",
+      "object": "默认值",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Field_默认值",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "hasKeyField",
+      "object": "加码id",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_加码id",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "hasKeyField",
+      "object": "属性代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性代码",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "hasKeyField",
+      "object": "属性值",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性值",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "hasKeyField",
+      "object": "属性描述",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性描述",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "hasKeyField",
+      "object": "属性类型",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性类型",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "hasKeyField",
+      "object": "L4分类代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#Field_L4分类代码",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeValue.java"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "hasKeyField",
+      "object": "参数值",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#Field_参数值",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeValue.java"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "hasKeyField",
+      "object": "属性代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性代码",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeValue.java"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "hasKeyField",
+      "object": "属性值描述",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性值描述",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeValue.java"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "hasKeyField",
+      "object": "项次代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#Field_项次代码",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeValue.java"
+    },
+    {
+      "subject": "物料属性定义",
+      "predicate": "hasKeyField",
+      "object": "属性代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性定义",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性代码",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeManagement.java"
+    },
+    {
+      "subject": "物料属性定义",
+      "predicate": "hasKeyField",
+      "object": "属性名称",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性定义",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性名称",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeManagement.java"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "hasKeyField",
+      "object": "加码id",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_加码id",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "hasKeyField",
+      "object": "属性代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性代码",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "hasKeyField",
+      "object": "属性值",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性值",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "hasKeyField",
+      "object": "属性描述",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性描述",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "hasKeyField",
+      "object": "属性类型",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_属性类型",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "L4分类代码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_L4分类代码",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "当前最大编码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_当前最大编码",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "汽车电子当前最大编码",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_汽车电子当前最大编码",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "汽车电子编码终止",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_汽车电子编码终止",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "汽车电子编码起始",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_汽车电子编码起始",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "物料类型",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料类型",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "编码终止",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_编码终止",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "hasKeyField",
+      "object": "编码起始",
+      "subject_type": "Entity",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Field_编码起始",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRange.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "refersTo",
+      "object": "物料分类",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "basis": "code",
+      "via": [
+        "L1分类",
+        "L2分类",
+        "L3分类",
+        "L4分类"
+      ],
+      "source": "AddCodeApply.java @Dict(dictTable=ac_classification_management)"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "refersTo",
+      "object": "物料编码号段",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "basis": "code",
+      "via": [
+        "L4分类"
+      ],
+      "source": "CodeRangeServiceImpl#getCodeAndCommit (four_code = classifyL4 或 classifyL1+010101)"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "refersTo",
+      "object": "物料分类",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "basis": "code",
+      "via": [
+        "L4分类代码"
+      ],
+      "source": "ClassificationAttributeRefController#queryById (classificationManagementService.queryByFourCode)"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "refersTo",
+      "object": "物料属性定义",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料属性定义",
+      "basis": "confirmed",
+      "via": [
+        "属性代码"
+      ],
+      "source": "ClassificationAttributeRef.attributeCode 与 AttributeManagement.attributeCode 同名同义（未见显式 JOIN）"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "refersTo",
+      "object": "物料分类属性模板",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "basis": "code",
+      "via": [
+        "属性代码"
+      ],
+      "source": "AddCodeApplyServiceImpl#buildAttrList (attr.setAttrCode(ref.getAttributeCode()))"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "refersTo",
+      "object": "物料分类属性模板",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "basis": "code",
+      "via": [
+        "L4分类代码",
+        "属性代码"
+      ],
+      "source": "ClassificationAttributeRefServiceImpl#getParsedValue (queryRangeByFourCode(ref.fourCode, ref.attributeCode))"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "refersTo",
+      "object": "物料属性定义",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料属性定义",
+      "basis": "code",
+      "via": [
+        "属性代码"
+      ],
+      "source": "AttributeValueServiceImpl#getSubdivisionDesc (attribute_code 过滤)"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "refersTo",
+      "object": "物料分类属性模板",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "basis": "code",
+      "via": [
+        "属性代码"
+      ],
+      "source": "AddCodeApplyServiceImpl#buildAttrpList (attrp.setAttrCode(ref.getAttributeCode()))"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "refersTo",
+      "object": "物料分类",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "basis": "code",
+      "via": [
+        "L4分类代码"
+      ],
+      "source": "ClassificationManagementController#page (codeRangeService.getByFourcode(record.fourCode))"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "partOf",
+      "object": "物料主数据",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "basis": "code",
+      "via": [
+        "加码id"
+      ],
+      "source": "AcAddCodeApplyAttrMapper.xml#selectByMainId (add_code_id = #{mainId})"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "partOf",
+      "object": "物料主数据",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "basis": "code",
+      "via": [
+        "加码id"
+      ],
+      "source": "AcAddCodeApplyAttrpMapper.xml#selectByMainId (add_code_id = #{mainId})"
+    },
+    {
+      "subject": "公有属性/私有属性",
+      "predicate": "usesDictionary",
+      "object": "pubOrPri字典",
+      "subject_type": "Field",
+      "object_type": "Dictionary",
+      "subject_iri": "http://het.com/ontology/material-master#Field_公有属性_私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Dictionary_pubOrPri字典",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "单选/多选",
+      "predicate": "usesDictionary",
+      "object": "smc字典",
+      "subject_type": "Field",
+      "object_type": "Dictionary",
+      "subject_iri": "http://het.com/ontology/material-master#Field_单选_多选",
+      "object_iri": "http://het.com/ontology/material-master#Dictionary_smc字典",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "属性类型",
+      "predicate": "usesDictionary",
+      "object": "attrType字典",
+      "subject_type": "Field",
+      "object_type": "Dictionary",
+      "subject_iri": "http://het.com/ontology/material-master#Field_属性类型",
+      "object_iri": "http://het.com/ontology/material-master#Dictionary_attrType字典",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "是否临时码",
+      "predicate": "usesDictionary",
+      "object": "yn字典",
+      "subject_type": "Field",
+      "object_type": "Dictionary",
+      "subject_iri": "http://het.com/ontology/material-master#Field_是否临时码",
+      "object_iri": "http://het.com/ontology/material-master#Dictionary_yn字典",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "是否汽车电子",
+      "predicate": "usesDictionary",
+      "object": "yn字典",
+      "subject_type": "Field",
+      "object_type": "Dictionary",
+      "subject_iri": "http://het.com/ontology/material-master#Field_是否汽车电子",
+      "object_iri": "http://het.com/ontology/material-master#Dictionary_yn字典",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "专用客户属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_专用客户属性",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "优选标识属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_优选标识属性",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AcAddCodeApplyAttrServiceImpl#batchUpdateMaterialAttributes"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "制造商AVL等级属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#checkParam"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "制造商名称属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商名称属性",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "品牌异常类型属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_品牌异常类型属性",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyController#checkParam"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "文档编号属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_文档编号属性",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#handleNeed"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "物料名称属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_物料名称属性",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "物料简称属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_物料简称属性",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#createPublicAttributes"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "物料类型属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_物料类型属性",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#createPublicAttributes"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "生命周期阶段属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#checkLifeCyclePhase"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "细分类属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_细分类属性",
+      "basis": "code",
+      "via": [],
+      "source": "AttributeValueServiceImpl#getSubdivisionDesc"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "includesAttribute",
+      "object": "项目类型属性",
+      "subject_type": "Entity",
+      "object_type": "CommonAttribute",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#CommonAttribute_项目类型属性",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"
+    },
+    {
+      "subject": "物料名称属性",
+      "predicate": "derivesFrom",
+      "object": "物料子类L4",
+      "subject_type": "CommonAttribute",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_物料名称属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料子类L4",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo; AddCodeApplyServiceImpl#createPublicAttributes"
+    },
+    {
+      "subject": "物料简称属性",
+      "predicate": "derivesFrom",
+      "object": "元器件物料简称",
+      "subject_type": "CommonAttribute",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_物料简称属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_元器件物料简称",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#createPublicAttributes"
+    },
+    {
+      "subject": "物料类型属性",
+      "predicate": "derivesFrom",
+      "object": "物料类型",
+      "subject_type": "CommonAttribute",
+      "object_type": "Field",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_物料类型属性",
+      "object_iri": "http://het.com/ontology/material-master#Field_物料类型",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#createPublicAttributes"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "governedBy",
+      "object": "分类代码层级规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_分类代码层级规则",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "governedBy",
+      "object": "旧物料编码校验规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_旧物料编码校验规则",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRangeServiceImpl#getCodeAndCommit"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "governedBy",
+      "object": "有效物料判定规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_有效物料判定规则",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "governedBy",
+      "object": "物料升级规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_物料升级规则",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "governedBy",
+      "object": "物料描述拼接规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_物料描述拼接规则",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#generateDescriptions"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "governedBy",
+      "object": "物料状态口径规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_物料状态口径规则",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "governedBy",
+      "object": "物料编码BG前缀规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_物料编码BG前缀规则",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "物料分类",
+      "predicate": "governedBy",
+      "object": "分类代码层级规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_分类代码层级规则",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode (fourCode.substring(0, 2)); AddCodeApply.java @Dict"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "governedBy",
+      "object": "分类属性范围匹配规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_分类属性范围匹配规则",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "governedBy",
+      "object": "属性值解析规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_属性值解析规则",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRefServiceImpl#getParsedValue"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "governedBy",
+      "object": "物料描述拼接规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_物料描述拼接规则",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#generateDescriptions"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "governedBy",
+      "object": "客户专用料规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_客户专用料规则",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "governedBy",
+      "object": "物料基础属性取值规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_物料基础属性取值规则",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#createPublicAttributes"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "governedBy",
+      "object": "分类属性范围匹配规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_分类属性范围匹配规则",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRefMapper.xml#queryrangeCodeByfourCode; AttributeValueMapper#queryRangeByFourCode"
+    },
+    {
+      "subject": "物料属性值库",
+      "predicate": "governedBy",
+      "object": "属性值解析规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料属性值库",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_属性值解析规则",
+      "basis": "code",
+      "via": [],
+      "source": "ClassificationAttributeRefServiceImpl#getParsedValue"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "governedBy",
+      "object": "汽车电子号段规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_汽车电子号段规则",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRangeServiceImpl#getCodeAndCommit (addCodeApply.getEcar() == 1)"
+    },
+    {
+      "subject": "物料编码号段",
+      "predicate": "governedBy",
+      "object": "编码号段选取规则",
+      "subject_type": "Entity",
+      "object_type": "BusinessRule",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料编码号段",
+      "object_iri": "http://het.com/ontology/material-master#BusinessRule_编码号段选取规则",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRangeServiceImpl#getCodeAndCommit"
+    },
+    {
+      "subject": "L4分类",
+      "predicate": "supports",
+      "object": "物料相似查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_L4分类",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "ClassificationAttributeRefServiceImpl#queryrangeCodeByfourCode"
+    },
+    {
+      "subject": "L4分类",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_L4分类",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java @Dict"
+    },
+    {
+      "subject": "专用客户属性",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_专用客户属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "专用客户属性",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_专用客户属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "优选标识属性",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_优选标识属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "制造商AVL等级属性",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "制造商名称属性",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商名称属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"
+    },
+    {
+      "subject": "制造商名称属性",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商名称属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AcAddCodeApplyAttrServiceImpl#getByMainIdAndPurchase"
+    },
+    {
+      "subject": "属性值",
+      "predicate": "supports",
+      "object": "物料相似查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_属性值",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "属性值",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_属性值",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AcAddCodeApplyAttr.java"
+    },
+    {
+      "subject": "旧物料编码",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_旧物料编码",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "code",
+      "via": [],
+      "source": "CodeRangeServiceImpl#getCodeAndCommit"
+    },
+    {
+      "subject": "是否属于可比性属性",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_是否属于可比性属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "是否属于可比性属性",
+      "predicate": "supports",
+      "object": "物料相似查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_是否属于可比性属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "是否汽车电子",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_是否汽车电子",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "是否涉及优选",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_是否涉及优选",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#pushMainData"
+    },
+    {
+      "subject": "标准件/非标准件",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_标准件_非标准件",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "ClassificationManagement.java"
+    },
+    {
+      "subject": "物料主数据",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Entity",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料主数据",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "code",
+      "via": [],
+      "source": "AddCodeApply.java"
+    },
+    {
+      "subject": "物料分类属性模板",
+      "predicate": "supports",
+      "object": "物料相似查找",
+      "subject_type": "Entity",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料分类属性模板",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "ClassificationAttributeRef.java"
+    },
+    {
+      "subject": "物料名称属性",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_物料名称属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Entity",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "code",
+      "via": [],
+      "source": "AcAddCodeApplyAttrMapper.xml#getMaterialNameByMaterialNo"
+    },
+    {
+      "subject": "物料短描述",
+      "predicate": "supports",
+      "object": "物料相似查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_物料短描述",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#generateDescriptions"
+    },
+    {
+      "subject": "物料短描述",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_物料短描述",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#generateDescriptions"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "Entity",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料私有属性",
+      "predicate": "supports",
+      "object": "物料相似查找",
+      "subject_type": "Entity",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AcAddCodeApplyAttrp.java"
+    },
+    {
+      "subject": "物料编码",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_物料编码",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "物料长描述",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_物料长描述",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AddCodeApplyServiceImpl#generateDescriptions"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "supports",
+      "object": "替代料推荐",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_替代料推荐",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "申请状态",
+      "predicate": "supports",
+      "object": "物料精确查找",
+      "subject_type": "Field",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料精确查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "细分类属性",
+      "predicate": "supports",
+      "object": "物料相似查找",
+      "subject_type": "CommonAttribute",
+      "object_type": "Scenario",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_细分类属性",
+      "object_iri": "http://het.com/ontology/material-master#Scenario_物料相似查找",
+      "basis": "confirmed",
+      "via": [],
+      "source": "AttributeValueServiceImpl#getSubdivisionDesc"
+    },
+    {
+      "subject": "优选标识属性",
+      "predicate": "hasValue",
+      "object": "优选标识-优选1(汽电)",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_优选标识属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选1_汽电_",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "优选标识属性",
+      "predicate": "hasValue",
+      "object": "优选标识-优选A",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_优选标识属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选A",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "优选标识属性",
+      "predicate": "hasValue",
+      "object": "优选标识-优选B",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_优选标识属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选B",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "制造商AVL等级属性",
+      "predicate": "hasValue",
+      "object": "制造商AVL等级-主力",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_主力",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#checkParam"
+    },
+    {
+      "subject": "制造商AVL等级属性",
+      "predicate": "hasValue",
+      "object": "制造商AVL等级-合格",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_合格",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#checkParam"
+    },
+    {
+      "subject": "制造商AVL等级属性",
+      "predicate": "hasValue",
+      "object": "制造商AVL等级-考察",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_考察",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#checkParam"
+    },
+    {
+      "subject": "制造商AVL等级属性",
+      "predicate": "hasValue",
+      "object": "制造商AVL等级-试用",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_试用",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#checkParam"
+    },
+    {
+      "subject": "制造商AVL等级属性",
+      "predicate": "hasValue",
+      "object": "制造商AVL等级-限制",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_制造商AVL等级属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_制造商AVL等级_限制",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#checkParam"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-EOL",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_EOL",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-完全停产",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_完全停产",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-完全失效",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_完全失效",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-批量",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_批量",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-测试",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_测试",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-研发",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_研发",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-试产",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_试产",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-部分失效",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_部分失效",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "生命周期阶段属性",
+      "predicate": "hasValue",
+      "object": "生命周期阶段-采购失效",
+      "subject_type": "CommonAttribute",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#CommonAttribute_生命周期阶段属性",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_生命周期阶段_采购失效",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "申请状态",
+      "predicate": "hasValue",
+      "object": "申请状态-SCM采购审批中",
+      "subject_type": "Field",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_申请状态_SCM采购审批中",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)"
+    },
+    {
+      "subject": "申请状态",
+      "predicate": "hasValue",
+      "object": "申请状态-历史版本",
+      "subject_type": "Field",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_申请状态_历史版本",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)"
+    },
+    {
+      "subject": "申请状态",
+      "predicate": "hasValue",
+      "object": "申请状态-审批完成",
+      "subject_type": "Field",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_申请状态_审批完成",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)"
+    },
+    {
+      "subject": "申请状态",
+      "predicate": "hasValue",
+      "object": "申请状态-标准化审批中",
+      "subject_type": "Field",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_申请状态_标准化审批中",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)"
+    },
+    {
+      "subject": "申请状态",
+      "predicate": "hasValue",
+      "object": "申请状态-草稿",
+      "subject_type": "Field",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_申请状态_草稿",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)"
+    },
+    {
+      "subject": "申请状态",
+      "predicate": "hasValue",
+      "object": "申请状态-退回",
+      "subject_type": "Field",
+      "object_type": "EnumValue",
+      "subject_iri": "http://het.com/ontology/material-master#Field_申请状态",
+      "object_iri": "http://het.com/ontology/material-master#EnumValue_申请状态_退回",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; AddCodeApplyController#importExcel (applyStatus=0 草稿)"
+    },
+    {
+      "subject": "优选标识-优选1(汽电)",
+      "predicate": "preferredFor",
+      "object": "汽车电子BG",
+      "subject_type": "EnumValue",
+      "object_type": "BusinessGroup",
+      "subject_iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选1_汽电_",
+      "object_iri": "http://het.com/ontology/material-master#BusinessGroup_汽车电子BG",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "优选标识-优选A",
+      "predicate": "preferredFor",
+      "object": "海外家电BG",
+      "subject_type": "EnumValue",
+      "object_type": "BusinessGroup",
+      "subject_iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选A",
+      "object_iri": "http://het.com/ontology/material-master#BusinessGroup_海外家电BG",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "优选标识-优选B",
+      "predicate": "preferredFor",
+      "object": "国内家电BG",
+      "subject_type": "EnumValue",
+      "object_type": "BusinessGroup",
+      "subject_iri": "http://het.com/ontology/material-master#EnumValue_优选标识_优选B",
+      "object_iri": "http://het.com/ontology/material-master#BusinessGroup_国内家电BG",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明"
+    },
+    {
+      "subject": "是否汽车电子",
+      "predicate": "indicatesBG",
+      "object": "汽车电子BG",
+      "subject_type": "Field",
+      "object_type": "BusinessGroup",
+      "subject_iri": "http://het.com/ontology/material-master#Field_是否汽车电子",
+      "object_iri": "http://het.com/ontology/material-master#BusinessGroup_汽车电子BG",
+      "basis": "confirmed",
+      "via": [],
+      "source": "业务方说明; CodeRangeServiceImpl#getCodeAndCommit (ecar == 1)"
+    },
+    {
+      "subject": "物料基础属性",
+      "predicate": "similarTo",
+      "object": "物料私有属性",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "subject_iri": "http://het.com/ontology/material-master#Entity_物料基础属性",
+      "object_iri": "http://het.com/ontology/material-master#Entity_物料私有属性",
+      "basis": "analysis",
+      "via": [
+        "加码id",
+        "属性代码",
+        "属性值",
+        "属性描述",
+        "属性类型"
+      ],
+      "source": "semantic_analysis（语义画像余弦 / 关键字段 Jaccard）"
+    }
+  ]
+}

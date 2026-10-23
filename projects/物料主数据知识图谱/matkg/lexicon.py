@@ -96,7 +96,7 @@ SCOPE_ENTITIES: List[str] = [
 # 业务口径的规范名（节点名）。前三项由业务方明确给出：
 #   加码申请表 = 物料主数据表；加码申请基础属性 = 物料基础属性；
 #   加码申请私有属性 = 物料私有属性（也叫物料技术属性）。
-# 其余五项按“同理”推出，待业务方确认。
+# 其余五项按“同理”推出，业务方已确认。
 ENTITY_LABELS: Dict[str, str] = {
     "AddCodeApply": "物料主数据",
     "AcAddCodeApplyAttr": "物料基础属性",
@@ -203,7 +203,7 @@ ENTITY_RELATIONS: List[EntityRelation] = [
                    "ClassificationAttributeRefController#queryById (classificationManagementService.queryByFourCode)"),
     EntityRelation("ClassificationAttributeRef", "refersTo", "AttributeManagement", ["属性代码"],
                    "ClassificationAttributeRef.attributeCode 与 AttributeManagement.attributeCode 同名同义（未见显式 JOIN）",
-                   basis="inferred"),
+                   basis="confirmed"),
     EntityRelation("AttributeValue", "refersTo", "ClassificationAttributeRef", ["L4分类代码", "属性代码"],
                    "ClassificationAttributeRefServiceImpl#getParsedValue (queryRangeByFourCode(ref.fourCode, ref.attributeCode))"),
     EntityRelation("AttributeValue", "refersTo", "AttributeManagement", ["属性代码"],

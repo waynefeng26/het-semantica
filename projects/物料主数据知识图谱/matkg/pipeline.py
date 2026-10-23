@@ -29,6 +29,7 @@ from semantica.semantic_extract.types import Entity, Relation
 from . import lexicon as lx
 from .corpus import Doc, build_corpus
 from .domain_model import DomainModel, build_domain_model
+from .export_ontology import export_ontology
 from .java_scanner import scan_module
 from .zh_extract import MARK, ZH_NER, ZH_REL, ZhSemanticAnalyzer, register_methods, split_sentences
 
@@ -449,7 +450,7 @@ def write_glossary(out_dir: Path, model: DomainModel) -> None:
             "table": ent.table,
             "aliases": model.aliases.get(cls, []),
             "business_desc": lx.ENTITY_BUSINESS_DESC[cls],
-            "confirmed_by_user": cls in ("AddCodeApply", "AcAddCodeApplyAttr", "AcAddCodeApplyAttrp"),
+            "confirmed_by_user": True,  # 前三项业务方直接给出，其余五项“同理”推出后已确认
         })
     attrs = [
         {"canonical": a.label, "attr_code": a.code, "desc": a.desc, "derives_from": a.derives_from, "source": a.source}
@@ -469,7 +470,7 @@ def write_glossary(out_dir: Path, model: DomainModel) -> None:
     L = ["# 业务口径对照表\n", "## 实体\n",
          "| 规范名（节点名） | 源码叫法 | Java 类 | 表 | 别名 | 业务口径 | 来源 |", "|---|---|---|---|---|---|---|"]
     for r in rows:
-        src = "业务方确认" if r["confirmed_by_user"] else "按“同理”推出，待确认"
+        src = "业务方确认" if r["confirmed_by_user"] else "待确认"
         L.append(f"| {r['canonical']} | {r['tech_name']} | {r['java_class']} | {r['table']} | {'、'.join(r['aliases'])} | {r['business_desc']} | {src} |")
     L += ["\n## 物料基础属性里的常用属性\n", "| 规范名 | attr_code | 说明 | 取自 | 出处 |", "|---|---|---|---|---|"]
     for a in attrs:
@@ -487,25 +488,25 @@ def write_glossary(out_dir: Path, model: DomainModel) -> None:
 
 
 def write_confirmation_list(out_dir: Path, model: DomainModel) -> None:
-    """需要业务方确认的内容：推断出来的支撑关系 / 实体关系 / 按“同理”推出的业务名。"""
-    inferred = [s for s in lx.SUPPORTS if s.basis == "inferred"]
-    L = ["# 待业务方确认清单\n", "在“确认”列填 是 / 否 即可；标“否”的条目将从 lexicon 中删除。\n"]
-    L.append(f"## 1. 推断出来的应用场景支撑关系（{len(inferred)} 条）\n")
-    if inferred:
+    """需要业务方确认的内容（推断出来的支撑关系 / 实体关系）；全部确认后只留一份说明。"""
+    pending_sup = [s for s in lx.SUPPORTS if s.basis == "inferred"]
+    pending_rel = [r for r in lx.ENTITY_RELATIONS if r.basis == "inferred"]
+    L = ["# 待业务方确认清单\n"]
+    if not pending_sup and not pending_rel:
+        L.append("当前没有待确认项：应用场景支撑关系、实体关系、8 个实体的业务名均已由业务方确认。")
+        (out_dir / "to_confirm.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+        return
+    L.append("在“确认”列填 是 / 否 即可；标“否”的条目将从 lexicon 中删除。\n")
+    if pending_sup:
+        L.append(f"## 推断出来的应用场景支撑关系（{len(pending_sup)} 条）\n")
         L.append("| # | 主语 | 支持的场景 | 推断理由 | 参考出处 | 确认 |\n|---|---|---|---|---|---|")
-        for i, sp in enumerate(sorted(inferred, key=lambda x: (x.scenario, x.subject)), 1):
+        for i, sp in enumerate(sorted(pending_sup, key=lambda x: (x.scenario, x.subject)), 1):
             L.append(f"| {i} | {model.node_label(sp.subject)} | {sp.scenario} | {sp.reason} | {sp.source} | |")
-    else:
-        L.append("已全部由业务方确认。")
-    rels = [r for r in lx.ENTITY_RELATIONS if r.basis == "inferred"]
-    L.append(f"\n## 2. 推断出来的实体关系（{len(rels)} 条）\n")
-    L.append("| 起点 | 关系 | 终点 | 关联字段 | 理由 | 确认 |\n|---|---|---|---|---|---|")
-    for r in rels:
-        L.append(f"| {model.label(r.src)} | {r.predicate} | {model.label(r.dst)} | {'、'.join(r.via)} | {r.source} | |")
-    L.append("\n## 3. 按“同理”推出的业务名\n")
-    L.append("| 业务名 | Java 类 | 业务口径 | 确认 |\n|---|---|---|---|")
-    for cls in ("ClassificationManagement", "AttributeManagement", "ClassificationAttributeRef", "AttributeValue", "CodeRange"):
-        L.append(f"| {model.label(cls)} | {cls} | {lx.ENTITY_BUSINESS_DESC[cls]} | |")
+    if pending_rel:
+        L.append(f"\n## 推断出来的实体关系（{len(pending_rel)} 条）\n")
+        L.append("| 起点 | 关系 | 终点 | 关联字段 | 理由 | 确认 |\n|---|---|---|---|---|---|")
+        for r in pending_rel:
+            L.append(f"| {model.label(r.src)} | {r.predicate} | {model.label(r.dst)} | {'、'.join(r.via)} | {r.source} | |")
     (out_dir / "to_confirm.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 
 
@@ -526,6 +527,8 @@ def run_all(java_root: str, out_dir: str) -> Dict[str, Any]:
     network = run_semantic_network(ctx, similar_to=analysis["similar_to"])
     write_semantic_network(out, network)
 
+    onto_stats = export_ontology(ctx.model, triplets, network, out)
+
     summary = {
         "docs": len(ctx.docs),
         "gazetteer_terms": len(ctx.model.gazetteer),
@@ -533,6 +536,7 @@ def run_all(java_root: str, out_dir: str) -> Dict[str, Any]:
         "predicates": dict(Counter(t["predicate"] for t in triplets)),
         "network_nodes": len(network["nodes"]),
         "network_edges": len(network["edges"]),
+        "ontology": onto_stats,
     }
     _dump(out / "run_summary.json", summary)
     return summary

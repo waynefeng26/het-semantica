@@ -165,3 +165,34 @@ def test_similarity_and_network(ctx):
     # 节点唯一：同一规范实体不重复建节点
     assert len(ids) == len(net["nodes"])
     assert any(e["label"] == "similarTo" and e["inferred"] for e in net["edges"])
+
+
+def test_export_ontology(ctx, triplets, tmp_path):
+    import json
+
+    from rdflib import Graph
+    from rdflib.namespace import OWL, RDF
+
+    from matkg.export_ontology import MK, export_ontology
+
+    analysis = run_semantic_analysis(ctx)
+    net = run_semantic_network(ctx, similar_to=analysis["similar_to"])
+    stats = export_ontology(ctx.model, triplets, net, tmp_path)
+
+    onto = json.loads((tmp_path / "ontology.json").read_text(encoding="utf-8"))
+    assert {c["name"] for c in onto["classes"]} == set(lx.CONCEPTS)
+    assert {p["name"] for p in onto["object_properties"]} == set(lx.PREDICATES)
+    n_similar = sum(1 for e in net["edges"] if e["label"] == "similarTo")
+    assert len(onto["triples"]) == len(triplets) + n_similar
+    assert len({i["iri"] for i in onto["individuals"]}) == len(onto["individuals"])
+
+    g = Graph().parse(str(tmp_path / "ontology.ttl"), format="turtle")
+    assert len(g) == stats["rdf_statements"]
+    assert len(list(g.subjects(RDF.type, OWL.Class))) >= len(lx.CONCEPTS)
+    # 每条三元组都能在 RDF 里找到，并带依据标注
+    for t in onto["triples"]:
+        from rdflib import URIRef
+
+        s, p, o = URIRef(t["subject_iri"]), MK[t["predicate"]], URIRef(t["object_iri"])
+        assert (s, p, o) in g
+    assert len(list(g.subjects(RDF.type, OWL.Axiom))) == len(onto["triples"])

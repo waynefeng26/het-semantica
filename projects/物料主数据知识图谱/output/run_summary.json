@@ -17,5 +17,12 @@
     "indicatesBG": 1
   },
   "network_nodes": 120,
-  "network_edges": 171
+  "network_edges": 171,
+  "ontology": {
+    "classes": 9,
+    "object_properties": 13,
+    "individuals": 120,
+    "triples": 171,
+    "rdf_statements": 1977
+  }
 }

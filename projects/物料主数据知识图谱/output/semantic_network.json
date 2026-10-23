@@ -2423,7 +2423,7 @@
         "relation:ClassificationAttributeRef-refersTo-AttributeManagement"
       ],
       "inferred": false,
-      "basis": "inferred"
+      "basis": "confirmed"
     },
     {
       "source": "Entity:物料属性值库",

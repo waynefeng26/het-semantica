@@ -142,7 +142,7 @@
     "source": "ClassificationAttributeRef.attributeCode 与 AttributeManagement.attributeCode 同名同义（未见显式 JOIN）",
     "meta": {
       "predicate": "refersTo",
-      "basis": "inferred"
+      "basis": "confirmed"
     }
   },
   {
